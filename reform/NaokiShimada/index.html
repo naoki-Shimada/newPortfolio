@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> <!-- bootstrap -->
+    <link rel="stylesheet" href="common/reset.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> <!-- googleフォント -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- googleフォント -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet"> <!-- googleフォント -->
+    <link rel="stylesheet" href="styles/style.css">
+    
+    <title>Design House Renovations</title>
+</head>
+    <header id="Header">
+        <div class="HeadBanner">
+            <img src="images/pc_img/logo.svg" alt="office_logo">
+                <nav class="GMenu">
+                    <input class="MenuBtn" type="checkbox" id="menu-btn"> <!-- bootstrapで代用できそうなデザイン*1がJavaScriptを利用するものだったため教科書を参考に作成してます -->
+                    <label class="MenuIcon" for="menu-btn">
+                        <span class="Navicon"></span>
+                    </label>
+                    <ul class="Menu">
+                        <li><a href="#Concept">コンセプト</a></li>
+                        <li><a href="#Service">サービス</a></li>
+                        <li><a href="#Flow">施工の流れ</a></li>
+                        <li><a href="#Qa">よくあるご質問</a></li>
+                        <li><a href="#Contact">お問い合わせ</a></li>
+                    </ul>
+                </nav>
+            <nav class="Nav">
+                <ul>
+                <li><a href="#Concept">コンセプト</a></li>
+                <li><a href="#Service">サービス</a></li>
+                <li><a href="#Flow">施工の流れ</a></li>
+                <li><a href="#Qa">よくあるご質問</a></li>
+                <li><a href="#Contact">お問い合わせ</a></li>
+            </nav>
+        </div>
+    </header>
+
+    <img src="images/pc_img/hero.jpg" alt="hero" class="Hero">
+    <img src="images/sp_img/hero.png" alt="hero_sp" class="HeroSp"> <!-- スマホ用のカンプを読み込ませてます -->
+<body>
+    <div class="Concept">
+        <section><h1>CONCEPT</h1></section>
+        <h2 class="TitleBorder">コンセプト</h2>
+        <h3 class="TitleInner">家族が笑顔になれる場所</h3>            
+            <p>家族が集う、温かく居心地の良い空間づくりを目指して、幅広い年代の方に安心して過ごしていただける空間づくりや、お手入れ<br>
+            のしやすい素材を利用したリフォームをご提案いたします。</p>
+    </div>
+
+    <div class="Service">
+        <section><h1>SERVICE</h1></section>
+        <h2 class="TitleBorder">サービス</h2>
+        <div class="ServiceGallery">
+            <div class="ServiceImg">
+            <img src="images/pc_img/list-1-img.png">
+                <h3 class="ServiceInner">浴室</h3>
+                <p>ご家族が一緒に入れる広めの浴槽や手<br>
+                すり等、安全性に配慮しています。</p>
+                <nav class="NavMore">
+                    <a href="#more">more<span class="Triangle">▲</span> <!-- ▲を文字列にして90度回転させて表現してます -->
+                    </a>
+                </nav>
+            </div>
+        
+            <div class="ServiceImg">
+            <img src="images/pc_img/list-2-img.png">
+                <h3 class="ServiceInner">リビング</h3>
+                <p>照明や家具の配置等、くつろぎやすい<br>
+                    空間づくりを大切にしています。</p>
+                <nav class="NavMore">
+                    <a href="#More">more<span class="Triangle">▲</span>
+                    </a>
+                </nav>
+            </div>
+
+            <div class="ServiceImg">
+                <img src="images/pc_img/list-3-img.png">
+                <h3 class="ServiceInner">キッチン</h3>
+                <p>機能性だけでなく、デザイン性にもこ<br>
+                    だわっております。</p>
+                <nav class="NavMore">
+                    <a href="#more">more<span class="Triangle">▲</span>
+                    </a>
+                </nav>
+            </div>      
+        </div>
+    </div>
+
+    <div class="Flow">
+            <section><h1>FLOW</h1></section>
+            <h2 class="TitleBorderRedline">
+                <p style="color: #B71B26;">施工の流れ</p></h2>
+            <div class="Flowchart"> <!-- 簡単な図形で表現できそうであったため楕円形と矢印を定義して表現してます -->
+                <div class="Step">ご相談</div>
+                <div class="Arrow1"><p>▲</p></div> <!-- グラデーションはカンプの色彩をスポイトで調べて適宜矢印に反映させました -->
+                <div class="Step">現地調査</div>
+                <div class="Arrow2"><p>▲</p></div>
+                <div class="Step">お見積り</div>
+                <div class="Arrow3"><p>▲</p></div>
+                <div class="Step">ご契約</div>
+                <div class="Arrow4"><p>▲</p></div>
+                <div class="Step">施工</div>
+                <div class="Arrow5"><p>▲</p></div>
+                <div class="Step">お引渡し</div>
+            </div>    
+    </div>
+
+        <div class="Qa">
+            <section><h1>Q&A</h1></section>
+            <h2 class="TitleBorder">よくあるご質問</h2>
+                <div class="Question">
+                    <p><span class="QaEffectBlack">Q.</span> 見積もりは無料ですか？</p> <!-- 円と横並びのブロック要素でレイアウト崩れないようにしています -->
+                    <p><span class="QaEffectRed">A.</span> はい。お見積もりは無料で承っております。ホームページよりお気軽にお問い合わせください。</p>
+                </div>
+
+                <div class="Question">
+                    <p><span class="QaEffectBlack">Q.</span> 普段通り生活をしながらのリフォーム工事は可能ですか?</p>
+                    <p><span class="QaEffectRed">A.</span>はい。もちろん可能です。工事中の箇所は、何日間か使用できなくなる場合もございますのであらかじめご了承ください。大型リフォームの場合には、仮住まいもお薦めしております。</p>
+                </div>
+        </div>
+
+        
+        <div class="Contact">
+            <section><h1>CONTACT</h1></section>
+            <h2 class="TitleBorder">お問い合わせ</h2>
+            <div class="ContactInner">
+                    <div class="ContactForm">
+                    <p>お問い合わせ種別
+                        <span class="Required">必須</span></p> 
+                    <label class="RadioLabel"> <!-- ラジオボタンは一項目のみのためフリーハンドでデザインしてます -->
+                        <input type="radio" name="contact" value="資料請求" required>資料請求
+                    </label>
+                    <label class="RadioLabel">
+                        <input type="radio" name="contact" value="ご相談" required>ご相談
+                    </label>
+                    </div>
+
+                    <div class="ContactForm">
+                            <p>お名前
+                            <span class="Required">必須</span></p>
+                        <div class="FormInput_Short">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1"> 
+                        </div>
+                    </div>
+
+                    <div class="ContactForm"> 
+                            <p>フリガナ
+                            <span class="Required">必須</span></p>
+                        <div class="FormInput_Short"> <!-- テキストボックスはbootstrapを利用しています -->
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+
+                    <div class="ContactForm">
+                            <p>電話番号
+                            <span class="Required">必須</span></p>
+                        <div class="FormInput_Short">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div> 
+                    </div>
+
+                    <div class="ContactForm">
+                            <p>住所
+                            <span class="Required">必須</span>〒</p>
+                        <div class="FormInput_Short">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    <div class="ContactForm">
+                            <p class="None">住所
+                            <span class="Required_None">必須</span>&emsp;</p>
+                            <!-- 文字列を背景色と同一にしてスペースを確保しています -->
+                        <div class="FormInput">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div>
+                    </div>
+                    
+                    <div class="ContactForm">
+                            <p>メールアドレス
+                            <span class="Required">必須</span></p>
+                        <div class="FormInput">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div>                           
+                    </div>
+
+                    <div class="ContactForm">
+                            <p>メールアドレス(確認用)
+                            <span class="Required">必須</span></p>
+                        <div class="FormInput">
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby="basic-addon1">
+                        </div>                           
+                    </div>
+
+                    <div class="ContactForm">
+                            <label for="exampleFormControlTextarea1" class="form-label">お問い合わせ内容
+                            </label>
+                        <div class="FormInput">
+                            <div class="mb-3"> <!-- サイズをユーザー側でも切り替え可能なテキストボックスを適用してます(bootstrap) -->
+                                </label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            </div>
+                        </div>     
+                    </div>                           
+
+                    <div class="ButtonForm">
+                            <input class="btn btn-dark" type="submit" value="入力内容を確認する&#9654;"> <!-- bootstrapのボタンのコンポーネントを利用しています --> <!-- ▲を90度回転させた文字列をAIにコードとして提供してもらっています -->
+                    </div>
+        </div>            
+    <footer>
+        <!-- bootstrapの最上部にスクロールする機能*2とコンポーネントのボタンを利用して作成しました -->
+        <div class="BackToTop">
+            <a class="btn btn-dark MyCustomButton" href="#Header"> <!-- ボタン -->
+                <span class="Caret">&#x5E;</span> <!-- カンプのボタンの画像をAIに読み込ませコードとして提供してもらっています -->
+                <i class="bi bi-chevron-up"></i></a> <!-- 最上部にスクロールする機能 -->
+        </div>
+        <div class="Footer">
+            <p>&copy; 2023 Design House Renovations</p>   
+        </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"> /* bootstrap js */
+    </script>
+</body>
+</html>
+
+<!-- *1 参考サイト https://mdbootstrap.com/docs/standard/extended/hamburger-menu/ -->
+<!-- *2 参考サイト https://designup.jp/bootstrap5-back-to-top.html -->

@@ -1,0 +1,616 @@
+/* 不要な定義が多いと思うのでAIで添削したい */
+/* 命名規則に則って定義しなおす キャメル型*/
+
+Header{
+    font-family: "Noto Serif JP", serif; /* デザインルール */
+}
+
+/* ハンバーガーメニュー、pc表示しない */
+.GMenu{
+    display: none;
+}
+
+.Menu{
+    display: none;
+}
+
+.HeadBanner{
+    padding: 18px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav{
+    display: flex;
+    justify-content: flex-end;
+}
+
+nav ul{
+    display: flex;
+    gap: 40px;
+}
+
+nav a{
+    font-size: 14px;
+    color: #333;
+}
+
+
+.Hero{
+    max-width: 100%;
+}
+
+.HeroSp{
+    display: none;
+}
+
+
+body{
+    font-family: "Noto Serif JP", serif; /* デザインルール */
+}
+
+.Concept{
+    padding: 60px;
+    justify-content: center;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 42px;
+}
+
+.TitleBorder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 24px; /* お問い合わせフォームの行間空けのため */
+}
+
+/* インナータイトルを挟む装飾線 */
+.TitleBorder::before,
+.TitleBorder::after{
+    content: ""; /* 装飾用のブロック要素 */
+    flex: 1; /* 残りのスペースを均等に埋める */
+    height: 1px; /* 線の太さ */
+    background-color: #333; /* 線の色 */
+    max-width: 100px; 
+}
+
+.TitleBorder::before{
+    margin-right: 1em;
+}
+
+.TitleBorder::after{
+    margin-left: 1em;
+}
+
+.TitleInner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.Concept p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Service{
+    padding: 60px;
+}
+
+.ServiceGallery{
+    display: flex;
+    justify-content: center;
+}
+
+.ServiceImg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.ServiceInner{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    padding: 20px;
+}
+
+/* <!-- ▲を文字列にして90度回転させて表現してます --> */
+.Triangle{
+    display: inline-block;
+    transform: rotate(90deg);
+    font-size: 10px;
+    gap: 5px;
+}
+
+
+.NavMore{
+    width: 100%; /* 親要素いっぱいに幅を広げる */
+    text-align: right;
+}
+
+.Flow{
+    justify-content: center;
+    background-color: #E5E5E5;
+    padding: 20px;
+}
+
+.TitleBorderRedline{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Flowのインナータイトルは赤文字のため、独自で定義 */
+.TitleBorderRedline::before,
+.TitleBorderRedline::after{
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #B71B26;
+    max-width: 100px;
+}
+
+/* Flow用 */
+.TitleBorderRedline::before{
+    margin-right: 1em;
+}
+
+/* Flow用 */
+.TitleBorderRedline::after{
+    margin-left: 1em;
+}
+
+.Flowchart{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* 楕円形を描画、文字列は縦書き */
+.Step{
+    background-color: #333;
+    color: #fff;
+    padding: 30px 20px;
+    border-radius: 40px; /* 楕円形 */
+    font-size: 18px;
+    writing-mode: vertical-rl;/* 縦書き */
+    text-orientation: upright;/* 文字の自然な向きを保って、縦書きへ */
+    width: 60px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* グラデーションはカンプの色情報をスポイトで調べて逐次反映してます */
+.Arrow1{
+    color: #cf727a;
+    transform: rotate(90deg); /* 90度回転 */
+    font-size: 30px;
+}
+
+.Arrow2{
+    color: #c95c65;
+    transform: rotate(90deg);
+    font-size: 30px;
+}
+
+.Arrow3{
+    color: #c34750;
+    transform: rotate(90deg);
+    font-size: 30px;
+}
+
+.Arrow4{
+    color: #bd313b;
+    transform: rotate(90deg);
+    font-size: 30px;
+}
+
+.Arrow5{
+    color: #b71b26;
+    transform: rotate(90deg);
+    font-size: 30px;
+}
+
+.Qa{
+    padding: 60px;
+}
+
+.Question{
+    padding: 24px 0;
+    max-width: 800px;
+}
+
+.Question p {
+    font-size: 18px;
+    line-height: 1.8; /* 読みやすい行間 */
+    padding: 6px 0;
+}
+
+.QaEffectBlack{
+    background-color: #333;
+    color: #fff;
+    border-radius: 50%; /* 円 */
+    font-size: 24px;
+    display: inline-block; /* 横並びかつブロック要素 */
+    width: 36px; 
+    height: 36px; 
+    line-height: 30px; /* 縦方向のテキスト中央寄せ */
+    text-align: center;
+    border-radius: 50%;
+}
+
+.QaEffectRed{
+    background-color: #b30000;
+    color: #fff;
+    border-radius: 50%; /* 円 */
+    font-size: 24px;
+    display: inline-block; /* 横並びかつブロック要素 */
+    width: 36px; 
+    height: 36px; 
+    line-height: 30px; /* 縦方向のテキスト中央寄せ */
+    text-align: center;
+}
+
+.Contact{
+    background-color: #E5E5E5;
+    padding: 20px;
+}
+
+.ContactInner{
+    background-color: #fff;
+    padding: 36px;
+    margin: 24px 60px;
+    display: block;
+}
+
+.ContactForm{
+    display: flex;
+    padding: 10px 0;
+}
+
+.ContactForm p{
+    font-weight: bold;
+}
+
+.None{
+    color: #fff;
+    font-weight: bold;
+}
+
+/* 入力の多いものは大きいサイズのテキストボックス */
+/* flex-growで大きさ切り替え */
+.FormInput{
+    flex-grow: 1; /* 残りのスペースを全て占有 */
+}
+
+.FormInput input, textarea {
+    width: 100%;
+}
+
+/* フリガナ、電話番号、氏名、住所(〒)の入力の少ないものはサイズの小さいテキストボックス*/
+/* flex-growで大きさ切り替え */
+.FormInput_Short{
+    flex-grow: 0;
+}
+
+.form-label{
+    font-weight: bold;
+    padding: 6px;
+}
+
+.Required{
+    background-color: #e60000;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+/* 住所欄のスペース確保のため、表示はしない */
+.Required_None{
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 6px;
+}
+
+
+.ButtonForm{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.Footer{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* カンプを基にボタンの大きさ、色の調整 */
+.MyCustomButton{
+    width: 42px;
+    height: 42px;
+    background-color: #333;
+    color: #fff;
+}
+
+.BackToTop{
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 24px;
+}
+
+.Caret{
+    font-size: 18px;
+}
+
+/* display: block;で表示ONにする */
+/* スマホ */
+@media screen and (max-width: 768px) {
+    body{
+        padding: 0;
+        margin: 0;
+    }
+
+    /* pc版のnav、spではハンバーガーメニューのため表示しない */
+    nav a{
+        display: none;
+    }
+
+    /* ハンバーガーメニュー用のnav */
+    .NavMore a{
+        display: block;
+    }
+
+    .GMenu {
+    display: block;
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100%;
+    z-index: 99;
+    }
+
+    .Menu{
+        display: block;
+    }
+
+    /* メニューアイコンを画面右上に固定しています */
+    .GMenu .MenuIcon {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    padding-top: 5px;
+    height: 12px;
+    }
+
+    /* メニューアイコン（三本線）の真ん中の線です */
+    .GMenu .MenuIcon .Navicon {
+    background: #ffc107; 
+    display: block;
+    height: 2px; 
+    width: 31px; 
+    position: relative;
+    transition: background .4s ease-out; /* 形が変わる時のアニメーション */
+    }
+
+    /* メニューアイコン（三本線）の上と下の線を疑似要素で追加 */
+    .GMenu .MenuIcon .Navicon::before,
+    .GMenu .MenuIcon .Navicon::after {
+    background: #ffc107; 
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    transition: all .4s ease-out; /* 形が変わる時のアニメーション */
+    width: 100%;
+    }
+
+    .GMenu .MenuIcon .Navicon::before {top: 10px;} /* 位置を上にずらしています */
+    .GMenu .MenuIcon .Navicon::after {top: -10px;} /* 位置を下にずらしています */
+    /* 表示されるメニューです */
+    .GMenu .Menu {
+    background-color: rgba(255,255,255,0.9);
+    overflow: hidden;
+    max-height: 0; /* ★最初は高さを0にして非表示状態に */
+    transition: max-height .6s; /* 表示されるときのアニメーション */
+    text-align: center;
+    }
+
+    /* メニュー部分のデザインです */
+    .GMenu .Menu li:first-of-type {
+    padding-top: 50px;
+    }
+
+    .GMenu .Menu li a {
+    display: block;
+    padding: 18px 24px;
+    text-decoration: none;
+    text-transform: uppercase;
+    }
+
+    .GMenu .Menu li a:hover {
+    background-color: #f4f4f4;
+    }
+
+    /* チェックボックスは常に非表示です */
+    .GMenu .MenuBtn {
+    display: none;
+    }
+
+    /* ▼▼▼以下はチェックボックスがONの時の状態です▼▼▼ */
+    .GMenu .MenuBtn:checked ~ .Menu {
+    max-height: 338px; /* ★チェックボックスがオンの時高さを338pxにして表示させます */
+    transition: max-height .6s;
+    }
+
+    /* メニューボタンの中央の線を非表示に */
+    .GMenu .MenuBtn:checked ~ .MenuIcon .Navicon {background: transparent;}
+
+    /* メニューボタンの上下の線を45度傾けて✕印*/
+    .GMenu .MenuBtn:checked ~ .MenuIcon .Navicon::before {transform: rotate(-45deg);top: 0;}
+    .GMenu .MenuBtn:checked ~ .MenuIcon .Navicon::after {transform: rotate(45deg);top: 0;}
+    .GMenu .MenuIcon {
+    top: 26px;
+    }
+
+    .GMenu .MenuIcon .Navicon,
+    .GMenu .MenuIcon .Navicon::before,
+    .GMenu .MenuIcon .Navicon::after {
+    background: #333;
+    }
+
+    /* ====== hero画像 ====== */
+    /* pc版の画像は表示しない */
+    .Hero{
+        display: none;
+    }
+
+    /* スマホ版はこちらをdisplay: block;で表示してます */
+    .HeroSp{
+        display: block;
+        max-width: 100%;
+    }
+
+    .Concept{
+        padding: 20px 40px;
+    }
+
+    .Concept p{
+        text-align: center;
+        font-size: 14px;
+        line-height: 2;
+    }
+
+    /* Service */
+    .Service{
+        padding: 40px 20px;
+    }
+
+    .ServiceGallery{
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        align-items: center;
+    }
+
+    .ServiceImg img{
+        width: 100%;
+        border-radius: 6px;
+    }
+
+    .ServiceInner{
+        font-size: 20px;
+        padding: 10px 0;
+    }
+
+
+    .ServiceImg nav{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    /* flow */
+    .Flowchart{
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .Step{
+        writing-mode: horizontal-tb;/* 横向き */
+        text-orientation: mixed;
+        width: 240px;
+        height: auto;
+        border-radius: 50px;
+        font-size: 16px;
+        padding: 12px 0;
+    }
+
+    .Arrow1,.Arrow2,.Arrow3,.Arrow4,.Arrow5{
+        transform: rotate(180deg);
+    }
+
+    /* Q&A */
+    .Qa{
+        padding: 40px 20px;
+    }
+
+    .QaInner{
+        display: flex;
+        gap: 10px;
+        padding: 15px 0;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    /* contact */
+    .Contact{
+        padding: 24px 0 0 0;
+    }
+
+    .ContactInner{
+        max-width: 340px;
+        margin: 24px;
+        padding: 15px;
+    }
+
+    .None{
+        display: none;
+    }
+
+    .ContactForm{
+        flex-direction: column;
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .FormInput input,textarea{
+        width: 100%;
+    }
+
+    .ButtonForm input{
+        width: 100%;
+        border-radius: 40px;
+        padding: 12px;
+    }
+
+    /* footer */
+    .Footer{
+        padding: 30px;
+        font-size: 12px;
+        background: #333;
+        color: #fff;
+        text-align: center;
+    }
+
+    .BackToTop{
+        position: fixed; /* スクロールしても固定されるように */
+        bottom: 15px;
+        right: 15px;
+    }
+}
