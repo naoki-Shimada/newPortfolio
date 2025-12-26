@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="common/style/style.css">
+    <link rel="stylesheet" href="style/style.css">
+
+</head>
+
+<body>
+
+<!--     <div id="loader" class="BackgroundLoad">
+
+    <p>Now Loading<span class="AnimationReader"></span></p>
+
+    </div>
+
+    <div id="content" style="display: none;">
+ -->    
+    <header>
+        <nav>
+            <ul class="NavLinks">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Portfolio</a></li>
+            </ul>
+            
+            <div class="SocialLinks">
+                <i class="bi bi-twitter"></i>
+                <i class="bi bi-instagram"></i>
+                <i class="bi bi-youtube"></i>
+                <i class="bi bi-twitch"></i>
+            </div>
+        </nav>
+    </header>
+            <button type="button" id="BellTrigger" class="btn btn-primary btn-lg">
+                <i class="bi bi-bell fs-3"></i>
+            </button>
+
+        <main class="Hero">
+            <div class="HeroContent">
+                <h1>自己紹介</h1>
+                <p>自己紹介:やってること、趣味、プライベート</p>
+            </div>
+            <div class="HeroImage">
+                <div class="CircleImg">
+                    <img id="BeforeImg" src="img/Kanban.png" alt="Profile">
+                    <img id="AfterImg" src="img/Bartender.png" style="display: none;">
+                </div>
+            </div>
+        </main>
+
+        <section class="Portfolio">
+            <h1>作品集</h1>
+            <div class="DiscographyWrapper">
+                <div class="Discography">
+                        <p>リフォーム会社風なページを作成しました。</p>
+                        <a href="reform/NaokiShimada/index.html" class="btn">演習作品1(リフォーム会社のサイト)</a>
+                </div>    
+                        <div class="Thumbnail">
+                            <img src="img/ReformThumbnail.png" alt="Thumbnail">
+                        </div>
+            </div>
+            <div class="DiscographyWrapper">
+                <div class="Discography">
+                    <p>台湾への観光者向けのサイトをグループワークで作成しました。</p>
+                    <a href="taiwan/index.html" class="btn">演習作品2(台湾への観光者向けのサイト)</a>
+                </div>
+                        <div class="Thumbnail">
+                            <img src="img/TaiwanThumbnail.png" alt="Thumbnail">
+                        </div>
+            </div>
+        </section>
+</body>
+<footer>
+</footer>
+</div>
+<script src="scripts/script.js"></script>
+<!-- <script>
+        window.addEventListener('load', function(){
+            const loader = document.getElementById('loader');
+            const content = document.getElementById('content');
+        
+            /* フェードアウト値 */
+            setTimeout(() => {
+                loader.style.opacity = '0';
+                loader.style.transition = 'opacity 1s ease'; /* 消えるスピード */
+
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    content.style.display = 'block';
+                },1000); /* transitionの時間と合わせる */
+            },5000);
+        });
+    </script>     
+ --></html>
+
+ 
+
