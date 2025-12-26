@@ -1,0 +1,39 @@
+.BackgroundLoad {
+    width: 100%;
+    height: 300px;
+    /* white (#ffffff) から lightblue (#add8e6) へのグラデーション */
+    background: linear-gradient(45deg, #30233A, #BC4090, #30233A);
+    background-size: 200% 200%;
+    animation: flow 5s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+        font-family: "Press Start 2P", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 48px;
+    color: #FF00FF;
+    image-rendering: pixelated;
+    -webkit-font-smoothing: none;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* 3点リーダーのアニメーション */
+.AnimationReader::after {
+    content: '';
+    animation: dot-flow 6s steps(4, end) infinite;
+}
+
+@keyframes dot-flow {
+    0% {content: '';}
+    25% {content: '.';}
+    50% {content: '..';}
+    75% {content: '...';}
+    100% {content: '';}
+}
+
+@keyframes flow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
