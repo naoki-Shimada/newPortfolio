@@ -1,9 +1,55 @@
 /* ボタンの中のテキストをアイコンに代替してカーソルを合わせると変化するように */
 
+/* --- 初期状態で非表示にする要素 --- */
+/* ヘッダー、ヒーロー内のテキスト、作品集セクションを隠す */
+header, 
+.HeroContent, 
+.Portfolio {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease, visibility 1.5s ease;
+}
+
+/* ベルクリック後に付与する表示用クラス */
+.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     padding: 0 10%;
     background: linear-gradient(to bottom, #30233A, #BC4090);
+}
+
+/* ネオン管のデザイン */
+.NeonPipe {
+    position: fixed;
+    top: 0;
+    width: 4px; /* ネオンの芯の太さ */
+    height: 100vh;
+    z-index: -1; /* コンテンツの背面に配置 */
+    opacity: 0.7;
+}
+
+/* 左側のネオン(青系) */
+.LeftPipe {
+    left: 5%;
+    background: #fff;
+    box-shadow: 
+        0 0 10px #fff,
+        0 0 20px #00F0FF,
+        0 0 40px #00F0FF; 
+}
+
+/* 右側のネオン（ピンク系） */
+.RightPipe {
+    right: 5%;
+    background: #fff;
+    box-shadow: 
+        0 0 10px #fff,
+        0 0 20px #FF00FF,
+        0 0 40px #FF00FF;
 }
 
 header {
@@ -13,6 +59,23 @@ header {
     margin: 0 -11.2%;
     margin-bottom: 40px;
     font-size: 24px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* ヘッダ－下部にデュアルネオンのボーダーを追加 */
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #00F0FF 40%, #FF00FF 60%);
+    box-shadow: 
+        0 0 5px #fff,
+        -10px 0 15px #00F0FF, /* 左側の青い光 */
+        10px 0 15px #FF00FF;  /* 右側のピンクの光 */
 }
 
 nav {
@@ -67,6 +130,28 @@ nav {
 #BellTrigger {
     transition: transform 0.2s;
     cursor: pointer;
+}
+
+/* ベルボタンをクリックした時の動きを強調 */
+#BellTrigger:active {
+    transform: scale(0.9);
+    filter: brightness(1.5);
+}
+
+.BellText {
+    font-family: "Orbitron", sans-serif;
+    font-size: 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+
+    /* ネオンの核(白)と外光(青~紫)を重ねる */
+    text-shadow: 
+    0 0 5px #fff,
+    0 0 10px #fff,
+    0 0 20px #FF00FF, /* メインの発光色 */
+    0 0 40px #FF00FF,
+    0 0 80px #FF00FF;
 }
 
 .Hero {
@@ -139,14 +224,89 @@ nav {
     filter: brightness(1.2) contrast(1.1);
 }
 
-/* ベルボタンをクリックした時の動きを強調 */
-#BellTrigger:active {
-    transform: scale(0.9);
-    filter: brightness(1.5);
+.MenuList {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease 0.5s; /* ベルを押してから少し遅れで表示 */
+    margin: 80px 0;
+    display: flex;
+    justify-content: center;
+}
+
+/* ベルが押された時の表示設定 */
+.is-active .MenuList {
+    opacity: 1;
+    visibility: visible;
+}
+
+.MenuContainer {
+    width: 100%;
+    max-width: 600px;
+    background: rgba(0, 0, 0, 0.4); /* 半透明の背景 */
+    backdrop-filter: blur(10px); /* 背景をぼかす */
+    border: 2px solid #00F0FF; /* 青いネオン枠 */
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 
+        0 0 15px rgba(0, 240, 255, 0.3),
+        inset 0 0 15px rgba(0, 240, 255,0.2);
+}
+
+.MenuTitle {
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    letter-spacing: 5px;
+    text-shadow: 0 0 10px #00F0FF, 0 0 20px #00F0FF;
+}
+
+.MenuGrid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.MenuItem {
+    display: flex;
+    align-items: baseline;
+    font-family: 'Orbitron', sans-serif;
+    color: #fff;
+    font-size: 1.1rem;
+}
+
+.ItemName {
+    flex-shrink: 0;
+}
+
+.ItemDots {
+    flex-grow: 1;
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.3);
+    margin: 0 15px;
+}
+
+.ItemCode {
+    flex-shrink: 0;
+    color: #FF00FF; /* 価格はピンクのネオン */
+    text-shadow: 0 0 10px #FF00FF;
+    font-weight: bold;
+}
+
+/* ホバーした時に項目が光る演出 */
+.MenuItem:hover {
+    transform: translateX(10px);
+    transition: 0.3s;
+}
+
+.MenuItem:hover .ItemName {
+    text-shadow: 0 0 10px #fff;
 }
 
 .DiscographyWrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Discography {
@@ -191,5 +351,14 @@ nav {
 .Thumbnail img {
     width: 240px;
     height: 240px;
+}
+
+@keyframes NeonFlicker {
+    0%, 100% { opacity: 0.8;}
+    50% { opacity: 0.5;}
+}
+
+.NeonPipe {
+    animation: NeonFlicker 4s infinite alternate;
 }
 
