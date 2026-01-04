@@ -52,8 +52,8 @@
 
         <main class="Hero">
             <div class="HeroContent">
-                <h1>自己紹介</h1>
-                <p>自己紹介:やってること、趣味、プライベート</p>
+                <h1>Bar-10-Tron</h1>
+                <p>ようこそ、ご注文をお伺いいたします。</p>
             </div>
             <div class="HeroImage">
                 <div class="CircleImg">
@@ -93,6 +93,34 @@
             
 
         <section class="KeyPad">
+            <div class="KeyPadContainer">
+                <div class="KeyPadDisplay">
+                    <span class="DisplayLabel">SYSTEM TERMINAL / INPUT CODE</span>
+                    <div id="CodeOutput">----</div>
+                </div>
+
+                <div class="KeyGrid">
+                    <button class="NumKey" onclick="pressKey(['1'])">1</button>
+                    <button class="NumKey" onclick="pressKey(['A','B','C','2'])">ABC2</button>
+                    <button class="NumKey" onclick="pressKey(['D','E','F','3'])">DEF3</button>
+                    
+                    <button class="NumKey" onclick="pressKey(['G','H','I','4'])">GHI4</button>
+                    <button class="NumKey" onclick="pressKey(['J','K','L','5'])">JKL5</button>
+                    <button class="NumKey" onclick="pressKey(['M','N','O','6'])">MNO6</button>
+                    
+                    <button class="NumKey" onclick="pressKey(['P','Q','R','S','7'])">PQRS7</button>
+                    <button class="NumKey" onclick="pressKey(['T','U','V','8'])">TUV8</button>
+                    <button class="NumKey" onclick="pressKey(['W','X','Y','Z','9'])">WXYZ9</button>
+
+                    <button class="NumKey Clear" onclick="clearCode()">CLS</button>
+                    <button class="NumKey" onclick="pressKey(['0'])">0</button>
+                    <button class="NumKey Order" onclick="submitOrder()">ENT</button>
+                </div>
+                <div class="SystemStatus">
+                    <span class="StatusDot"></span> CONNECTED
+                </div>
+            </div>
+        </section>
 
         <section class="OrderLink">
 

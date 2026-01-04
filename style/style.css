@@ -22,6 +22,9 @@ body {
     background: linear-gradient(to bottom, #30233A, #BC4090);
 }
 
+/* 画面全体を覆うスキャンライン */
+
+
 /* ネオン管のデザイン */
 .NeonPipe {
     position: fixed;
@@ -233,6 +236,7 @@ nav {
     justify-content: center;
 }
 
+ 
 /* ベルが押された時の表示設定 */
 .is-active .MenuList {
     opacity: 1;
@@ -301,6 +305,121 @@ nav {
 
 .MenuItem:hover .ItemName {
     text-shadow: 0 0 10px #fff;
+}
+
+/* キーパッドのスタイル */
+.KeyPad {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease 0.8s;
+    margin: 50px 0;
+    display: flex;
+    justify-content: center;
+    perspective: 1000px; /* 奥行き感 */
+}
+
+/* ベルクリック後に表示 */
+.is-active .KeyPad {
+    opacity: 1;
+    visibility: visible;
+}
+
+.KeyPadContainer {
+    background: rgba(48, 35, 58, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid #FF00FF;
+    padding: 25px;
+    border-radius: 10px;
+    width: 400px;
+    transform: rotateX(10deg); /* 少し傾けてホログラム感を出す */
+    box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);
+    position: relative;
+}
+
+/* ディスプレイ */
+.KeyPadDisplay {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #00F0FF;
+    height: 70px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+.DisplayLabel {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 7px;
+    color: #00F0FF;
+    margin-bottom: 5px;
+    letter-spacing: 1px;
+}
+
+#CodeOutput {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 26px;
+    color: #fff;
+    text-shadow: 0 0 10px #00F0FF;
+    letter-spacing: 4px;
+}
+
+/* ボタン */
+.KeyGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.NumKey {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    padding: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1.1rem;
+}
+
+.NumKey:hover {
+    background: rgba(0, 240, 255, 0.2);
+    border-color: #00F0FF;
+    box-shadow: 0 0 15px #00F0FF;
+    transform: translateY(-2px);
+}
+
+.NumKey:active {
+    transform: scale(0.95);
+}
+
+.Order { border-color: #00F0FF; color: #00F0FF; font-weight: bold;}
+.Clear { border-color: #FF00FF; color: #FF00FF; }
+
+/* ステータスランプ */
+.SystemStatus {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9px;
+    color: #00F0FF;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.StatusDot {
+    width: 8px;
+    height: 8px;
+    background-color: #00F0FF;
+    border-radius: 50%;
+    box-shadow: 0 0 8px #00F0FF;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
 }
 
 .DiscographyWrapper {
