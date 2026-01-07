@@ -56,6 +56,34 @@
     let lastKeyIndex = 0;   // リスト内の現在のインデックス
     let timer = null;       // 入力確定用のタイマー
 
+    // メニューデータ（コードと表示内容の紐付け）
+    const menuDatabase = {
+    "1110": { 
+        name: "Cyber Gin Tonic", 
+        img: "img/CyberGinTonic.png", 
+        link: "#",
+        desc: "ギャルゲー()"
+    },
+    "2220": { 
+        name: "Cosmopolitan", 
+        img: "img/Cosmopolitan.png", 
+        link: "#",
+        desc: "シューティング(銀河大戦仮)"
+    },
+    "3330": { 
+        name: "Raohe Beer", 
+        img: "img/RaoheBeer.png", 
+        link: "taiwan/index.html",
+        desc: "演習作品2(台湾への観光者向けのサイト)"
+    },
+    "GGGG": { 
+        name: "Clean Martini", 
+        img: "img/CleanMartini.png", 
+        link: "reform/NaokiShimada/index.html",
+        desc: "演習作品1(リフォーム会社のサイト)"
+    }
+};
+
     /* トグルの処理 */
     function updateDisplay() {
         const output = document.getElementById('CodeOutput');
@@ -91,17 +119,31 @@
     function clearCode() {
         currentInput = "";
         document.getElementById('CodeOutput').innerText = "----";
+        if (output) {
+        output.innerText = "----";
+        output.style.color = "#fff";
+        output.style.textShadow = "0 0 10px #00F0FF";
+        }
     }
 
-    /* 注文送信 */
+
+    // ここまでキーパッドの内部処理
+
+    /* 注文送信(照合ロジック) */
     function submitOrder() {
         const output = document.getElementById('CodeOutput');
+        const orderSection = document.getElementById('OrderLink');
+        const resultContent = document.getElementById('OrderResultContent');
 
-        if(currentInput === "")
-            output.innerText = "EMPTY";
-            setTimeout(clearCode, 1000);
-            return;
+    if (currentInput === "") {
+        output.innerText = "EMPTY";
+        setTimeout(clearCode, 1000);
+        return;
     }
+
+    // 入力コードがデータベースにあるかチェック
+    if (menuDatabase[currentInput]){
+        const item = menuDatabase[currentInput];
 
     /* 成功演出 */
     output.innerText = "ACCEPTED";
@@ -109,8 +151,31 @@
     output.style.textShadow = "0 0 15px #00FF41";
 
     setTimeout(() => {
+        // オーダーエリアの内容を書き換えて表示
+        resultContent.innerHTML = `
+                <p class="BellText" style="color: #00FF41;">${item.name} を用意しました</p>
+                <a href="${item.link}">
+                    <img src="${item.img}" alt="${item.name}" style="max-width: 300px; border: 2px solid #00FF41; box-shadow: 0 0 20px #00FF41;">
+                </a>
+            `;
+            orderSection.style.display = 'block';
+
         alert(`ORDER RECIEVED:[${currentInput}] \nシステムが注文を正常に受理しました。`);
         clearCode();
-        output.style.color = "#fff";
-        output.style.textShadow = "0 0 10px #00F0FF";
+        
+        // オーダー場所までスクロール
+        orderSection.scrollIntoView({ behavior: 'smooth' });
     },800);
+
+        } else {
+        // 不一致の場合
+        output.innerText = "ERROR";
+        output.style.color = "#FF0000";
+        output.style.textShadow = "0 0 15px #FF0000";
+        
+        setTimeout(() => {
+            alert("無効なコードです。メニューを確認してください。");
+            clearCode();
+        }, 800);
+    }
+}

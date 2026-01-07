@@ -243,6 +243,11 @@ nav {
     visibility: visible;
 }
 
+.OrderSystem {
+    display: flex;
+    justify-content: space-around;
+}
+
 .MenuContainer {
     width: 100%;
     max-width: 600px;
@@ -420,6 +425,19 @@ nav {
 @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0.3; }
+}
+
+.OrderLink {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 1.5s ease;
+    padding: 100px 0;
+}
+
+/* 表示用クラス（JSで付与） */
+.OrderLink.is-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
 }
 
 .DiscographyWrapper {
