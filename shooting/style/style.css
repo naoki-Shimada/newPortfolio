@@ -1,0 +1,118 @@
+
+body {
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    margin: 0;
+    overflow: hidden;
+    color: #ff6;
+    font-family: "MS Pゴシック", sans-serif;
+}
+
+/* 1.最初の青い文字 */
+.IntroText {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    color: #4bd5ee;
+    opacity: 0;
+    animation: IntroFade 5s ease-out forwards;
+}
+
+/* 2. 手前から奥へ消えるタイトル(StarCorrecter) */
+.IntroTextFadeOut {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    text-align: center;
+    font-size: 8rem;
+    font-weight: bold;
+    color: transparent; /* 中身を透明に */
+    -webkit-text-stroke: 2px #ff6; /* 縁取りを設定 */
+    opacity: 0;
+    /* 5秒後(introText終了後)に開始 */
+    animation: DepthFadeOut 10s ease-in forwards;
+    animation-delay: 5s;
+}
+
+/* 3.クロールの土台(3D空間の設定) */
+.CrawlContainer {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    perspective: 350px; /* 奥行きの強さ */
+}
+
+/* 実際にアニメーションする中身 */
+.CrawlContent {
+    position: absolute;
+    top: 100%;
+    width: 250%;
+    text-align: justify;
+    transform-origin: 50% 100%;
+    /* 3D回転をかけて斜めに寝かせる */
+    transform: rotateX(120deg) translateZ(0);
+    opacity: 0;
+    /* 15秒後(5s + 10s)に開始 */
+    animation: CrawlAnimation 60s linear forwards;
+    /* animation-delay: 15s; */
+}
+
+.Title {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.Title h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+}
+
+.CrawlContent p {
+    font-size: 3.5rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* ---アニメーション定義--- */
+
+/* 浮かび上がって消える */
+@keyframes IntroFade {
+    0% { opacity: 0;}
+    20% { opacity: 1;}
+    80% { opacity: 1;}
+    100% { opacity: 0;}
+}
+
+/* 手前から奥へ小さくなりながら消える */
+@keyframes DepthFadeOut {
+    0% {
+        opacity: 0;
+        transform: scale(1.5) translateZ(0);
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.1) translateZ(-500px);
+    }
+}
+
+@keyframes CrawlAnimation {
+    0% {
+        top: 100%;
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        /* 上に消えていきながら、遠ざかる */
+        top: -150%;
+        transform: rotateX(25deg) translateY(-500px);
+        opacity: 0;
+    }
+}
