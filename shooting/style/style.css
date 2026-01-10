@@ -1,118 +1,208 @@
+/*
+Name: StarWarsIntro.css
+URI: polarnotion.github.io/starwarsintro
+Author: Polar Notion
+Author URI: http://polarnotion.com/
+Description: A simple CSS library for creating a Star Wars Intro Crawl. May the Force be with you.
+Version: 1.0
+*/
 
-body {
-    width: 100%;
-    height: 100vh;
-    background: #000;
-    margin: 0;
-    overflow: hidden;
-    color: #ff6;
-    font-family: "MS Pゴシック", sans-serif;
+body, html{
+  height: 100%;
+  min-height: 100vh;
+  margin: 0px;
 }
 
-/* 1.最初の青い文字 */
-.IntroText {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    color: #4bd5ee;
-    opacity: 0;
-    animation: IntroFade 5s ease-out forwards;
+.star-wars-intro {
+  background: url("img/stars-bg.jpg") center center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  font-family: "Droid Sans", arial, verdana, sans-serif;
+  font-weight: 700;
+  color: #EBD71C;
+  background-color: #000;
+  overflow: hidden;
+  position: relative;
+  
 }
 
-/* 2. 手前から奥へ消えるタイトル(StarCorrecter) */
-.IntroTextFadeOut {
-    position: absolute;
-    width: 100%;
-    top: 50%;
-    text-align: center;
-    font-size: 8rem;
-    font-weight: bold;
-    color: transparent; /* 中身を透明に */
-    -webkit-text-stroke: 2px #ff6; /* 縁取りを設定 */
-    opacity: 0;
-    /* 5秒後(introText終了後)に開始 */
-    animation: DepthFadeOut 10s ease-in forwards;
-    animation-delay: 5s;
+.star-wars-intro p.intro-text {
+  position: relative;
+  max-width: 16em;
+  font-size: 200%;
+  font-weight: 400;
+  margin: 20% auto;
+  color: #4ee;
+  opacity: 0;
+  z-index: 1;
+  text-align: center;
+  -webkit-animation: intro 2s ease-out;
+  -moz-animation: intro 2s ease-out;
+  -ms-animation: intro 2s ease-out;
+  -o-animation: intro 2s ease-out;
+  animation: intro 2s ease-out;
 }
 
-/* 3.クロールの土台(3D空間の設定) */
-.CrawlContainer {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    height: 100%;
-    perspective: 350px; /* 奥行きの強さ */
+.star-wars-intro .main-content{
+  margin-left: auto;
+  margin-right: auto;
+  position: absolute;
+  z-index: 3;
+  width: 98%;
+  height: 50em;
+  bottom: 0;
+  font-size: 80px;
+  font-weight: bold;
+  text-align: justify;
+  overflow: hidden;
+  transform-origin: 50% 100%;
+  transform: perspective(350px) rotateX(10deg);
 }
 
-/* 実際にアニメーションする中身 */
-.CrawlContent {
+.star-wars-intro .main-content:after {
+  position: absolute;
+  content: ' ';
+  top: 0;
+  bottom: 60%;
+  background-image: linear-gradient(top, rgba(0,0,0,1) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.star-wars-intro .space-button {
+  color: #EBD71C;
+  border: 12px solid #EBD71C;
+  padding: 20px;
+  background: transparent;
+  text-decoration: none;
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+}
+
+.star-wars-intro .space-button:hover {
+  background-color: #D2BE03;
+  border-color: #D2BE03;
+  color: black;
+}
+
+.star-wars-intro .space-button:active,
+.star-wars-intro .space-button:focus {
+  background-color: #B8A40A;
+  border-color: #B8A40A;
+  color: black;
+}
+
+.star-wars-intro .title-content {
+  position: absolute;
+  top: 100%;
+  animation: scroll 120s linear 4s forwards;
+}
+
+.star-wars-intro .title-content > .content-header {
+  text-align: center;
+}
+
+/* Main Image Styles */
+
+.star-wars-intro .main-logo {
+  position: absolute;
+  width: 2.6em;
+  left: 50%;
+  top: 20vh;
+  font-size: 10em;
+  text-align: center;
+  margin-left: -1.3em;
+  line-height: 0.8em;
+  letter-spacing: -0.05em;
+  color: #000;
+  text-shadow: -2px -2px 0 #EBD71C, 2px -2px 0 #EBD71C, -2px 2px 0 #EBD71C, 2px 2px 0 #EBD71C;
+  opacity: 0;
+  z-index: 1;
+  -webkit-animation: logo 5s ease-out 2.5s;
+  -moz-animation: logo 5s ease-out 2.5s;
+  -ms-animation: logo 5s ease-out 2.5s;
+  -o-animation: logo 5s ease-out 2.5s;
+  animation: logo 5s ease-out 2.5s;
+}
+
+.star-wars-intro .main-logo > img {
+  max-width: 100%;
+}
+
+@-webkit-keyframes intro {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-moz-keyframes intro {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-ms-keyframes intro {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@-o-keyframes intro {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes intro {
+  0% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+
+@-webkit-keyframes logo {
+  0% { -webkit-transform: scale(1); opacity: 1; }
+  50% { opacity: 1; }
+  100% { -webkit-transform: scale(0.1); opacity: 0; }
+}
+
+@-moz-keyframes logo {
+  0% { -moz-transform: scale(1); opacity: 1; }
+  50% { opacity: 1; }
+  100% { -moz-transform: scale(0.1); opacity: 0; }
+}
+
+@-ms-keyframes logo {
+  0% { -ms-transform: scale(1); opacity: 1; }
+  50% { opacity: 1; }
+  100% { -ms-transform: scale(0.1); opacity: 0; }
+}
+
+@-o-keyframes logo {
+  0% { -o-transform: scale(1); opacity: 1; }
+  50% { opacity: 1; }
+  100% { -o-transform: scale(0.1); opacity: 0; }
+}
+
+@keyframes logo {
+  0% { transform: scale(1); opacity: 1; }
+  50% { opacity: 1; }
+  100% { transform: scale(0.1); opacity: 0; }
+}
+
+@keyframes scroll {
+  0% { top: 100%; }
+  100% { top: -170%; }
+}
+
+@media screen and (max-width: 720px) {
+  .star-wars-intro .main-content {
+    font-size: 35px;
+  }
+  .star-wars-intro .title-content {
     position: absolute;
     top: 100%;
-    width: 250%;
-    text-align: justify;
-    transform-origin: 50% 100%;
-    /* 3D回転をかけて斜めに寝かせる */
-    transform: rotateX(120deg) translateZ(0);
-    opacity: 0;
-    /* 15秒後(5s + 10s)に開始 */
-    animation: CrawlAnimation 60s linear forwards;
-    /* animation-delay: 15s; */
-}
-
-.Title {
-    text-align: center;
-    margin-bottom: 80px;
-}
-
-.Title h1 {
-    font-size: 4rem;
-    text-transform: uppercase;
-}
-
-.CrawlContent p {
-    font-size: 3.5rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
-}
-
-/* ---アニメーション定義--- */
-
-/* 浮かび上がって消える */
-@keyframes IntroFade {
-    0% { opacity: 0;}
-    20% { opacity: 1;}
-    80% { opacity: 1;}
-    100% { opacity: 0;}
-}
-
-/* 手前から奥へ小さくなりながら消える */
-@keyframes DepthFadeOut {
-    0% {
-        opacity: 0;
-        transform: scale(1.5) translateZ(0);
-    }
-    10% {
-        opacity: 1;
-    }
-    100% {
-        opacity: 0;
-        transform: scale(0.1) translateZ(-500px);
-    }
-}
-
-@keyframes CrawlAnimation {
-    0% {
-        top: 100%;
-        opacity: 1;
-    }
-    90% {
-        opacity: 1;
-    }
-    100% {
-        /* 上に消えていきながら、遠ざかる */
-        top: -150%;
-        transform: rotateX(25deg) translateY(-500px);
-        opacity: 0;
-    }
+    animation: scroll 100s linear 4s forwards;
+  }
 }
