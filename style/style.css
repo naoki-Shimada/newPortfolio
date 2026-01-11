@@ -22,8 +22,19 @@ body {
     background: linear-gradient(to bottom, #30233A, #BC4090);
 }
 
-/* 画面全体を覆うスキャンライン */
-
+/* --- 空間を埋めるための背景装飾（グリッド） --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -2;
+    pointer-events: none;
+}
 
 /* ネオン管のデザイン */
 .NeonPipe {
@@ -174,6 +185,48 @@ nav {
     font-weight: 700;
 }
 
+/* --- タイトル装飾: CyberTitle --- */
+.CyberTitle {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 4rem;
+    font-weight: 900;
+    color: #fff;
+    text-transform: uppercase; /* すべての文字を大文字に変換します */
+    letter-spacing: 8px;
+    text-shadow: 
+        0 0 10px #00F0FF,
+        0 0 20px #00F0FF,
+        0 0 40px #00F0FF;
+    animation: titleFlicker 3s infinite; /* 3秒かけて1サイクルを実行、無限に繰り返す */
+}
+
+/* A→B→Aを繰り返しチカチカ点滅する、不規則 */
+@keyframes titleFlicker {
+    /* A：通常状態、明るく光る */
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+
+    /* B： 消灯状態：暗くなり、光を失う */
+    20%, 22%, 24%, 55% { opacity: 0.5; text-shadow: none; }
+}
+
+/* --- 導入文のガイダンス --- */
+.GuidanceText {
+    color: #00F0FF;
+    line-height: 1.6;
+}
+
+.Instruction {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+    border-left: 2px solid #FF00FF;
+    padding-left: 15px;
+}
+
+
+
+
 .btn {
     display: inline-block;
     background-color: #4a9d04;
@@ -277,12 +330,15 @@ nav {
     gap: 20px;
 }
 
+/* --- メニュー説明文のスタイル --- */
 .MenuItem {
     display: flex;
     align-items: baseline;
     font-family: 'Orbitron', sans-serif;
     color: #fff;
     font-size: 1.1rem;
+    flex-direction: column !important; /* 説明文を下に配置 */
+    margin-bottom: 25px;
 }
 
 .ItemName {
@@ -311,6 +367,20 @@ nav {
 .MenuItem:hover .ItemName {
     text-shadow: 0 0 10px #fff;
 }
+
+.ItemMain {
+    display: flex;
+    width: 100%;
+    align-items: baseline;
+}
+
+.ItemDesc {
+    font-size: 0.8rem;
+    color: #bbb;
+    margin-top: 5px;
+    font-style: italic; /* お品書き風 */
+}
+
 
 /* キーパッドのスタイル */
 .KeyPad {

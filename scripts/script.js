@@ -44,7 +44,7 @@
             if (el) el.classList.add('is-visible');
         });
 
-        // ベルボタンをクリックした後に少し変化させたい場合
+        // ベルボタンをクリックした後にグレーアウトする
         this.style.filter = 'grayscale(1) opacity(0.5)';
         this.style.pointerEvents = 'none'; // 連続クリック防止
     });
@@ -93,6 +93,7 @@
     }
 
     function pressKey(chars) {
+
         // 別のボタンを押した場合、または一定時間経過した場合は入力を確定させる
         if (lastKeyList !== chars) {
             if (currentInput.length >= 4) return;
@@ -102,6 +103,7 @@
         } else {
             // 同じボタンを連打した場合、文字を切り替える（最後の1文字を上書き）
             lastKeyIndex = (lastKeyIndex + 1) % chars.length;
+            const previousChar = currentInput.slice(-1);
             currentInput = currentInput.slice(0, -1) + chars[lastKeyIndex];
         }
 
