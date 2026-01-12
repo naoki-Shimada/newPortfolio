@@ -24,10 +24,13 @@
         }
     });
 
+
     /* 2.ベルトリガー（押すとコンテンツ表示） */
-    document.addEventListener('DOMContentLoaded', function() {
+    function applyVisibleState() {
     const bell = document.getElementById('BellTrigger');
-    
+    const before = document.getElementById('BeforeImg');
+    const after = document.getElementById('AfterImg');
+
     // 表示させたい要素のリスト ※トップページのコンテンツが増えるたびにここに追加する
     const targets = [
         document.querySelector('header'),
@@ -48,6 +51,26 @@
         this.style.filter = 'grayscale(1) opacity(0.5)';
         this.style.pointerEvents = 'none'; // 連続クリック防止
     });
+};
+
+/* --- 追加: ページ読み込み時に状態を復元する関数 --- */
+    document.addEventListener('DOMContentLoaded', function() {
+    // 保存された状態をチェック
+    const isBellPressed = localStorage.getItem('bellPressed');
+    if (isBellPressed === 'true') {
+        applyVisibleState();
+    }
+
+    // ベルクリックイベントの設定
+    const bell = document.getElementById('BellTrigger');
+    if (bell) {
+        bell.addEventListener('click', function() {
+            // localStorageに状態を保存
+            localStorage.setItem('bellPressed', 'true');
+            // 表示処理を実行
+            applyVisibleState();
+        });
+    }
 });
 
     /* 3.キーパッドの注文処理 */

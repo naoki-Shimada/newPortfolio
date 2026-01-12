@@ -206,3 +206,99 @@ body, html{
     animation: scroll 100s linear 4s forwards;
   }
 }
+
+/* --- ゲーム演出用スタイル --- */
+
+/* テキスト選択を無効化（誤植箇所とメインコンテンツ） */
+.star-wars-intro, .typo {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+/* 1. 常にカーソルを照準(クロスヘア)にする */
+
+.star-wars-intro {
+  cursor: crosshair;
+}
+
+/* 2. 誤植箇所の強調 */
+.typo {
+    color: #ff4444; /* 修正前は赤系 */
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    transition: all 0.2s;
+    display: inline-block;
+}
+
+/* 3. ロックオンエフェクト (マウスを合わせた時) */
+.typo:hover {
+    transform: scale(1.2);
+    color: #fff;
+    text-shadow: 0 0 15px #fff, 0 0 30px #EBD71C;
+    background: rgba(235, 215, 28, 0.2);
+    border-radius: 4px;
+}
+
+/* 4. 着弾エフェクト用パーツ */
+.hit-spark {
+    position: fixed;
+    width: 10px;
+    height: 10px;
+    background: #EBD71C;
+    pointer-events: none;
+    z-index: 999;
+    border-radius: 50%;
+    animation: spark-anim 0.4s ease-out forwards;
+}
+
+@keyframes spark-anim {
+    0% { transform: translate(-50%,-50%) scale(1);
+         opacity: 1;}
+    /* ここで JS の変数を受け取る */
+    100% {transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0);
+         opacity: 0;}
+}
+
+/* 5. 修正完了時のスタイル */
+.corrected {
+    color: #EBD71C !important;
+    text-shadow: 0 0 10px #EBD71C;
+    animation: flash-correct 0.5s ease-out;
+}
+
+@keyframes flash-correct {
+    0% { filter: brightness(5); transform: scale(1.5);}
+    100% { filter: brightness(1); transform: scale(1);} 
+}
+
+/* クリア演出のスタイル */
+.clear-ui {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  text-align: center;
+  z-index: 10000;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.clear-ui.show {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+.clear-ui h1 {
+  font-size: 5em;
+  color: #EBD71C;
+    text-shadow: 0 0 20px #EBD71C;
+    margin: 0;
+}
+
+.clear-ui p {
+    font-size: 2em;
+    color: #fff;
+    letter-spacing: 5px;
+}
