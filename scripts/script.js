@@ -46,32 +46,31 @@
         targets.forEach(el => {
             if (el) el.classList.add('is-visible');
         });
-
-        // ベルボタンをクリックした後にグレーアウトする
-        this.style.filter = 'grayscale(1) opacity(0.5)';
-        this.style.pointerEvents = 'none'; // 連続クリック防止
     });
-};
+}
+        
 
-/* --- 追加: ページ読み込み時に状態を復元する関数 --- */
-    document.addEventListener('DOMContentLoaded', function() {
-    // 保存された状態をチェック
-    const isBellPressed = localStorage.getItem('bellPressed');
-    if (isBellPressed === 'true') {
-        applyVisibleState();
-    }
+    /* ページ読み込み時の処理 */
+    document.addEventListener('DOMContentLoaded',function(){
+        // 保存された状態を確認
+        const isBellPressed = localStorage.getItem('bellPressed');
 
-    // ベルクリックイベントの設定
-    const bell = document.getElementById('BellTrigger');
-    if (bell) {
-        bell.addEventListener('click', function() {
-            // localStorageに状態を保存
-            localStorage.setItem('bellPressed', 'true');
-            // 表示処理を実行
+        // ベルボタン押されていたら即座に反映
+        if (isBellPressed === 'true'){
             applyVisibleState();
-        });
-    }
-});
+        }
+
+        // ベルボタンのクリックイベントを設定(要素が存在する場合のみ)
+        const bell = document.getElementById('BellTrigger');
+        if(bell) {
+            bell.addEventListener('click', function(){
+                // 状態をブラウザに保存
+                localStorage.setItem('bellPressed', 'true');
+                // 表示処理を実行
+                applyVisibleState();
+            });
+        }
+    });
 
     /* 3.キーパッドの注文処理 */
     let currentInput = ""; // 確定済みの文字列

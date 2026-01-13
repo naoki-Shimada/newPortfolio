@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     const typos = document.querySelectorAll('.typo')
+    let correctedCount = 0; //修正完了した数をカウント
 
     typos.forEach(typo => {
         // 現在のステップを保持する変数
@@ -10,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(typo.classList.contains('corrected')) return;
 
             // 1.ステップを進める
-            currentStep++;
+            currentStep++; 
 
             // 2.着弾エフェクト(火花)の生成
             // clientX = x座標 clientY =y座標 座標で位置を特定
@@ -20,9 +21,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 // まだ途中の場合：文字を変化させる
                 typo.textContent = steps[currentStep];
 
-                // 正解に到達したかチェック
-                if(currentStep === steps.length -1) {
-                    completeCorrection(typo);
+                // 配列の最後に達したら修正完了
+                if(currentStep === steps.length -1) { 
+                    typo.classList.add('corrected'); // 'corrected'クラスを追加
+                    typo.classList.remove('typo'); // 'typo'クラスを削除
+                    correctedCount++;
+
+
+                    // すべて直したかチェック
+                    if (correctedCount === typos.length) {
+                        showClearMessage(); // 'showClearMessage'を処理する
+                    }
                 }
             }
         });
@@ -48,10 +57,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 修正完了時の処理
-    function completeCorrection(el) {
-        el.classList.remove('typo');
-        el.classList.add('corrected');
-        // 必要に応じてここでSE(サウンドエフェクト)を再生
+    // 修正完了時の処理 showClearMessageを呼び出す
+    function showClearMessage() {
+        const msg = document.getElementById('clear-message'); /* 'clear-message'を取得 */ 
+        msg.classList.add('show'); 
     }
 });
