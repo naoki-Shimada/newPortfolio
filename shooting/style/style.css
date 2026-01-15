@@ -69,6 +69,13 @@ body, html{
   pointer-events: none;
 }
 
+/* メインコンテンツを消すためのスタイル */
+.main-content.fade-out {
+    opacity: 0;
+    transition: opacity 2s ease-in-out; /* 2秒かけてゆっくり消える */
+    pointer-events: none; /* 消えている最中にクリックできないようにする */
+}
+
 .star-wars-intro .space-button {
   color: #EBD71C;
   border: 12px solid #EBD71C;
@@ -285,7 +292,7 @@ body, html{
   pointer-events: none;
 }
 
-.clear-ui.show {
+.clear-ui.show  {
   transform: translate(-50%, -50%) scale(1);
   opacity: 1;
 }

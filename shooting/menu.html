@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MainMenu</title>
+    <link rel="stylesheet" href="style/style.css">
+    <style>
+        .menu-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+            max-width: 800px;
+            z-index: 10;
+        }
+
+        .menu-logo {
+            width: 100%;
+            max-width: 600px;
+            margin-bottom: 50px;
+            filter: drop-shadow(0 0 20px #EBD71C);
+        }
+
+        .description-box {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #EBD71C;
+            padding: 20px;
+            margin-bottom: 40px;
+            color: #fff;
+            border-radius: 10px;
+        }
+
+        .description-box h3 {
+            color: #EBD71C;
+            margin-top: 0;
+        }
+
+        .highlight-text {
+            color: #ff4444;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
+        }
+
+        .stage-select {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stage-btn {
+            background: transparent;
+            border: 2px solid #EBD71C;
+            color: #EBD71C;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .stage-btn:hover {
+            background: #EBD71C;
+            color: #000;
+            box-shadow: 0 0 20px #EBD71C;
+        }
+
+        /* 星空背景 */
+        body {
+            background-image: url(img/stars-bg.jpg);
+            background-color: #000;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="star-wars-intro">
+
+    <div class="menu-container">
+
+        <div class="description-box">
+            <h3>HOW TO PLAY</h3>
+            <p>赤く強調表示された箇所をシューティング(クリック)してみよう！！</p>
+        </div>
+
+        <div class="stage-select">
+            <a href="StarCorrecter.html" class="stage-btn">StarCorrecter</a>
+            <button class="stage-btn" disabled style="opacity: 0.5; cursor: not-allowed;">COMING SOON!</button>
+        </div>
+    </div>
+</body>
+</html>
