@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game History Timeline</title>
+    <link rel="stylesheet" href="../owner/style/style.css">
+        
+</head>
+<body>
+    <div class="container" id="timeline-container">
+        <h1 style="text-align: center; margin-bottom: 50px;">Game Play History</h1>
+    </div>
+
+    <script>
+        // GASの自作ウェブアプリ
+        const API_URL = "https://script.google.com/macros/s/AKfycby9O__09ZYQklI4471MIdSMLrRtWZ3nVb2zMkNrb3MdCoimwCya0DNhGqrBt-AwoEi5/exec";
+
+        // async/await: データが届くまで待機する処理
+        async function fetchTimeline() {
+            try{
+                // fetch(API_URL): 指定したURLにデータを渡すようリクエストする。
+                const response = await fetch(API_URL);
+
+                // response.json(): 届いた文字列データをjson形式に変換する。
+                const data = await response.json();
+                const container = document.getElementById('timeline-container');
+
+                data.forEach((item,index) => {
+
+                    // index % 2 === 0: データの順番(0,1,2...)を2で割った余りが0か判定する。
+                    // 余りが0(偶数)なら'left',そうでなければ'right'という文字列を変数sideに代入する。
+                    // これによりcssで左右交互に配置される。
+                    const side = index % 2 === 0 ? 'left' : 'right';
+
+                    // スプレッドシートの各項目(Date,Title)をHTMLの適切な場所に流し込む
+                    const html = `
+                    <div class="timeline-item ${side}">
+                        <div class="content">
+                            <span class="date">${item.Date}</span>
+                            <h2 class="title">${item.Title}</h2>
+                            <div class="score">${item.Score}</div>
+                            <p class="description">${item.Description}</p>
+                            <img src="${item.ImageURL}" alt="${item.Title}" class="screenshot">
+                        </div>    
+                    </div>
+                `;
+                //.insertAdjacentHTML: htmlの文字列を挿し込む 
+                // 作成したhtmlの文字列()をcontainerの末尾(beforeend)に追加する。
+                container.insertAdjacentHTML('beforeend', html);
+                });
+                // try...catch: try文のどこかでエラーが起きた際の処理
+            } catch(error) {
+                console.error("データの読み込みに失敗しました:", error);
+            }
+        }
+
+        fetchTimeline();
+    </script>
+</body>
+</html>
