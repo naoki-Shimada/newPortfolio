@@ -3,8 +3,7 @@
 /* --- 初期状態で非表示にする要素 --- */
 /* ヘッダー、ヒーロー内のテキスト、作品集セクションを隠す */
 header, 
-.HeroContent, 
-.Portfolio {
+.HeroContent {
     opacity: 0;
     visibility: hidden;
     transition: opacity 1.5s ease, visibility 1.5s ease;
