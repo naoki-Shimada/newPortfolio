@@ -14,13 +14,21 @@
 
     <script>
         // GASの自作ウェブアプリ
-        const API_URL = "https://script.google.com/macros/s/AKfycbxgCifKMEaGTfXOiDk0ZIzf3zkwKNzdROkRp5b4N7jis4fPph9nnfSDaC55xfkjSr1q/exec";
-
+        const API_URL = "https://script.google.com/macros/s/AKfycbzrafJTbaiACSpolydO0Zb9I1pDh8DjVOYgBX6azKQx6qsvqd4vueIYAbJuqbQbVGlG/exec";
+                         
         // async/await: データが届くまで待機する処理
         async function fetchTimeline() {
             try{
                 // fetch(API_URL): 指定したURLにデータを渡すようリクエストする。
-                const response = await fetch(API_URL);
+                // GASのURLはアクセス時に別のURLへリダイレクトされるため、追跡する設定を追加する。
+                const response = await fetch(API_URL, {
+                    method: 'GET',
+                    redirect: 'follow' //GASのリダイレクトに対応するために必須
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
 
                 // response.json(): 届いた文字列データをjson形式に変換する。
                 const data = await response.json();

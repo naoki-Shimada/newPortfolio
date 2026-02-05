@@ -3,7 +3,15 @@
 // doGet(): GASの特別な関数、URLがたたかれた時、GETリクエストが送られたときに自動実行される
 function doGet() {
 
-    const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("GameHistory_db");
+    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    const sheet = spreadsheet.getSheetByName("GameHistory_db");
+
+    // シートが見つからない場合の処理
+    if (!sheet) {
+        return ContentService.createTextOutput(JSON.stringify({
+            "error": "シート 'GameHistory_db'が見つかりませんでした。シート名を確認してください。" 
+        })).setMimeType(ContentService.MimeType.JSON);
+    }
 
     // getDataRange().getValues(): シート内のデータが入っている全範囲を「2次元配列(行と列)」として取得する。
     const data = sheet.getDataRange().getValues();
