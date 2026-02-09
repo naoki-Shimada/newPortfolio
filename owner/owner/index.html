@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game History Timeline</title>
+    <link rel="stylesheet" href="../owner/style/style.css">
+        
+</head>
+<body>
+    <div class="container" id="timelineContainer">
+        <h1 style="text-align: center; margin-bottom: 50px;">Game Play History</h1>
+    </div>
+
+    <script>
+        const testData = [
+            {
+                "Date": "2026-01-07",
+                "Title": "ELDEN RING NIGHTREIGN",
+                "Score": "深度4達成。(全人口のうち上位7%)",
+                "Description": "達成の難しい箇所の解説。高難度向けコンテンツ(深き夜)にてクリア。",
+                "ImageURL": ""
+            },
+            {
+                "Date": "20xx/xx/xx",
+                "Title": "BackPackBattles",
+                "Score": "レンジャーにてマスター達成",
+                "Description": "ポイント制ランクマッチ。達成の難しい箇所の解説。",
+                "ImageURL": ""
+            },
+            {
+                "Date": "2025/11/xx",
+                "Title": "Shadowverse Worlds Beyond",
+                "Score": "ロイヤルにてマスター達成",
+                "Description": "ポイント制ランクマッチ：ロイヤルにて〇〇達成。",
+                "ImageURL": ""
+            },
+        ];
+        
+        function renderTimeline(data) {
+            const container = document.getElementById('timelineContainer');
+
+            data.forEach((item, index) => {
+                const side = index % 2 === 0 ? 'left' : 'right';
+                const html = `
+                    <div class="timeline-item ${side}" id="item-${index}">
+                        <div class="content">
+                            <span class="date">${item.Date}</span>
+                            <h2 class="title">${item.Title}</h2>
+                            <div class="score" style="color: #00d4ff; font-weight: bold;">${item.Score}</div>
+                            <p class="description">${item.Description}</p>
+                            <img src="${item.ImageURL}" alt="${item.Title}" class="screenshot">
+                        </div>
+                    </div>        
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+
+            // アニメーション実行:少し遅延させて順番に表示
+            setTimeout(() => {
+                const items = document.querySelectorAll('.timeline-item');
+                items.forEach((el, i) => {
+                    setTimeout(() => {
+                        el.classList.add('show');
+                    }, i * 200);
+                });
+            }, 100);
+        }
+
+        // 実行
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTimeline(testData);
+        });
+    </script>
+</body>
+</html>
+
+<!-- // GASの自作ウェブアプリ
+        const API_URL = "https://script.google.com/macros/s/AKfycbxx4SEDamNV2Rl3IFROwmyFgjrfRrelyQnbFXFs-A3sQXaQCOCN2nmu9Ib8vlB1NOzW/exec";
+                         
+        // async/await: データが届くまで待機する処理
+        async function fetchTimeline() {
+            try{
+                // fetch(API_URL): 指定したURLにデータを渡すようリクエストする。
+                // GASのURLはアクセス時に別のURLへリダイレクトされるため、追跡する設定を追加する。
+                const response = await fetch(API_URL, {
+                    method: 'GET',
+                    redirect: 'follow' //GASのリダイレクトに対応するために必須
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                // response.json(): 届いた文字列データをjson形式に変換する。
+                const data = await response.json();
+                const container = document.getElementById('timeline-container');
+
+                data.forEach((item,index) => {
+
+                    // index % 2 === 0: データの順番(0,1,2...)を2で割った余りが0か判定する。
+                    // 余りが0(偶数)なら'left',そうでなければ'right'という文字列を変数sideに代入する。
+                    // これによりcssで左右交互に配置される。
+                    const side = index % 2 === 0 ? 'left' : 'right';
+
+                    // スプレッドシートの各項目(Date,Title)をHTMLの適切な場所に流し込む
+                    const html = `
+                    <div class="timeline-item ${side}">
+                        <div class="content">
+                            <span class="date">${item.Date}</span>
+                            <h2 class="title">${item.Title}</h2>
+                            <div class="score">${item.Score}</div>
+                            <p class="description">${item.Description}</p>
+                            <img src="${item.ImageURL}" alt="${item.Title}" class="screenshot">
+                        </div>    
+                    </div>
+                `;
+                //.insertAdjacentHTML: htmlの文字列を挿し込む 
+                // 作成したhtmlの文字列()をcontainerの末尾(beforeend)に追加する。
+                container.insertAdjacentHTML('beforeend', html);
+                });
+                // try...catch: try文のどこかでエラーが起きた際の処理
+            } catch(error) {
+                console.error("データの読み込みに失敗しました:", error);
+            }
+        }
+
+        fetchTimeline();  -->
