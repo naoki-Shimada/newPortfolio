@@ -74,31 +74,31 @@
 
     /* 3.キーパッドの注文処理 */
     let currentInput = ""; // 確定済みの文字列
-    let lastKeyList = null; // 直前に押されたボタンの候補リスト
+    let lastButtonId = null; // 配列ではなくIDで比較する
     let lastKeyIndex = 0;   // リスト内の現在のインデックス
     let timer = null;       // 入力確定用のタイマー
 
     // メニューデータ（コードと表示内容の紐付け）
     const menuDatabase = {
-    "1110": { 
+    "AX1A": { 
         name: "Cyber Gin Tonic", 
         img: "img/CyberGinTonic.png", 
-        link: "#",
-        desc: "ギャルゲー()"
+        link: "cardLibrary/packOpening.html",
+        desc: "カードガチャ&ライブラリ"
     },
-    "2220": { 
+    "OB1K": { 
         name: "Cosmopolitan", 
         img: "img/Cosmopolitan.png", 
-        link: "#",
-        desc: "シューティング(銀河大戦仮)"
+        link: "shooting/menu.html",
+        desc: "シューティング(StarCorrecter)"
     },
-    "3330": { 
+    "TIPE": { 
         name: "Raohe Beer", 
         img: "img/RaoheBeer.png", 
         link: "taiwan/index.html",
         desc: "演習作品2(台湾への観光者向けのサイト)"
     },
-    "GGGG": { 
+    "YH2B": { 
         name: "Clean Martini", 
         img: "img/CleanMartini.png", 
         link: "reform/NaokiShimada/index.html",
@@ -111,45 +111,68 @@
         const output = document.getElementById('CodeOutput');
         if (output) {
             output.innerText = currentInput || "----";
+            console.log(`[Display Update] View: ${output.innerText} / Data: ${currentInput}`);
         }
     }
 
-    function pressKey(chars) {
+/**
+ * キー入力処理
+ * @param {string[]} chars - 文字候補
+ * @param {number|string} btnId - ボタン識別子
+ */
 
-        // 別のボタンを押した場合、または一定時間経過した場合は入力を確定させる
-        if (lastKeyList !== chars) {
-            if (currentInput.length >= 4) return;
-            lastKeyList = chars;
+    function pressKey(chars, btnId) {
+        console.log(`[Key Pressed] ID: ${btnId}, Candidates: ${chars}`);
+
+        // タイマーが生きていればクリア(連続入力中とみなす)
+        if(timer) {
+            clearTimeout(timer);
+        }
+
+        // トグル判定:同じボタンIDが押されたか
+        if (lastButtonId === btnId) {
+            // 同じボタンなら最後の文字を入れ替える
+            lastKeyIndex = (lastKeyIndex + 1) % chars.length;
+            currentInput = currentInput.slice(0, -1) + chars[lastKeyIndex];
+            console.log(`[Toggle] Switched to index ${lastKeyIndex}: ${chars[lastKeyIndex]}`);
+        } else {
+            // 新しいボタンなら文字を追加
+            if (currentInput.length >= 4) {
+                console.warn("[Limit] Max 4 chars");
+                return;
+            }
+            lastButtonId = btnId;
             lastKeyIndex = 0;
             currentInput += chars[lastKeyIndex];
-        } else {
-            // 同じボタンを連打した場合、文字を切り替える（最後の1文字を上書き）
-            lastKeyIndex = (lastKeyIndex + 1) % chars.length;
-            const previousChar = currentInput.slice(-1);
-            currentInput = currentInput.slice(0, -1) + chars[lastKeyIndex];
+            console.log(`[New] Added: ${chars[lastKeyIndex]}`);
         }
+
 
     updateDisplay();
 
    // タイマーをリセット（2秒間押さなければ「別の文字」として扱う準備をする）
     clearTimeout(timer);
     timer = setTimeout(() => {
-        lastKeyList = null;
+            lastKeyList = null;
+            console.log("[Timer Expired] Input sequence finalized.")
         }, 2000);
     }
-
  
     /* クリア */
     function clearCode() {
         currentInput = "";
-        document.getElementById('CodeOutput').innerText = "----";
-        if (output) {
-        output.innerText = "----";
-        output.style.color = "#fff";
-        output.style.textShadow = "0 0 10px #00F0FF";
-        }
-    }
+        lastButtonId = null;
+        lastKeyIndex = 0;
+        updateDisplay();
 
+
+        const output = document.getElementById('CodeOutput');
+        if (output) {
+            output.style.color = "#fff";
+            output.style.textShadow = "0 0 10px #00F0FF";
+        }
+        console.log("[Clear] Input reset");
+    }
 
     // ここまでキーパッドの内部処理
 
@@ -158,6 +181,8 @@
         const output = document.getElementById('CodeOutput');
         const orderSection = document.getElementById('OrderLink');
         const resultContent = document.getElementById('OrderResultContent');
+
+        console.log(`[Order Attempt]Code: ${currentInput}`);
 
     if (currentInput === "") {
         output.innerText = "EMPTY";
@@ -168,11 +193,10 @@
     // 入力コードがデータベースにあるかチェック
     if (menuDatabase[currentInput]){
         const item = menuDatabase[currentInput];
-
     /* 成功演出 */
-    output.innerText = "ACCEPTED";
-    output.style.color = "#00FF41";
-    output.style.textShadow = "0 0 15px #00FF41";
+        output.innerText = "ACCEPTED";
+        output.style.color = "#00FF41";
+        output.style.textShadow = "0 0 15px #00FF41";
 
     setTimeout(() => {
         // オーダーエリアの内容を書き換えて表示
@@ -182,7 +206,8 @@
                     <img src="${item.img}" alt="${item.name}" style="max-width: 300px; border: 2px solid #00FF41; box-shadow: 0 0 20px #00FF41;">
                 </a>
             `;
-            orderSection.style.display = 'block';
+            orderSection.classList.add('is-visible');
+            console.log(`[Order Success] Item: ${item.name}`);
 
         alert(`ORDER RECIEVED:[${currentInput}] \nシステムが注文を正常に受理しました。`);
         clearCode();
@@ -196,7 +221,8 @@
         output.innerText = "ERROR";
         output.style.color = "#FF0000";
         output.style.textShadow = "0 0 15px #FF0000";
-        
+        console.error(`[Order Failed] Invalid Code: ${currentInput}`);
+
         setTimeout(() => {
             alert("無効なコードです。メニューを確認してください。");
             clearCode();

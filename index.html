@@ -56,8 +56,11 @@
                 <p class="GuidanceText">
                 ようこそ、ご注文をお伺いいたします。<br>
                     <span class="Instruction">
-                    [操作方法]：右側のキーパッドを使用し、メニューのコードを入力してENT（決定）を押してください。
-                    同じキーを連続で押すと文字が切り替わります（例：2を1回でA、2回でB）。
+                    画面を下にスクロールしていただき、ドリンクメニューを
+                    ご確認ください。<br>
+                    ヒューマンの皆様にもお楽しみいただけるようなメニュー
+                    となっておりますのでご安心を。<br>
+                    お急ぎの方はPortfolioをご覧ください。
                     </span>
                 </p>
             </div>
@@ -78,15 +81,15 @@
                         <div class="ItemMain">
                             <span class="ItemName">Cyber Gin Tonic</span>
                             <span class="ItemDots"></span>
-                            <span class="ItemCode">1110</span><br>
+                            <span class="ItemCode">AX1A</span><br>
                         </div>
-                        <p class="ItemDesc">ネオンブルーの輝き。仮想世界への入り口に。 (作品：ギャルゲー)</p>
+                        <p class="ItemDesc">ネオンブルーの輝き。仮想世界への入り口に。 (作品：ガチャ&ライブラリ)</p>
                     </div>
                     <div class="MenuItem">
                         <div class="ItemMain">
                             <span class="ItemName">Cosmopolitan</span>
                             <span class="ItemDots"></span>
-                            <span class="ItemCode">2220</span>
+                            <span class="ItemCode">OB1K</span>
                         </div>
                         <p class="ItemDesc">銀河の火花を散らしたフルーティーな一杯。 (作品：シューティング)</p>
                     </div>
@@ -94,7 +97,7 @@
                         <div class="ItemMain">
                             <span class="ItemName">Raohe Beer</span>
                             <span class="ItemDots"></span>
-                            <span class="ItemCode">3330 </span>
+                            <span class="ItemCode">TIPE</span>
                         </div>
                         <p class="ItemDesc">饒河街の活気を詰め込んだ黄金の喉越し。 (作品：台湾観光サイト)</p>
                     </div>
@@ -102,10 +105,15 @@
                         <div class="ItemMain">
                             <span class="ItemName">Clean Martini</span>
                             <span class="ItemDots"></span>
-                            <span class="ItemCode">GGGG</span>
+                            <span class="ItemCode">YH2B</span>
                         </div>
                         <p class="ItemDesc">無駄を削ぎ落とした、洗練された空間のように。 (作品：リフォームサイト)</p>
                     </div>
+                    <span class="Instruction">
+                    [注文方法]：右側のキーパッドを使用し、メニューのコードを入力してENT（決定）を押してください。
+                    同じキーを連続で押すと文字が切り替わります（例：2を1回でA、2回でB）。<br>
+                    CLSキーで入力の取消ができます。
+                    </span>
                 </div>
             </div>
         </section>
@@ -119,17 +127,18 @@
                 </div>
 
                 <div class="KeyGrid">
+                    <!-- 配列を直接比較するのではなく、ボタンを一意に識別するID（または数値）を渡す -->
                     <button class="NumKey" onclick="pressKey(['1'])">1</button>
-                    <button class="NumKey" onclick="pressKey(['A','B','C','2'])">ABC2</button>
-                    <button class="NumKey" onclick="pressKey(['D','E','F','3'])">DEF3</button>
+                    <button class="NumKey" onclick="pressKey(['A','B','C','2'], 2)">ABC2</button>
+                    <button class="NumKey" onclick="pressKey(['D','E','F','3'], 3)">DEF3</button>
                     
-                    <button class="NumKey" onclick="pressKey(['G','H','I','4'])">GHI4</button>
-                    <button class="NumKey" onclick="pressKey(['J','K','L','5'])">JKL5</button>
-                    <button class="NumKey" onclick="pressKey(['M','N','O','6'])">MNO6</button>
+                    <button class="NumKey" onclick="pressKey(['G','H','I','4'], 4)">GHI4</button>
+                    <button class="NumKey" onclick="pressKey(['J','K','L','5'], 5)">JKL5</button>
+                    <button class="NumKey" onclick="pressKey(['M','N','O','6'], 6)">MNO6</button>
                     
-                    <button class="NumKey" onclick="pressKey(['P','Q','R','S','7'])">PQRS7</button>
-                    <button class="NumKey" onclick="pressKey(['T','U','V','8'])">TUV8</button>
-                    <button class="NumKey" onclick="pressKey(['W','X','Y','Z','9'])">WXYZ9</button>
+                    <button class="NumKey" onclick="pressKey(['P','Q','R','S','7'], 7)">PQRS7</button>
+                    <button class="NumKey" onclick="pressKey(['T','U','V','8'], 8)">TUV8</button>
+                    <button class="NumKey" onclick="pressKey(['W','X','Y','Z','9'], 9)">WXYZ9</button>
 
                     <button class="NumKey Clear" onclick="clearCode()">CLS</button>
                     <button class="NumKey" onclick="pressKey(['0'])">0</button>
