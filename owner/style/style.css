@@ -1,19 +1,36 @@
 
 
 :root {
-    --bg-color: #f4f7f6;
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --text-color: #333;
+/* ゲームらしいカラーパレットに変更 */
+    --bgColor: #0b0e14;
+    --cardBg: rgba(30, 39, 51, 0.85); /* 半透明のカード */
+    --primaryColor: #e0e0e0;
+    --accentColor: #00d4ff; /* ネオンブルー */
+    --lineColor: rgba(0, 212, 255, 0.3);
+    --textColor: #cfd8dc;
     --white: #ffffff;
 }
 
 body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     background-color: var(--bg-color);
+    /* 空間を感じさせるグリッド背景の追加 */
+    background-image: 
+        linear-gradient(var(--lineColor) 1px, transparent 1px),
+        linear-gradient(90deg, var(--lineColor) 1px, transparent 1px);
+    background-size: 50px 50px;
     color: var(--text-color);
     margin: 0;
     padding: 50px 0;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, var(--bgColor) 90%);
+    pointer-events: none;
+    z-index: -1;
 }
 
 .container {
@@ -23,17 +40,19 @@ body {
     position: relative;
 }
 
-/* 中央の線 */
+/* 中央の線（光るネオンラインに変更） */
 .container::after {
     content: '';
     position: absolute;
-    width: 4px;
-    background-color: var(--primary-color);
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--accentColor), transparent);
+    box-shadow: 0 0 15px var(--accentColor);
     top: 0;
     bottom: 0;
     left: 50%;
-    margin-left: -2px;
+    margin-left: -1px;
 }
+
 
 /* タイムラインの各アイテム */
 .timeline-item {
@@ -70,12 +89,20 @@ body {
 
 .right::after { left: -10px; }
 
-/* コンテンツボックス */
+/* コンテンツボックスのカスタマイズ */
 .content {
-    padding: 20px;
-    background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    background-color: var(--cardBg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); /* すりガラス効果 */
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.content:hover {
+    border-color: var(--accentColor);
+    transform: translateY(-5px);
 }
 
 .date {
@@ -86,19 +113,20 @@ body {
 }
 
 .title {
-    margin: 0;
-    font-size: 1.5rem;
-    color: var(--primary-color);
+    margin: 10px 0;
+    font-size: 1.4rem;
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
 .score {
-    display: inline-block;
-    background: #e1f5fe;
-    color: #01579b;
-    padding: 2px 10px;
-    border-radius: 4px;
-    font-weight: bold;
-    margin: 10px 0;
+    background: rgba(0, 212, 255, 0.1);
+    border: 1px solid var(--accentColor);
+    color: var(--accentColor);
+    padding: 4px 12px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .description {
@@ -114,10 +142,72 @@ body {
     border: 1px solid #ddd;
 }
 
+.package-wrapper {
+    position: absolute;
+    top: 0;
+    width: 80%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+}
+
+.package-image {
+    max-width: 200px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+    background-color: #eee;
+    filter: brightness(0.9) contrast(1.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 偶数番目：コンテンツが左、画像は右 */
+.left .package-wrapper {
+    left: 100%; /* 親要素(width:50%)の右外側に配置 */
+}
+
+/* 奇数番目：コンテンツが右、画像は左 */
+.right .package-wrapper {
+    right: 100%; /* 親要素(width:50%)の左外側に配置 */
+}
+
+.timeline-item:hover .package-image {
+    transform: scale(1.05) translateY(-5px);
+}
+
 /* レスポンシブ対応(スマホ表示) */
 @media screen and (max-width: 768px) {
+    body {
+        background-size: 30px 30px;
+    }
+    
     .container::after { left: 31px; }
-    .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; text-align: left !important; }
-    .timeline-item::after { left: 21px; right: auto; }
+
+    .timeline-item { 
+        width: 100%; 
+        padding-left: 70px; 
+        padding-right: 25px; 
+        text-align: left !important;
+    }
+
+    .timeline-item::after { 
+        left: 21px;
+        right: auto; 
+    }
+
     .right { left: 0%; }
+
+    .package-wrapper {
+        position: static;
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 15px;
+    }
+
+    .package-image {
+        max-width: 100%;
+    }
 }

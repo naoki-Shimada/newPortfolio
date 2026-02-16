@@ -3,7 +3,8 @@
 // doGet(): GASの特別な関数、URLがたたかれた時、GETリクエストが送られたときに自動実行される
 function doGet() {
 
-    const spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+    const spreadsheetID = "1VR6Eyf1mhfEfT1NgK3OCBJfp2DFfM92am0sOCqPbFo8";
+    const spreadsheet = SpreadsheetApp.openById(spreadsheetID);
     const sheet = spreadsheet.getSheetByName("GameHistory_db");
 
     // シートが見つからない場合の処理

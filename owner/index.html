@@ -8,13 +8,90 @@
         
 </head>
 <body>
-    <div class="container" id="timeline-container">
+    <div class="container" id="timelineContainer">
         <h1 style="text-align: center; margin-bottom: 50px;">Game Play History</h1>
     </div>
 
     <script>
-        // GASの自作ウェブアプリ
-        const API_URL = "https://script.google.com/macros/s/AKfycbzrafJTbaiACSpolydO0Zb9I1pDh8DjVOYgBX6azKQx6qsvqd4vueIYAbJuqbQbVGlG/exec";
+        const testData = [
+            {
+                "Date": "2026-01-07",
+                "Title": "ELDEN RING NIGHTREIGN",
+                "Score": "深度4達成。(全人口のうち上位7%)",
+                "Description": "達成の難しい箇所の解説。高難度向けコンテンツ(深き夜)にてクリア。",
+                "packageUrl": "img/NIGHTREIGN.jpg",
+                "screenshotUrl": "img/NIGHTREIGN_screenshot.jpg"
+            },
+            {
+                "Date": "20xx/xx/xx",
+                "Title": "BackPackBattles",
+                "Score": "レンジャーにてマスター達成",
+                "Description": "ポイント制ランクマッチ。達成の難しい箇所の解説。",
+                "packageUrl": "",
+                "screenshotUrl": ""
+            },
+            {
+                "Date": "2025/11/xx",
+                "Title": "Shadowverse Worlds Beyond",
+                "Score": "ロイヤルにてマスター達成",
+                "Description": "ポイント制ランクマッチ：ロイヤルにて〇〇達成。",
+                "packageUrl": "",
+                "screenshotUrl": ""  
+            },
+        ];
+        
+        function renderTimeline(data) {
+            const container = document.getElementById('timelineContainer');
+
+            data.forEach((item, index) => {
+                const side = index % 2 === 0 ? 'left' : 'right';
+
+                // 画像がある場合のみ表示する処理
+                const screenshotTag = item.screenshotUrl 
+                    ? `<img src="${item.screenshotUrl}" alt="Screenshot" class="screenshot">` 
+                    : "";
+                const packageTag = item.packageUrl 
+                    ? `<img src="${item.packageUrl}" alt="Package" class="package-image">` 
+                    : "";
+
+                const html = `
+                    <div class="timeline-item ${side}" id="item-${index}">
+                        <div class="content">
+                            <span class="date">${item.Date}</span>
+                            <h2 class="title">${item.Title}</h2>
+                            <div class="score" style="color: #00d4ff; font-weight: bold;">${item.Score}</div>
+                            <p class="description">${item.Description}</p>
+                            ${screenshotTag}
+                        </div>
+                        <div class="package-wrapper">
+                            ${packageTag} </div>
+                        </div>
+                    </div>        
+                `;
+                container.insertAdjacentHTML('beforeend', html);
+            });
+
+            // アニメーション実行:少し遅延させて順番に表示
+            setTimeout(() => {
+                const items = document.querySelectorAll('.timeline-item');
+                items.forEach((el, i) => {
+                    setTimeout(() => {
+                        el.classList.add('show');
+                    }, i * 200);
+                });
+            }, 100);
+        }
+
+        // 実行
+        document.addEventListener('DOMContentLoaded', () => {
+            renderTimeline(testData);
+        });
+    </script>
+</body>
+</html>
+
+<!-- // GASの自作ウェブアプリ
+        const API_URL = "https://script.google.com/macros/s/AKfycbxx4SEDamNV2Rl3IFROwmyFgjrfRrelyQnbFXFs-A3sQXaQCOCN2nmu9Ib8vlB1NOzW/exec";
                          
         // async/await: データが届くまで待機する処理
         async function fetchTimeline() {
@@ -63,7 +140,4 @@
             }
         }
 
-        fetchTimeline();
-    </script>
-</body>
-</html>
+        fetchTimeline();  -->
