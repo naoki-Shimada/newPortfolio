@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>packOpening</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="mainVisual">
+        <div id="sealedPack" class="sealedPack" onclick="openPack()">
+            <div class="magicEffect"></div>
+            <div class="packLabel">Ancient Scroll</div>
+        </div>
+
+        <div id="cardDisplayArea" class="cardDisplayArea hidden">
+            <div id="cardContainer" class="cardContainer"></div>
+            <button class="resetButton" onclick="resetGacha()">もう一度引く</button>
+            <div id="cardContainer" class="cardContainer"></div>
+            <button class="resetButton" onclick="location.href='library.html'">ライブラリを見る</button>
+        </div>
+
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

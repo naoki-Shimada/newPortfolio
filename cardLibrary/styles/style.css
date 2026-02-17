@@ -1,0 +1,177 @@
+
+/* 全体背景 */
+body {
+    background-color: #1a120b;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* パック*/
+.sealedPack {
+    width: 200px;
+    height: 300px;
+    background: linear-gradient(45deg, #4d3e26, #2d1e0f);
+    border: 4px solid #8b7355;
+    margin: 100px auto;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ffaa0055;
+}
+
+.sealedPack:hover { 
+    transform: scale(1.05);    
+}
+
+/* 煌びやかなエフェクト */
+.magicEffect {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+    animation: pulse 2s infinite;  
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+
+/* カードレイアウト */
+.cardContainer {
+    display: flex;
+    gap: 10px;
+    padding: 20px;
+    overflow-x: auto;
+}
+
+.hidden {
+    display: none;
+}
+
+/* カードの基本構造 */
+.card {
+    width: 120px;
+    height: 180px;
+    perspective: 1000px;
+    display: inline-block;
+    margin: 10px;
+}
+
+.cardInner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+    cursor: pointer;
+}
+
+.card.isFlipped .cardInner {
+    transform: rotateY(180deg);
+}
+
+.cardFront, .cardBack {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 8px;
+}
+
+.cardBack { 
+    background: #333; 
+    border: 2px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.cardFront { 
+    transform: rotateY(180deg);
+    background: #eee;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+/* カードパーツ */
+.cardName {
+    background: var(--accent-red);
+    color: coral;
+    font-size: 10px;
+    padding: 2px 5px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.costBadge {
+    position: absolute;
+    top: 5px; left: 5px;
+    background: var(--cost-green);
+    width: 25px; height: 25px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; font-size: 14px;
+}
+
+.statusContainer {
+    position: absolute;
+    bottom: 5px; 
+    width: 100%;
+    display: flex; justify-content: space-between;
+    padding: 0 5px; box-sizing: border-box;
+}
+
+.attack { color: var(--attack-blue); font-weight: bold; }
+.health { color: var(--health-red); font-weight: bold; }
+
+/* レアリティ別ボーダー */
+.rarity-bronze { border: 4px solid #cd7f32; }
+.rarity-silver { border: 4px solid #c0c0c0; }
+.rarity-gold   { border: 4px solid #ffd700; }
+.rarity-legend { border: 4px solid transparent; border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1; }
+.rarity-urLegend { border: 4px solid #ffd700; background: #000; box-shadow: 0 0 15px gold; }
+
+/* ライブラリページ */
+.libraryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: url(''); /* アルバムの表紙風 */
+    padding: 40px;
+    gap: 20px;
+    border: 20px solid #3e2723;
+    border-radius: 10px;
+}
+
+.libraryCard {
+    position: relative;
+    filter: grayscale(100%); /* 未所持はグレー */
+    opacity: 0.5;
+}
+
+.libraryCard.owned {
+    filter: none;
+    opacity: 1;
+}
+
+.cardCountBadge {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    background: #ff0000;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+/* スマホ対応 (768px以下) */
+@media screen and (max-width: 768px) {
+    .cardContainer {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 20px;
+    }
+    .card { width: 100%; height: auto; aspect-ratio: 2/3; }
+}
