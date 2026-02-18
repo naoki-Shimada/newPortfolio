@@ -31,12 +31,16 @@ async function loadLibrary() {
 }; */
 
 /* ライブラリの描画処理 */
-function renderLibrary() {
+function renderLibrary(cards) {
+    console.log("--- renderLibrary 実行 ---");
     const grid = document.getElementById('libraryGrid');
-    if (!grid) return;
+    if (!grid) {
+        console.error("libraryGridが見つかりません");
+        return;
+    }
     grid.innerHTML = '';
 
-    cards.forEach(card => {
+    cards.forEach((card, index) => {
         const isOwned = card.count > 0;
 
         // 各カードの処理状況をログ出力する
@@ -49,8 +53,9 @@ function renderLibrary() {
         // 所持・未所持でクラスを切り替え
         cardItem.className = `libraryCard ${isOwned ? 'owned' : 'notOwned'}`;
 
+        // ${count}を${card.count}に修正
         cardItem.innerHTML = `
-            ${isOwned ? `<div class="quantityBadge">${count}</div>` : ''}
+            ${isOwned ? `<div class="quantityBadge">${card.count}</div>` : ''}
             <div class="cardFront rarity-${card.rarity}" style="transform:none; font-size:10px;">
                 <div class="costBadge" style="width:20px; height:20px; font-size:10px;">${card.cost}</div>
                 <div class="cardName" style="margin-top:20px;">${card.name}</div>
@@ -67,5 +72,5 @@ function renderLibrary() {
     console.log("--- renderLibrary 完了 ---");
 }
 
-// 初期読み込み
+// ページ読み込み時に実行
 document.addEventListener('DOMContentLoaded', loadLibrary);

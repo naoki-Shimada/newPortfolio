@@ -84,13 +84,13 @@
         name: "Cyber Gin Tonic", 
         img: "img/CyberGinTonic.png", 
         link: "cardLibrary/packOpening.html",
-        desc: "カードガチャ&ライブラリ"
+        desc: "個人製作3(ガチャ＆ライブラリ)"
     },
     "OB1K": { 
         name: "Cosmopolitan", 
         img: "img/Cosmopolitan.png", 
         link: "shooting/menu.html",
-        desc: "シューティング(StarCorrecter)"
+        desc: "個人製作1(シューティング)"
     },
     "TIPE": { 
         name: "Raohe Beer", 
@@ -103,6 +103,18 @@
         img: "img/CleanMartini.png", 
         link: "reform/NaokiShimada/index.html",
         desc: "演習作品1(リフォーム会社のサイト)"
+    },
+    "SHNB": {
+        name: "Hole in One!", 
+        img: "", 
+        link: "ccdonuts/index.php",
+        desc: "演習作品3(ドーナツショップ)"
+    },
+    "OWNR": {
+        name: "Owner's Key", 
+        img: "", 
+        link: "owner/index.html",
+        desc: "個人製作2(ゲーム年表)"
     }
 };
 
