@@ -67,3 +67,31 @@ INSERT INTO cardMasters (cardName, rarity, cost, attack, health) VALUES
 -- URレジェンド (2種)
 ('創世神・アルマース', 'urLegend', 10, 10, 10),
 ('終焉の使者・ヴォイド', 'urLegend', 10, 12, 8);
+
+UPDATE cardMasters SET imageUrl = 'img/old_guardian' WHERE cardId = 1;
+UPDATE cardMasters SET imageUrl = 'img/young_mage.png' WHERE cardId = 2;
+UPDATE cardMasters SET imageUrl = 'img/forest_assasin.png' WHERE cardId = 3;
+UPDATE cardMasters SET imageUrl = 'img/iron_army' WHERE cardId = 4;
+UPDATE cardMasters SET imageUrl = 'img/holy_elf' WHERE cardId = 5;
+UPDATE cardMasters SET imageUrl = 'img/aggressive_ork.png' WHERE cardId = 6;
+UPDATE cardMasters SET imageUrl = 'img/silver_knight.png' WHERE cardId = 7;
+UPDATE cardMasters SET imageUrl = 'img/rightning_mage.png' WHERE cardId = 8;
+UPDATE cardMasters SET imageUrl = 'img/twinblade_assasin.png' WHERE cardId = 9;
+UPDATE cardMasters SET imageUrl = 'img/defensive_golem.png' WHERE cardId = 10;
+UPDATE cardMasters SET imageUrl = 'img/golden_phoenix.png' WHERE cardId = 11;
+UPDATE cardMasters SET imageUrl = 'img/abyssking_walneal.png' WHERE cardId = 12;
+UPDATE cardMasters SET imageUrl = 'img/heavens_priest.png' WHERE cardId = 13;
+UPDATE cardMasters SET imageUrl = 'img/cursed_blade.png' WHERE cardId = 14;
+UPDATE cardMasters SET imageUrl = 'img/dimension_eater_dragon.png' WHERE cardId = 16;
+
+/* 一部.png抜けていたため修正 */
+UPDATE cardMasters SET imageUrl = 'img/old_guardian.png' WHERE cardId = 1;
+UPDATE cardMasters SET imageUrl = 'img/iron_army.png' WHERE cardId = 4;
+UPDATE cardMasters SET imageUrl = 'img/holy_elf.png' WHERE cardId = 5;
+
+/* 幻惑の魔女・モーガン → 審判の山羊頭
+不死鳥の女王 → 消えぬ炎のバーンドナイト
+聖騎士王アーサー → 叛逆者モルドレッド
+
+創世神・アルマース → 水底より出でし者
+終焉の使者・ヴォイド → 這い寄る混沌 */

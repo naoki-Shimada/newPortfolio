@@ -49,10 +49,9 @@ body {
 
 /* カードの基本構造 */
 .card {
-    width: 120px;
-    height: 180px;
+    width: 200px;
+    height: 300px;
     perspective: 1000px;
-    display: inline-block;
     margin: 10px;
 }
 
@@ -74,7 +73,8 @@ body {
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
-    border-radius: 8px;
+    border-radius: 12px;
+    border: 4px solid #333;
 }
 
 .cardBack { 
@@ -84,25 +84,16 @@ body {
     align-items: center;
     justify-content: center;
 }
+
+/* カード前面のデザイン */
 .cardFront { 
     transform: rotateY(180deg);
     background: #eee;
-    color: #333;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
 }
 
-/* カードパーツ */
-.cardName {
-    background: var(--accent-red);
-    color: coral;
-    font-size: 10px;
-    padding: 2px 5px;
-    margin-top: 5px;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-}
 
 .costBadge {
     position: absolute;
@@ -113,6 +104,34 @@ body {
     display: flex; align-items: center; justify-content: center;
     font-weight: bold; font-size: 14px;
 }
+
+/* 画像エリアの調整 */
+.cardImage {
+    width: 100%;
+    height: 60%;
+    background: #eee;
+    overflow: hidden;
+    border-bottom: 2px solid #ccc;
+}
+
+.cardImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 画像を枠いっぱいに収める */
+}
+
+/* カードパーツ */
+.cardName {
+    background: var(--accent-red);
+    color: coral;
+    font-size: 1.1rem;
+    padding: 2px 5px;
+    margin-top: 5px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
 
 .statusContainer {
     position: absolute;
@@ -132,46 +151,31 @@ body {
 .rarity-legend { border: 4px solid transparent; border-image: linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet) 1; }
 .rarity-urLegend { border: 4px solid #ffd700; background: #000; box-shadow: 0 0 15px gold; }
 
-/* ライブラリページ */
-.libraryGrid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    background: url(''); /* アルバムの表紙風 */
-    padding: 40px;
-    gap: 20px;
-    border: 20px solid #3e2723;
-    border-radius: 10px;
-}
 
-.libraryCard {
-    position: relative;
-    filter: grayscale(100%); /* 未所持はグレー */
-    opacity: 0.5;
-}
-
-.libraryCard.owned {
-    filter: none;
-    opacity: 1;
-}
-
-.cardCountBadge {
-    position: absolute;
-    bottom: -10px;
-    right: -10px;
-    background: #ff0000;
-    color: white;
-    padding: 2px 8px;
-    border-radius: 50%;
-    font-size: 12px;
-}
 
 /* スマホ対応 (768px以下) */
 @media screen and (max-width: 768px) {
+    .card {
+        width: 140px;
+        height: 210px;
+        margin: 5px;
+    }
+
+    .cardName {
+        font-size: 0.8rem;
+        padding: 4px 2px;
+    }
+
+    .costBadge {
+        width: 24px;
+        height: 24px;
+        font-size: 0.8rem;
+    }
+
     .cardContainer {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
         padding: 20px;
     }
-    .card { width: 100%; height: auto; aspect-ratio: 2/3; }
 }

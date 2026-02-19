@@ -42,6 +42,9 @@ function renderCards(cards) {
                 <div class="cardBack"><span>?</span></div>
                 <div class="cardFront">
                     <div class="costBadge">${card.cost}</div>
+                    <div class="cardImage">
+                        <img src="${card.imageUrl}" alt="${card.cardName}">
+                    </div>
                     <div class="cardName">${card.cardName}</div>
                     <div class="statusContainer">
                         <span class="attack">⚔️${card.attack}</span>

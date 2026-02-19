@@ -56,12 +56,18 @@ function renderLibrary(cards) {
         // ${count}を${card.count}に修正
         cardItem.innerHTML = `
             ${isOwned ? `<div class="quantityBadge">${card.count}</div>` : ''}
-            <div class="cardFront rarity-${card.rarity}" style="transform:none; font-size:10px;">
-                <div class="costBadge" style="width:20px; height:20px; font-size:10px;">${card.cost}</div>
-                <div class="cardName" style="margin-top:20px;">${card.name}</div>
+            <div class="cardFront rarity-${card.rarity}" style="transform:none;">
+                <div class="costBadge">${card.cost}</div>
+
+                <div class="cardImage">
+                    <img src="${card.imageUrl}" alt="${card.name}">
+                </div>
+
+                <div class="cardName">${card.name}</div>
+
                 <div class="statusContainer">
-                    <span class="attack" style="font-size:10px;">⚔️${card.atk}</span>
-                    <span class="health" style="font-size:10px;">🛡️${card.hp}</span>
+                    <span class="attack">⚔️${card.atk}</span>
+                    <span class="health">🛡️${card.hp}</span>
                 </div>
             </div>
         `;
