@@ -20,6 +20,15 @@ $pdo = new PDO('mysql:host=localhost;dbname=cardlibrary;charset=utf8',
     $currentUserId = 1;
     $drawResults = [];
 
+
+/*     session_start();
+    if (!isset($_SESSION['userId'])) {
+        echo json_encode(['error' => 'ログインが必要です']);
+        exit;
+    }
+    $currentUserId = $_SESSION['userId']; // セッションから取得
+ */
+
     // データベース操作を一つのまとまり（トランザクション）として開始
     $pdo->beginTransaction();
 

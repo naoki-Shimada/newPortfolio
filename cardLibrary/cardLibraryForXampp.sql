@@ -95,3 +95,11 @@ UPDATE cardMasters SET imageUrl = 'img/holy_elf.png' WHERE cardId = 5;
 
 創世神・アルマース → 水底より出でし者
 終焉の使者・ヴォイド → 這い寄る混沌 */
+
+/* ユーザー情報 ユーザーネーム、パスワード */
+CREATE TABLE users (
+    userId INT AUTO_INCREMENT PRIMARY KEY,
+    userName VARCHAR(50) NOT NULL UNIQUE,
+    passwordHash VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
