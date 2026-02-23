@@ -147,37 +147,39 @@
             </div>
         </section>
             
+        <aside class="StickyTerminal">
+            <section class="KeyPad">
+                <div class="KeyPadContainer">
+                    <div class="KeyPadDisplay">
+                        <span class="DisplayLabel">SYSTEM TERMINAL / INPUT CODE</span>
+                        <div id="CodeOutput">----</div>
+                    </div>
 
-        <section class="KeyPad">
-            <div class="KeyPadContainer">
-                <div class="KeyPadDisplay">
-                    <span class="DisplayLabel">SYSTEM TERMINAL / INPUT CODE</span>
-                    <div id="CodeOutput">----</div>
-                </div>
+                    <div class="KeyGrid">
+                        <!-- 配列を直接比較するのではなく、ボタンを一意に識別するID（または数値）を渡す -->
+                        <button class="NumKey" onclick="pressKey(['1'])">1</button>
+                        <button class="NumKey" onclick="pressKey(['A','B','C','2'], 2)">ABC2</button>
+                        <button class="NumKey" onclick="pressKey(['D','E','F','3'], 3)">DEF3</button>
+                        
+                        <button class="NumKey" onclick="pressKey(['G','H','I','4'], 4)">GHI4</button>
+                        <button class="NumKey" onclick="pressKey(['J','K','L','5'], 5)">JKL5</button>
+                        <button class="NumKey" onclick="pressKey(['M','N','O','6'], 6)">MNO6</button>
+                        
+                        <button class="NumKey" onclick="pressKey(['P','Q','R','S','7'], 7)">PQRS7</button>
+                        <button class="NumKey" onclick="pressKey(['T','U','V','8'], 8)">TUV8</button>
+                        <button class="NumKey" onclick="pressKey(['W','X','Y','Z','9'], 9)">WXYZ9</button>
 
-                <div class="KeyGrid">
-                    <!-- 配列を直接比較するのではなく、ボタンを一意に識別するID（または数値）を渡す -->
-                    <button class="NumKey" onclick="pressKey(['1'])">1</button>
-                    <button class="NumKey" onclick="pressKey(['A','B','C','2'], 2)">ABC2</button>
-                    <button class="NumKey" onclick="pressKey(['D','E','F','3'], 3)">DEF3</button>
-                    
-                    <button class="NumKey" onclick="pressKey(['G','H','I','4'], 4)">GHI4</button>
-                    <button class="NumKey" onclick="pressKey(['J','K','L','5'], 5)">JKL5</button>
-                    <button class="NumKey" onclick="pressKey(['M','N','O','6'], 6)">MNO6</button>
-                    
-                    <button class="NumKey" onclick="pressKey(['P','Q','R','S','7'], 7)">PQRS7</button>
-                    <button class="NumKey" onclick="pressKey(['T','U','V','8'], 8)">TUV8</button>
-                    <button class="NumKey" onclick="pressKey(['W','X','Y','Z','9'], 9)">WXYZ9</button>
-
-                    <button class="NumKey Clear" onclick="clearCode()">CLS</button>
-                    <button class="NumKey" onclick="pressKey(['0'])">0</button>
-                    <button class="NumKey Order" onclick="submitOrder()">ENT</button>
+                        <button class="NumKey Clear" onclick="clearCode()">CLS</button>
+                        <button class="NumKey" onclick="pressKey(['0'])">0</button>
+                        <button class="NumKey Order" onclick="submitOrder()">ENT</button>
+                    </div>
+                    <div class="SystemStatus">
+                        <span class="StatusDot"></span> CONNECTED
+                    </div>
                 </div>
-                <div class="SystemStatus">
-                    <span class="StatusDot"></span> CONNECTED
-                </div>
-            </div>
-        </section>
+            </section>
+            <div id="OrderResultContent"></div>
+        </aside>
     </div>
 
         <section id="OrderLink" class="OrderLink">
@@ -186,9 +188,7 @@
         </section>
 
         
-</body>
-<footer>
-</footer>
+
 </div>
 <script>
         window.addEventListener('load', function(){
@@ -208,7 +208,36 @@
         });
 </script>     
 <script src="scripts/script.js"></script>
+<footer class="MainFooter">
+    <section class="ContactForm">
+        <div class="FormContainer">
+            <h2 class="FormTitle">ご要望/ご感想</h2>
+            <form action="https://formspree.io/f/mwvnnbzv" method="POST" id="feedbackFrom">
+                <div class="InputGroup">
+                    <label for="userName">お名前</label>
+                    <input type="text" id="userName" name="name" placeholder="名無しさん" required>
+                </div>
 
+                <div class="InputGroup">
+                    <label for="userEmail">メールアドレス</label>
+                    <input type="email" id="userEmail" name="email" placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="InputGroup">
+                    <label for="userMessage">メッセージ</label>
+                    <textarea id="userMessage" name="message" rows="4" placeholder="ご要望・ご感想" required></textarea>
+                </div>
+
+                <button type="submit" class="SubmitBtn">
+                    送信<i class="bi bi-send"></i>
+                </button>
+            </form>
+            <div id="formStatus" class="FormStatus"></div>
+        </div>
+        <p class="Copyright">&copy; 2026 Bar-10-Tron All Rights Reserved.</p>
+    </section>
+</footer>
+</body>
 </html>
 
  

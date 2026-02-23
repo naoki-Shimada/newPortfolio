@@ -106,13 +106,13 @@
     },
     "SHNB": {
         name: "Hole in One!", 
-        img: "", 
+        img: "img/Hole_in_One.png", 
         link: "ccdonuts/index.php",
         desc: "演習作品3(ドーナツショップ)"
     },
     "OWNR": {
         name: "Owner's Key", 
-        img: "", 
+        img: "img/Owner's_Key.png", 
         link: "owner/index.html",
         desc: "個人製作2(ゲーム年表)"
     }
