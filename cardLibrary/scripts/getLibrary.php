@@ -1,4 +1,5 @@
 <?php
+session_start();
 header('Content-Type: application/json');
 ini_set('display_errors', 0);
 
@@ -10,7 +11,12 @@ try{
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
     ]);
 
-    $currentUserId = 1; // 本実装の際はセッションから取得
+
+    // セッションからユーザーIDを取得。ログインしてない場合はエラーを返す
+    if (!isset($_SESSION['userId'])){
+        throw new Exception('ログインが必要です。');
+    }
+    $currentUserId = $_SESSION['userId']; // 本実装の際はセッションから取得
 
     // すべてのマスターカードと、そのユーザーの所持枚数を取得するSQL
     $sql = "

@@ -8,6 +8,25 @@
 ];
  */
 
+async function displayUserInfo() {
+    try {
+        const response = await fetch('scripts/getUserInfo.php');
+        const data = await response.json();
+        const displayEl = document.getElementById('displayUserName');
+        if (displayEl) {
+            displayEl.textContent = data.userName + " さん";
+        }
+    } catch(error) {
+        console.error('ユーザー情報取得失敗', error);
+    }
+}
+
+// 既存のDOMContentLoaded内などで呼び出す
+document.addEventListener('DOMContentLoaded', () => {
+    displayUserInfo();
+    // 既存の処理(loadLibraryなど)
+});
+
 /* サーバからライブラリデータを取得して描画する */
 async function loadLibrary() {
     try {

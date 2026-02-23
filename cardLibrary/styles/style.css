@@ -6,6 +6,23 @@ body {
     overflow-x: hidden;
 }
 
+/* ユーザー名のヘッダー全体のスタイル */
+.userHeader {
+    font-family: 'MedievalSharp', cursive; /* 全体はファンタジー風 */
+    color: #d4af37; /* 高級感のあるゴールド */
+    text-shadow: 1px 1px 2px black;
+    padding: 10px;
+}
+
+/* ユーザー名の部分だけを筆記体にする */
+#displayUserName {
+    font-family: 'Great Vibes', cursive; /* 筆記体フォントを適用 */
+    font-size: 1.5rem; /* 筆記体は見えにくいので少し大きく */
+    color: #f1e5ac; /* 少し明るい羊皮紙のような色 */
+    margin-left: 5px;
+    letter-spacing: 1px; /* 文字間隔を少し広げて読みやすく */
+}
+
 /* パック*/
 .sealedPack {
     width: 200px;

@@ -4,6 +4,26 @@ let isHolding = false;
 document.addEventListener('mousedown', () => isHolding = true);
 document.addEventListener('mouseup', () => isHolding = false);
 
+async function displayUserInfo() {
+    try {
+        const response = await fetch('scripts/getUserInfo.php');
+        const data = await response.json();
+
+        const displayEl = document.getElementById('displayUserName');
+        if (displayEl) {
+            displayEl.textContent = data.userName + " さん";
+        }
+    } catch(error) {
+        console.error('ユーザー情報取得失敗', error);
+    }
+}
+
+// 既存のDOMContentLoaded内などで呼び出す
+document.addEventListener('DOMContentLoaded', () => {
+    displayUserInfo();
+    // 既存の処理(loadLibraryなど)
+});
+
 async function openPack() {
     // ボタン連打防止
     const sealedPack = document.getElementById('sealedPack');
@@ -11,7 +31,7 @@ async function openPack() {
 
     try {
         // PHPに抽選リクエストを送る
-        const response = await fetch('drawPack.php');
+        const response = await fetch('scripts/drawPack.php');
         const drawResults = await response.json();
 
         if(drawResults.error) throw new Error(drawResults.error);

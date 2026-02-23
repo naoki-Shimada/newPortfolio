@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="styles/login.css">
+</head>
+<body>
+    <div class="authContainer">
+        <h1 id="formTitle">ログイン</h1>
+
+        <form id="authForm">
+            <div class="inputGroup">
+                <label for="userName">ユーザー名</label>
+                <input type="text" id="userName" name="userName" required>
+            </div>
+            <div class="inputGroup">
+                <label for="password">パスワード</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <button  type="button" id="submitButton" class="mainButton" onclick="hundleAuth('login')">
+                ログイン
+            </button>
+        </form>
+
+        <div class="toggleLink">
+            <p id="toggleText">アカウントをお持ちでない方は<button type="button" id="submitButton" class="mainButton" onclick="toggleForm()">新規登録</button></p>
+        </div>
+    </div>
+
+    <script src="login/auth.js"></script>
+    <script>
+        // ログインと新規登録の表示切替ロジック
+        let isLoginMode = true;
+
+        function toggleForm() {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('formTitle');
+            const button = document.getElementById('submitButton');
+            const toggleText = document.getElementById('toggleText');
+
+            if (isLoginMode) {
+                title.textContent = 'ログイン';
+                button.textContent = 'ログイン';
+                button.setAttribute('onclick', "hundleAuth('login')");
+                toggleText.innerHTML = 'アカウントをお持ちでない方は<a href="javascript:void(0)" onclick="toggleForm()">新規登録</a>';
+            } else {
+                title.textContent = '新規登録';
+                button.textContent = '登録する';
+                button.setAttribute('onclick', "hundleAuth('signUp')");
+                toggleText.innerHTML = '既にアカウントをお持ちの方は<a href="javascript:void(0)" onclick="toggleForm()">ログイン</a>';
+            }
+
+        }
+    </script>
+</body>
+</html>
