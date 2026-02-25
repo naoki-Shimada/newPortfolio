@@ -51,21 +51,13 @@ async function loadLibrary() {
 
 /* ライブラリの描画処理 */
 function renderLibrary(cards) {
-    console.log("--- renderLibrary 実行 ---");
     const grid = document.getElementById('libraryGrid');
-    if (!grid) {
-        console.error("libraryGridが見つかりません");
-        return;
-    }
+    if (!grid) return;
     grid.innerHTML = '';
 
-    cards.forEach((card, index) => {
+    cards.forEach((card) => {
         const isOwned = card.count > 0;
-
-        // 各カードの処理状況をログ出力する
-        if (index < 5) { //最初の5件だけ詳細ログを出力
-            console.log(`カード名: {card.name}, 所持数: ${card.count}, 所持判定: ${isOwned}`);
-        }
+        const hasPremium = card.premiumImageUrl !== null && card.premiumImageUrl !== "";
 
         const cardItem = document.createElement('div');
 
@@ -79,7 +71,7 @@ function renderLibrary(cards) {
                 <div class="costBadge">${card.cost}</div>
 
                 <div class="cardImage">
-                    <img src="${card.imageUrl}" alt="${card.name}">
+                    <img src="${card.imageUrl}" alt="${card.name}" class="libraryCardImg">
                 </div>
 
                 <div class="cardName">${card.name}</div>
@@ -88,13 +80,40 @@ function renderLibrary(cards) {
                     <span class="attack">⚔️${card.atk}</span>
                     <span class="health">🛡️${card.hp}</span>
                 </div>
+
+                ${isOwned && hasPremium ? `
+                    <div class="viewSwitcher">
+                        <button class="switchBtn active" onclick="switchCardView(this, '${card.imageUrl}')">通常</button>
+                        <button class="switchBtn" onclick="switchCardView(this, '${card.premiumImageUrl}')">プレミア</button>
+                    </div>
+                ` : ''}
             </div>
         `;
 
         grid.appendChild(cardItem);
     });
 
-    console.log("--- renderLibrary 完了 ---");
+}
+
+// 画像切り替え関数
+function switchCardView(btn, targetUrl) {
+    const cardFront = btn.closest('.cardFront');
+    const img = cardFront.querySelector('.libraryCardImg');
+
+    // 画像差し替え
+    img.src = targetUrl;
+
+    // ボタンのスタイル更新
+    const buttons = btn.parentElement.querySelectorAll('.switchBtn');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // プレミア表示の時はカード自体を光らせる
+    if (btn.textContent === 'プレミア') {
+        cardFront.classList.add('isPremiumLook');
+    } else {
+        cardFront.classList.remove('isPremiumLook');
+    }
 }
 
 // ページ読み込み時に実行

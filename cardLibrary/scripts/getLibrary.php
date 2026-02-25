@@ -28,6 +28,7 @@ try{
             m.attack as atk,
             m.health as hp,
             m.imageUrl,
+            m.premiumImageUrl,
             IFNULL(i.quantity, 0) as count
         FROM cardMasters m
         LEFT JOIN userInventory i ON m.cardId = i.cardId AND i.userId = :userId

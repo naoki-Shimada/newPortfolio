@@ -77,7 +77,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=cardlibrary;charset=utf8',
 function getRandomCard($pdo){
     $rand = mt_rand(1, 100000) / 1000; // 0.001~100.000
 
-    if ($rand <= 0.03) $rarity = 'urLegend';
+    if ($rand <= 0.5) $rarity = 'urLegend';
     elseif ($rand <= 1.53) $rarity = 'legend';
     elseif ($rand <= 7.53) $rarity = 'gold';
     elseif ($rand <= 32.53) $rarity = 'silver';
@@ -86,6 +86,16 @@ function getRandomCard($pdo){
     // SQLでそのレアリティの中からランダムに1つ取得
     $stmt = $pdo->prepare("SELECT * FROM cardMasters WHERE rarity = ? ORDER BY RAND() LIMIT 1");
     $stmt->execute([$rarity]);
-    return $stmt->fetch(PDO::FETCH_ASSOC);
+    $card = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if($card) {
+        // 50%の確率でプレミア化
+        $card['isPremium'] = (mt_rand(1, 100) <= 100);
+        // DBにはpremiumの有無によらずcardIdで保存(必要ならinventoryに別カラムを作る)
+    } else {
+        // プレミア画像がない場合はプレミアムにならない
+        $card['isPremium'] = false;
+    }
+    return $card;
 }
 ?>

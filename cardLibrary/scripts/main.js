@@ -1,8 +1,10 @@
 let isHolding = false;
+let isAnimating = false; // 演出中フラグ
 
-// マウスの状態を監視
+// マウスの状態を監視 スライドめくりのため
 document.addEventListener('mousedown', () => isHolding = true);
 document.addEventListener('mouseup', () => isHolding = false);
+
 
 async function displayUserInfo() {
     try {
@@ -23,6 +25,16 @@ document.addEventListener('DOMContentLoaded', () => {
     displayUserInfo();
     // 既存の処理(loadLibraryなど)
 });
+
+// ボタンの状態を一元管理
+function setControlsEnabled(enabled) {
+    const buttons = document.querySelectorAll('.resetButton, #sealedPack');
+    isAnimating = !enabled;
+    buttons.forEach(btn => {
+        btn.style.pointerEvents = enabled ? 'auto' : 'none';
+        btn.style.filter = enabled ? 'none' : 'grayscale(1)';
+    });
+}
 
 async function openPack() {
     // ボタン連打防止
@@ -45,6 +57,7 @@ async function openPack() {
     }
 }
 
+
 function renderCards(cards) {
     document.getElementById('sealedPack').classList.add('hidden');
     const container = document.getElementById('cardContainer');
@@ -63,24 +76,40 @@ function renderCards(cards) {
                 <div class="cardFront">
                     <div class="costBadge">${card.cost}</div>
                     <div class="cardImage">
-                        <img src="${card.imageUrl}" alt="${card.cardName}">
+                        <img src="${card.imageUrl}" alt="${card.cardName}" class="mainCardImg">
                     </div>
                     <div class="cardName">${card.cardName}</div>
                     <div class="statusContainer">
                         <span class="attack">⚔️${card.attack}</span>
                         <span class="health">🛡️${card.health}</span>
                     </div>
+                    <div class="premiumEffect"></div>
                 </div>
             </div>
             `;
 
-            // クリックでめくる
-            cardEl.addEventListener('click', () => cardEl.classList.add('isFlipped'));
+            // めくる処理を共通化
+            const flipCard = async () => {
+                // 既にめくられている場合は何もしない
+                if(cardEl.classList.contains('isFlipped')) return;
+
+                // 1.まず共通でカードをめくる（通常カードはこの時点で表示完了）
+                cardEl.classList.add('isFlipped');
+
+                // 2.プレミアム当選かつ画像がある場合のみ、追加演出を実行
+                if (card.isPremium && card.premiumImageUrl) {
+                    // プレミアム演出（3秒待機・ボタン無効化・画像置換）を呼び出す
+                    await playPremiumEffect(cardEl, card.premiumImageUrl);
+                }
+                // else: 通常カードの場合はここで処理が終わり通常の見た目になる
+            };
 
             // ホールド状態でスライドしてめくる
+            cardEl.addEventListener('click', flipCard);
             cardEl.addEventListener('mouseenter', () => {
-                if(isHolding) cardEl.classList.add('isFlipped');
+                if(isHolding) flipCard();
             });
+
 
             // 少しずつ遅れて登場するアニメーション
             cardEl.style.opacity = '0';
@@ -90,6 +119,39 @@ function renderCards(cards) {
                 cardEl.style.opacity = '1';
             }, index * 100);
     });
+
+    // 初期状態ではボタンを使えるように(プレミアム演出が始まると再度ロックされる)
+    setControlsEnabled(true);
+}
+
+// プレミアム演出
+async function playPremiumEffect(cardEl, premiumUrl) {
+    setControlsEnabled(false); /* ボタンをグレーアウトして操作不能にする */
+
+    const inner = cardEl.querySelector('.cardInner');
+    const img = cardEl.querySelector('.mainCardImg');
+    const effect = cardEl.querySelector('.premiumEffect');
+
+    // 1.エフェクト開始
+    effect.classList.add('active');
+
+    // 2.アニメーション待機時間(3秒)
+    await new Promise(resolve => setTimeout(resolve, 3000));
+
+    // 3.リバースアニメーション
+    cardEl.classList.add('reversing');
+
+    // アニメーションの途中で画像を差し替え
+    setTimeout(() => {
+        img.src = premiumUrl;
+        cardEl.classList.add('isPremium')
+    }, 250);
+
+    // 4.アニメーション終了後に操作解禁
+    setTimeout(() => {
+        cardEl.classList.remove('reversing');
+        setControlsEnabled(true);
+    }, 500);
 }
 
 function resetGacha() {
