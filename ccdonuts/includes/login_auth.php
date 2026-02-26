@@ -3,8 +3,12 @@ session_start();
 
 unset($_SESSION['user_id']);
 unset($_SESSION['user_name']);
-$pdo=new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', 
-	'ccStaff', 'ccDonuts');
+
+// DB接続
+require_once '../config/dbConfig.php';
+
+/* $pdo=new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', 
+	'ccStaff', 'ccDonuts'); */
 
 // フォームからのデータ取得
 $mail = $_POST['mail'] ?? ''; 

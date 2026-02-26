@@ -3,7 +3,7 @@
 
     <!-- ヒーロー画像 -->
     <section class="HeroSection">
-        <p>ようこそ、<span class="UserName">様。</p>
+        <p>ようこそ、<span class="UserName">様</span>。</p>
         <img src="images/PCHero.png" alt="Hero">
     </section>
 
@@ -19,7 +19,9 @@
                 </div>
 
             <div class="ContentBoxBanner">
-                <img src="images/PCProductBanner.png" alt="Product">
+                <a href="products.php">
+                    <img src="images/PCProductBanner.png" alt="Product">
+                </a>
             </div>
         </div>
     </section>
@@ -49,6 +51,7 @@
                     <input type="hidden" name="id" value="1">
                     <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
         
             <div class="ProductItem">
@@ -57,9 +60,10 @@
                 <h3 class="ItemName">フルーツドーナツセット（12個入り）</h3>
                 <p class="ItemPrice">税込 ¥3,500</p>
                 <form action="includes/cart_add.php" method="POST">
-                    <input type="hidden" name="id" value="6">
+                    <input type="hidden" name="id" value="7">
                     <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
 
             <div class="ProductItem">
@@ -68,9 +72,10 @@
                 <h3 class="ItemName">フルーツドーナツセット（14個入り）</h3>
                 <p class="ItemPrice">税込 ¥4,000</p>
                 <form action="includes/cart_add.php" method="POST">
-                    <input type="hidden" name="id" value="7">
+                    <input type="hidden" name="id" value="8">
                     <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
 
             <div class="ProductItem">
@@ -78,7 +83,11 @@
                 <img src="images/Chocolate.png" alt="Product4">
                 <h3 class="ItemName">チョコレートデライト（5個入り）</h3>
                 <p class="ItemPrice">税込 ¥1,600</p>
+                <form action="includes/cart_add.php" method="POST">
+                    <input type="hidden" name="id" value="2">
+                    <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
 
             <div class="ProductItem">
@@ -86,7 +95,11 @@
                 <img src="images/Selection.png" alt="Product5">
                 <h3 class="ItemName">ベストセレクションボックス（4個入り）</h3>
                 <p class="ItemPrice">税込 ¥1,200</p>
+                <form action="includes/cart_add.php" method="POST">
+                    <input type="hidden" name="id" value="9">
+                    <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
 
             <div class="ProductItem">
@@ -94,7 +107,11 @@
                 <img src="images/Strawberry.png" alt="Product6">
                 <h3 class="ItemName">ストロベリークラッシュ（5個入り）</h3>
                 <p class="ItemPrice">税込 ¥1,800</p>
+                <form action="includes/cart_add.php" method="POST">
+                    <input type="hidden" name="id" value="6">
+                    <input type="hidden" name="quantity" value="1">
                 <button class="CartButton">カートに入れる</button>
+                </form>
             </div>
         </div>
     </section>

@@ -1,10 +1,9 @@
-<!-- header.php読み込み -->
-<?php require 'includes/header.php'; ?>
 
 <?php
 // データベース接続
-$pdo=new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', 
-	'ccStaff', 'ccDonuts');
+session_start();
+require_once 'config/dbConfig.php';
+require 'includes/header.php';
 
 //  URLの「?id=◯」の部分を取得する
 // 例:http://localhost/ccdonuts/detail.php?id=1

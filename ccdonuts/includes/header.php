@@ -16,16 +16,22 @@
                 <span></span><span></span><span></span>
             </div>
             <div class="Logo">
+                <a href="index.php">
                 <img src="images/PCHeaderLogo.png" alt="Logo">
+                </a>
             </div>
             <div class="UserActions">
                 <div class="ActionItem">
-                    <img src="images/PCLoginLogo.png">
-                    <span>ログイン</span>
+                    <a href="login.php">
+                        <img src="images/PCLoginLogo.png">
+                        <span>ログイン</span>
+                    </a>    
                 </div>
                 <div class="ActionItem">
+                    <a href="cart.php">
                     <img src="images/PCCartLogo.png">
                     <span>カート</span>
+                    </a>
                 </div>
             </div>
         </div>

@@ -1,14 +1,9 @@
-<!-- header.php読み込み -->
-<?php require 'includes/header.php'; ?>
-
-
 
 <?php
 session_start();
-
 // DB接続
-$pdo=new PDO('mysql:host=localhost;dbname=ccdonuts;charset=utf8', 
-	'ccStaff', 'ccDonuts');
+require_once 'config/dbConfig.php';
+require 'includes/header.php';
 
 // $cart_itemsは空の配列を入れておく
 $cart_items = [];
@@ -51,11 +46,11 @@ if(!empty($_SESSION['cart'])) {
     // str_repeat...count($ids) - 1: 最後に出力される余計なカンマを防ぐ
     $placeholders = str_repeat('?,', count($ids) - 1) . '?';
 
-    echo '<pre>';
+    /* echo '<pre>';
     echo "--- 商品の数に合わせて ?（プレースホルダ）の数を自動調整する処理 ---\n";
     var_dump($placeholders);
     echo '</pre>';
-
+ */
     // string(3) "?,?"
 
     // 生成したplaceholdersをproductsテーブルに組み込む
