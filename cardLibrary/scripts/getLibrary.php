@@ -1,15 +1,8 @@
 <?php
+require_once '../config/config.php';
 session_start();
 header('Content-Type: application/json');
 ini_set('display_errors', 0);
-
-try{
-    $pdo = new PDO('mysql:host=localhost;dbname=cardlibrary;charset=utf8', 
-    'root',
-    '', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
 
 
     // セッションからユーザーIDを取得。ログインしてない場合はエラーを返す
@@ -17,6 +10,14 @@ try{
         throw new Exception('ログインが必要です。');
     }
     $currentUserId = $_SESSION['userId']; // 本実装の際はセッションから取得
+
+    try {
+    if (!isset($pdo)) {
+        throw new Exception('DB接続が初期化されていません');
+    }
+
+    // データベース操作を一つのまとまり（トランザクション）として開始
+    $pdo->beginTransaction();
 
     // すべてのマスターカードと、そのユーザーの所持枚数を取得するSQL
     $sql = "
@@ -37,7 +38,7 @@ try{
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':userId' => $currentUserId]);
-    $libraryData = $stmt->fetchAll();
+    $libraryData = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     echo json_encode($libraryData);
 } catch (Exception $e) {

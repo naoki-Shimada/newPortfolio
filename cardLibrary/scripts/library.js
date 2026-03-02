@@ -83,20 +83,31 @@ function renderLibrary(cards) {
 
                 ${isOwned && hasPremium ? `
                     <div class="viewSwitcher">
-                        <button class="switchBtn active" onclick="switchCardView(this, '${card.imageUrl}')">通常</button>
-                        <button class="switchBtn" onclick="switchCardView(this, '${card.premiumImageUrl}')">プレミア</button>
+                        <button class="switchBtn active" data-type="normal" data-url="${card.imageUrl}">通常</button>
+                        <button class="switchBtn" data-type="premium" data-url="${card.premiumImageUrl}">プレミア</button>
                     </div>
                 ` : ''}
             </div>
         `;
-
+    if (isOwned && hasPremium) {
+            const buttons = cardItem.querySelectorAll('.switchBtn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    // 親要素へのクリック伝播を止める（カード詳細などを開く処理がある場合）
+                    e.stopPropagation();
+                    const targetUrl = btn.getAttribute('data-url');
+                    const isPremium = btn.getAttribute('data-type') === 'premium';
+                    executeSwitchView(btn, targetUrl, isPremium);
+                });
+            });
+        }
         grid.appendChild(cardItem);
     });
 
 }
 
-// 画像切り替え関数
-function switchCardView(btn, targetUrl) {
+// 内部的な切り替え実行関数
+function executeSwitchView(btn, targetUrl, isPremium) {
     const cardFront = btn.closest('.cardFront');
     const img = cardFront.querySelector('.libraryCardImg');
 
@@ -108,13 +119,28 @@ function switchCardView(btn, targetUrl) {
     buttons.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // プレミア表示の時はカード自体を光らせる
-    if (btn.textContent === 'プレミア') {
-        cardFront.classList.add('isPremiumLook');
+    // プレミア表示の時のエフェクト制御
+    if(isPremium) {
+        cardFront.classList.add('isPremiumLook')
     } else {
         cardFront.classList.remove('isPremiumLook');
     }
 }
+
+/* // 画像切り替え関数
+function switchCardView(btn, targetUrl) {
+    const cardFront = btn.closest('.cardFront');
+    const img = cardFront.querySelector('.libraryCardImg');
+
+    // 画像差し替え
+    img.src = targetUrl;
+
+    // ボタンのスタイル更新
+    const buttons = btn.parentElement.querySelectorAll('.switchBtn');
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    }
+ */
 
 // ページ読み込み時に実行
 document.addEventListener('DOMContentLoaded', loadLibrary);

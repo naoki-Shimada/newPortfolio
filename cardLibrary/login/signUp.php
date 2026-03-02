@@ -1,11 +1,14 @@
 <?php
+require_once '../config/config.php';
+session_start();
 header('Content-Type: application/json');
 ini_set('display_errors', 0);
 
 try {
-    $pdo = new PDO('mysql:host=localhost;dbname=cardlibrary;charset=utf8', 'root', '', [
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-    ]);
+    // config.php で $pdo が正しく生成されているか確認
+    if (!isset($pdo)) {
+        throw new Exception('DB接続が初期化されていません。');
+    }
 
     $userName = $_POST['userName'] ?? '';
     $password = $_POST['password'] ?? '';

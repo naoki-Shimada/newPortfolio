@@ -1,4 +1,5 @@
 <?php
+require_once '../config/config.php';
 session_start();
 // ヘッダーの設定：JSON形式で出力することを明示
 header('Content-Type: application/json');
@@ -13,29 +14,14 @@ if (!isset($_SESSION['userId'])) {
 }
 $currentUserId = $_SESSION['userId'];
 
-try{
-    // xamppの標準設定(root/パスワードなし/cardlibrary)
-$pdo = new PDO('mysql:host=localhost;dbname=cardlibrary;charset=utf8', 
-	'root',
-    '',
-    [
-        // データベース接続でエラーが発生した際の処理
-        PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
-    ]);
-
-    // セッションからログイン中のユーザーIDを取得
-    if (!isset($_SESSION['userId'])) {
-        echo json_encode(['error' => 'ログインが必要です。一度ログイン画面に戻ってください']);
-        exit;
+try {
+    if (!isset($pdo)) {
+        throw new Exception('DB接続が初期化されていません');
     }
-    $currentUserId = $_SESSION['userId'];
 
     $drawResults = [];
-
     // データベース操作を一つのまとまり（トランザクション）として開始
     $pdo->beginTransaction();
-
 
     // 1パック8枚の抽選
     for ($i = 0; $i < 8; $i++) {

@@ -4,11 +4,20 @@
     --rarity-ur: #ffd700;
 }
 
+/* 全体背景 */
+body {
+    margin: 0;
+    background-color: #0a0a0a; /* 暗い背景 */
+    color: #ff4444;
+    font-family: 'MedievalSharp', cursive;
+}
+
 .libraryWrapper {
-    max-width: 1000px;
+    max-width: 1200px; /* 少し広げて余裕を持たせました */
     margin: 40px auto;
     padding: 0 20px;
 }
+
 
 .libraryTitle {
     text-align: center;
@@ -26,13 +35,33 @@
     border: 8px solid #2d1e1a;
 }
 
+/* カードを並べるグリッド：ここを中央寄せに調整 */
+.libraryGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 180px); 
+    gap: 40px 20px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
 .libraryCard {
     position: relative;
+    width: 180px; /* 幅を固定 */
     aspect-ratio: 2/3;
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
+    background: #222; /* 画像読み込み前の背景色 */
+    border-radius: 8px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    /* overflow: hidden を外すとバッジやボタンが表示しやすくなりますが、
+       画像のはみ出しを防ぐため img 側で調整します。
+    */
+}
+
+.libraryCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 枠いっぱいにリサイズし、アスペクト比を維持 */
+    display: block;
+    border-radius: 8px;
 }
 
 /* 未所持状態の演出 */

@@ -1,9 +1,12 @@
-
 /* 全体背景 */
 body {
-    background-color: #1a120b;
     margin: 0;
-    overflow-x: hidden;
+    background-color: #0a0a0a; /* 暗い背景 */
+    color: #fff;
+    font-family: 'MedievalSharp', cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* ユーザー名のヘッダー全体のスタイル */
@@ -23,20 +26,33 @@ body {
     letter-spacing: 1px; /* 文字間隔を少し広げて読みやすく */
 }
 
-/* パック*/
-.sealedPack {
-    width: 200px;
-    height: 300px;
-    background: linear-gradient(45deg, #4d3e26, #2d1e0f);
-    border: 4px solid #8b7355;
-    margin: 100px auto;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 0 20px #ffaa0055;
+.mainVisual {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
+/* パック*/
+.sealedPack {
+    position: relative;
+    width: 300px; /* PCサイズ */
+    height: 400px;
+    background-image: url('../img/Necronomicon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.8));
+}
+
+
+/* ホバー時の演出：少し拡大して怪しく光る */
 .sealedPack:hover { 
-    transform: scale(1.05);    
+    transform: scale(1.05) rotate(1deg);
+    filter: drop-shadow(0 0 20px rgba(255, 69, 0, 0.4)) brightness(1.2);
 }
 
 /* 煌びやかなエフェクト */
@@ -55,9 +71,13 @@ body {
 /* カードレイアウト */
 .cardContainer {
     display: flex;
-    gap: 10px;
+    flex-wrap: wrap; /* カードが入り切らない場合に折り返す */
+    justify-content: center; /* 中央寄せ */
+    gap: 15px;
     padding: 20px;
-    overflow-x: auto;
+    max-width: 1000px; /* 画面からはみ出さないよう最大幅を制限 */
+    margin: 0 auto;    /* 中央配置 */
+    /* overflow-x: auto; は不要になるため削除またはコメントアウト */
 }
 
 .hidden {
@@ -207,6 +227,39 @@ body {
 
 /* スマホ対応 (768px以下) */
 @media screen and (max-width: 768px) {
+
+    .sealedPack {
+        width: 220px;
+        height: 300px;
+    }
+
+    /* その他レイアウト */
+    .hidden {
+        display: none !important;
+    }
+
+    .cardDisplayArea {
+        text-align: center;
+    }
+
+    .buttonGroup {
+        margin-top: 20px;
+    }
+
+    .resetButton {
+        padding: 10px 20px;
+        margin: 5px;
+        background: #4a0000;
+        color: white;
+        border: 1px solid #ff4500;
+        cursor: pointer;
+        font-family: 'MedievalSharp', serif;
+    }
+
+    .resetButton:hover {
+        background: #800000;
+    }
+
     .card {
         width: 140px;
         height: 210px;
