@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="../common/style/style.css">
     <link rel="stylesheet" href="../style/style.css">
-    <link rel="stylesheet" href="style/style.css">
 </head>
 <body>
     <div class="NeonPipe LeftPipe"></div>
@@ -150,5 +149,33 @@
         });
 </script>     
 <script src="../scripts/script.js"></script>
+<footer class="MainFooter">
+    <section class="ContactForm">
+        <div class="FormContainer">
+            <h2 class="FormTitle">ご要望/ご感想</h2>
+            <form action="https://formspree.io/f/mwvnnbzv" method="POST" id="feedbackFrom">
+                <div class="InputGroup">
+                    <label for="userName">お名前</label>
+                    <input type="text" id="userName" name="name" placeholder="名無しさん" required>
+                </div>
 
+                <div class="InputGroup">
+                    <label for="userEmail">メールアドレス</label>
+                    <input type="email" id="userEmail" name="email" placeholder="example@gmail.com" required>
+                </div>
+
+                <div class="InputGroup">
+                    <label for="userMessage">メッセージ</label>
+                    <textarea id="userMessage" name="message" rows="4" placeholder="ご要望・ご感想" required></textarea>
+                </div>
+
+                <button type="submit" class="SubmitBtn">
+                    送信<i class="bi bi-send"></i>
+                </button>
+            </form>
+            <div id="formStatus" class="FormStatus"></div>
+        </div>
+        <p class="Copyright">&copy; 2026 Bar-10-Tron All Rights Reserved.</p>
+    </section>
+</footer>
 </html>
