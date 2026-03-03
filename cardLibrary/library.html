@@ -11,6 +11,10 @@
 </head>
 <body>
 
+<div class="gameHeader">
+    <img src="img/Necronomicon_Logo.png" alt="Necronomicon" class="gameTitleLogo">
+</div>
+
 <div class="userHeader">
     ログインユーザー: <span id="displayUserName">取得中...</span>
 </div>
@@ -26,6 +30,11 @@
     <div class="libraryFooter">
         <button class="backButton" onclick="location.href='packOpening.html'">ガチャに戻る</button>
     </div>
+</div>
+
+<div id="cardModal" class="cardModal">
+    <div class="modalOverlay" id="modalOverlay"></div>
+    <div class="modalContent" id="modalContent"></div>
 </div>
 
 <script src="scripts/library.js"></script>
