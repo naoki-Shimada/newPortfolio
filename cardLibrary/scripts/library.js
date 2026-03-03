@@ -89,6 +89,17 @@ function renderLibrary(cards) {
                 ` : ''}
             </div>
         `;
+
+        // モーダルのクリックイベント
+        cardItem.addEventListener('click', (e) => {
+            // switchBtn（通常/プレミア切り替えボタン）をクリックした時は拡大しない
+            if (e.target.classList.contains('switchBtn')){
+                return;
+            }
+            // モーダルを開く
+            openCardModal(cardItem.innerHTML, card.rarity);
+        })
+
     if (isOwned && hasPremium) {
             const buttons = cardItem.querySelectorAll('.switchBtn');
             buttons.forEach(btn => {
@@ -104,6 +115,28 @@ function renderLibrary(cards) {
         grid.appendChild(cardItem);
     });
 
+}
+
+/**
+ * モーダルを開く関数
+ */
+
+function openCardModal(innerHtml, rarity) {
+    const modal = document.getElementById('cardModal');
+    const content = document.getElementById('modalContent');
+
+    // 内容をコピーしてモーダルに入れる
+    content.innerHTML = innerHtml;
+    // モーダル表示用にクラス付与(必要に応じてレアリティクラスも)
+    content.className = `modalContent rarity-${rarity}`;
+    
+    modal.classList.add('active');
+
+    // 背景クリックで閉じる
+    const overlay = document.getElementById('modalOverlay');
+    overlay.onclick = () => {
+        modal.classList.remove('active');
+    };
 }
 
 // 内部的な切り替え実行関数
@@ -127,20 +160,6 @@ function executeSwitchView(btn, targetUrl, isPremium) {
     }
 }
 
-/* // 画像切り替え関数
-function switchCardView(btn, targetUrl) {
-    const cardFront = btn.closest('.cardFront');
-    const img = cardFront.querySelector('.libraryCardImg');
-
-    // 画像差し替え
-    img.src = targetUrl;
-
-    // ボタンのスタイル更新
-    const buttons = btn.parentElement.querySelectorAll('.switchBtn');
-    buttons.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    }
- */
 
 // ページ読み込み時に実行
 document.addEventListener('DOMContentLoaded', loadLibrary);

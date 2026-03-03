@@ -12,6 +12,25 @@ body {
     font-family: 'MedievalSharp', cursive;
 }
 
+.gameHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    width: 100%; 
+    height: 50%;
+}
+
+.gameTitleLogo {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    display: block;
+    /* ロゴの視認性を高めるためのドロップシャドウ */
+    filter: drop-shadow(0 0 20px rgba(0, 191, 255, 0.2));
+}
+
 .libraryWrapper {
     max-width: 1200px; /* 少し広げて余裕を持たせました */
     margin: 40px auto;
@@ -51,9 +70,31 @@ body {
     background: #222; /* 画像読み込み前の背景色 */
     border-radius: 8px;
     box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
-    /* overflow: hidden を外すとバッジやボタンが表示しやすくなりますが、
-       画像のはみ出しを防ぐため img 側で調整します。
+    cursor: pointer; 
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* カード画像のコンテナ */
+.cardImage {
+    width: 100%;
+    /* 縦横比をカードらしく固定（例: 3:4） */
+    aspect-ratio: 3 / 4; 
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1a1a1a; /* 画像がない部分の背景色 */
+}
+
+/* 画像自体の制御 */
+.libraryCardImg {
+    width: 100%;
+    height: 100%;
+    /* contain: 画像全体を収める（比率維持、余白ができる可能性あり）
+       cover: 枠いっぱいに広げる（比率維持、端が切れる可能性あり）
     */
+    object-fit: contain; 
+    display: block;
 }
 
 .libraryCard img {
@@ -128,12 +169,67 @@ body {
     margin-bottom: 40px; 
 }
 
+/* --- モーダル基本設定 --- */
+.cardModal {
+    display: none; /* 初期状態は非表示 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardModal.active {
+    display: flex;
+}
+
+.modalOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+}
+
+.modalContent {
+    position: relative;
+    z-index: 1001;
+    width: 80%;
+    max-width: 350px; /* 拡大時のサイズ */
+    transform: scale(0.8);
+    opacity: 0;
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.cardModal.active .modalContent {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
+/* モーダル内では切り替えボタンなどを非表示にする、または調整する */
+.modalContent .viewSwitcher {
+    bottom: -50px;
+}
+
 
 @media screen and (max-width: 768px) {
     .libraryGrid {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 10px;
+        grid-template-columns: repeat(2, 1fr); /* スマホ時は2列など */
         gap: 10px;
     }
+    
+    .libraryCard {
+        font-size: 0.8rem; /* 小さな画面用に調整 */
+    }
 
+    .modalContent {
+        max-width: 280px; /* スマホ画面に収まるサイズ */
+    }
+    
+    .cardModal.active .modalContent {
+        transform: scale(1.05);
+    }
 }
