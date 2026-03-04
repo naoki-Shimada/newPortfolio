@@ -81,9 +81,9 @@
     // メニューデータ（コードと表示内容の紐付け）
     const menuDatabase = {
     "AX1A": { 
-        name: "Cyber Gin Tonic", 
-        img: "img/CyberGinTonic.png", 
-        link: "cardLibrary/packOpening.html",
+        name: "Trapezohedoron", 
+        img: "img/Trapezohedoron.png", 
+        link: "cardLibrary/login.html",
         desc: "個人製作3(ガチャ＆ライブラリ)"
     },
     "OB1K": { 
