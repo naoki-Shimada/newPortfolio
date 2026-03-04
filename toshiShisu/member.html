@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Member | 都市伝説シスターズ(都市シス)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <div class="headerContainer">
+            <a href="/" class="logoWrapper">
+                <img src="img/toshiShisu_Logo_Bg_none.png">
+            </a>
+
+            <nav class="navMenu">
+                <ul class="navList">
+                    <li><a href="#intoduction">Introduction</a></li>
+                    <li><a href="#member">Member</a></li>
+                    <li><a href="#music">Music</a></li>
+                </ul>
+            </nav>
+
+            <div class="snsLinks">
+                <a href="#" class="snsIconLink" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="snsIconLink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="snsIconLink" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <section id="Member" class="memberSection">
+        <div class="memberContainer">
+            <div class="imageArea">
+                <div class="quoteBox" id="charQuote">「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」</div>
+                <img src="img/wc_hanakochan_model.png" id="memberImg" alt="HanakoChan_Before">
+
+                <div class="toggleButtons">
+                    <button onclick="changePhoto('off')" id="btnOff" class="active">OffShot!</button>
+                    <button onclick="changePhoto('on')" id="btnOn">OnStage!</button> 
+                </div>
+            </div>
+
+            <div class="profileArea">
+                <h2 class="memberName">トイレのはなこちゃん<span class="memberSub">Hanako-Chan</span></h2>
+                <table class="profileTable">
+                    <tr><th>年齢</th><td>没年10歳</td></tr>
+                    <tr><th>誕生日</th><td>4月4日</td></tr>
+                    <tr><th>スリーサイズ</th><td>不明(サイズ表記:150)</td></tr>
+                    <tr><th>出身地</th><td>岩手県</td></tr>
+                    <tr><th>好きなもの</th><td>お花</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など</td></tr>
+                    <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所。</td></tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="scripts/script.js"></script>
+</body>
+</html>

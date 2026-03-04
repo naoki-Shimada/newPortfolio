@@ -1,0 +1,213 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+    background-color: #050a14;
+    height: 1500px;
+    color: #ffffff;
+}
+
+/* ヘッダー全体：柔らかさを出すために少し浮かせたデザイン */
+.mainHeader {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    height: 65px;
+    /* 暗めの青のグラデーションで深みと柔らかさを両立 */
+    background: linear-gradient(135deg, rgba(13, 25, 48, 0.9), rgba(28, 45, 80, 0.9));
+    backdrop-filter: blur(8px);
+    border-radius: 40px; /* 強い角丸で柔らかい印象に */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 25px;
+}
+
+/* ロゴ：クリックでトップへ */
+.logoWrapper {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: opacity 0.3s ease;
+    display: flex;         /* 中の画像を中央に配置するため */
+    align-items: center;   /* 上下中央揃え */
+    height: 100%;          /* 親要素の高さに合わせる */
+}
+
+.logoWrapper img {
+    max-height: 120px;      /* ヘッダー(65px)より少し小さくして上下に余白を作る */
+    width: auto;           /* 横幅は比率を維持 */
+    object-fit: contain;   /* 枠内に収める設定 */
+    display: block;
+}
+
+.logoWrapper:hover {
+    opacity: 0.8;
+}
+
+/* ナビゲーションメニュー */
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navList a {
+    text-decoration: none;
+    color: #cfd8dc;
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.navList a:hover {
+    color: #82b1ff; /* 柔らかい青色に発光 */
+    text-shadow: 0 0 10px rgba(130, 177, 255, 0.6);
+}
+
+/* SNSセクション */
+.snsLinks {
+    display: flex;
+    gap: 15px;
+}
+
+.snsIconLink {
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.snsIconLink:hover {
+    color: #82b1ff;
+    transform: scale(1.2); /* ぷるんと少し大きくなるエフェクト */
+}
+
+/* メンバーページ */
+/* メンバーセクション全体 */
+.memberSection {
+    padding: 100px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.memberContainer {
+    display: flex;
+    gap: 60px;
+    max-width: 1100px;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+}
+
+/* 画像・セリフエリア */
+.imageArea {
+    position: relative;
+    flex: 1;
+}
+
+.imageArea img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
+}
+
+/* セリフの吹き出し */
+.quoteBox {
+    position: absolute;
+    left: -20px;
+    top: 40px;
+
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+
+
+    /* 記号を縦書き用に最適化 */
+    font-feature-settings: "vhal";
+
+    background-color: #d32f2f; /* 花子さんのイメージカラー：赤 ピンクがいい！ */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+/* ボタン */
+.toggleButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.toggleButtons button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: 2px solid #82b1ff;
+    background: transparent;
+    color: #82b1ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.toggleButtons button.active {
+    background: #82b1ff;
+    color: #050a14;
+}
+
+/* プロフィールエリア */
+.profileArea {
+    flex: 1;
+    color: white;
+}
+
+.memberName {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #82b1ff;
+    padding-bottom: 10px;
+}
+
+.memberSub {
+    font-size: 1rem;
+    color: #b0c4de;
+    margin-left: 10px;
+}
+
+.profileTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profileTable th, .profileTable td {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.profileTable th {
+    width: 140px;
+    color: #82b1ff;
+    vertical-align: top;
+}
+
