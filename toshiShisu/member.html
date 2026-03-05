@@ -32,13 +32,37 @@
 
     <section id="Member" class="memberSection">
         <div class="memberContainer">
+            <!-- といれのはなこちゃん -->
             <div class="imageArea">
                 <div class="quoteBox" id="charQuote">「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」</div>
-                <img src="img/wc_hanakochan_model.png" id="memberImg" alt="HanakoChan_Before">
+
+                <img src="img/wc_hanakochan_model.png" class="memberMainImg" id="memberImg" alt="HanakoChan_Before">
+
+                <div class="thumbnailArea">
+                    <div id="thumbsOff" class="thumbsOff thumbGroup">
+                        <img src="img/wc_hanakochan_model.png" class="thumbItem active" data-quote="「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」" data-color="#d32f2f" 
+                        onclick="changePhoto('off', this)" alt="Thumbnail Off1">
+                        <img src="img/wc_hanakochan_model2.png" class="thumbItem" data-quote="「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」" data-color="#d32f2f"   
+                        onclick="changePhoto('off', this)" alt="Thumbnail Off2">
+                    </div>
+
+                    <div class="thumbsOn thumbGroup" style="display: none;">
+                        <img src="img/hanakochan_onstage.png" class="thumbItem"
+                        data-quote="「ひぇぇ！！トイレなんかから出てくる不浄な女で、すみませぇーん！！」" data-color="#ff4081"
+                        onclick="changePhoto('on', this)">
+                    </div>
+                </div>
 
                 <div class="toggleButtons">
-                    <button onclick="changePhoto('off')" id="btnOff" class="active">OffShot!</button>
-                    <button onclick="changePhoto('on')" id="btnOn">OnStage!</button> 
+                    <button onclick="changePhoto('off', this)" id="btnOff" class="btnOff active"
+                            data-default-img="img/wc_hanakochan_model.png"
+                            data-quote="「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」" 
+                            data-color="#d32f2f">OffShot!</button>
+                            
+                    <button onclick="changePhoto('on', this)" id="btnOn" class="btnOn"
+                            data-default-img="img/hanakochan_onstage.png"
+                            data-quote="「ひぇぇ！！トイレなんかから出てくる不浄な女で、すみませぇーん！！」" 
+                            data-color="#ff4081">OnStage!</button>
                 </div>
             </div>
 
@@ -49,12 +73,63 @@
                     <tr><th>誕生日</th><td>4月4日</td></tr>
                     <tr><th>スリーサイズ</th><td>不明(サイズ表記:150)</td></tr>
                     <tr><th>出身地</th><td>岩手県</td></tr>
-                    <tr><th>好きなもの</th><td>お花</td></tr>
-                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など</td></tr>
+                    <tr><th>好きなもの</th><td>お花、学校の生徒</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など諸説あり</td></tr>
                     <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所。</td></tr>
                 </table>
             </div>
         </div>
+
+        <div class="memberContainer">
+            <!-- かしまさん -->
+            <div class="imageArea">
+                <div class="quoteBox" id="charQuote">「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」</div>
+
+                <img src="img/kashimasan_model1.png" class="memberMainImg" id="memberImg" alt="KashimaSan_Before">
+
+                <div class="thumbnailArea">
+                    <div id="thumbsOff" class="thumbsOff thumbGroup">
+                        <img src="img/kashimasan_model1.png" class="thumbItem active" 
+                        data-quote="「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」" 
+                        data-color="#587377" 
+                        onclick="changePhoto('off', this)" alt="Thumbnail Off1">
+                    </div>
+
+                    <div class="thumbsOn thumbGroup" style="display: none;">
+                        <img src="img/kashimasan_onstage.png" class="thumbItem"
+                        data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…声援には応えなきゃなっ！」" 
+                        data-color="#587377"
+                        onclick="changePhoto('on', this)">
+                    </div>
+                </div>
+
+                <div class="toggleButtons">
+                    <button onclick="changePhoto('off', this)" id="btnOff" class="btnOff active"
+                            data-default-img="img/kashimasan_model1.png"
+                            data-quote="「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」" 
+                            data-color="#d32f2f">OffShot!</button>
+                            
+                    <button onclick="changePhoto('on', this)" id="btnOn" class="btnOn"
+                            data-default-img="img/kashimasan_onstage.png"
+                            data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…声援には応えなきゃなっ！」" 
+                            data-color="#ff4081">OnStage!</button>
+                </div>
+            </div>
+
+            <div class="profileArea">
+                <h2 class="memberName">かしまさん<span class="memberSub">Kashima-San</span></h2>
+                <table class="profileTable">
+                    <tr><th>年齢</th><td>没年10歳</td></tr>
+                    <tr><th>誕生日</th><td>4月4日</td></tr>
+                    <tr><th>スリーサイズ</th><td>不明(サイズ表記:150)</td></tr>
+                    <tr><th>出身地</th><td>岩手県</td></tr>
+                    <tr><th>好きなもの</th><td>お花、学校の生徒</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など諸説あり</td></tr>
+                    <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所。</td></tr>
+                </table>
+            </div>
+        </div>
+        
     </section>
     <script src="scripts/script.js"></script>
 </body>

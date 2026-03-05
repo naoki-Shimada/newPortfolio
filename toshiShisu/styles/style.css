@@ -98,7 +98,6 @@ body {
 /* メンバーセクション全体 */
 .memberSection {
     padding: 100px 50px;
-    display: flex;
     justify-content: center;
 }
 
@@ -173,6 +172,44 @@ body {
     background: #82b1ff;
     color: #050a14;
 }
+
+/* サムネイルエリア */
+.thumbnailArea {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.thumbGroup {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.thumbItem {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.thumbItem:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 選択されているサムネイルのスタイル */
+.thumbItem.active {
+    opacity: 1;
+    border-color: #82b1ff;
+    box-shadow: 0 0 10px rgba(130, 177, 255, 0.5);
+}
+
 
 /* プロフィールエリア */
 .profileArea {
