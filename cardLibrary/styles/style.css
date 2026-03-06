@@ -38,6 +38,23 @@ body {
     letter-spacing: 1px; /* 文字間隔を少し広げて読みやすく */
 }
 
+/* PC環境のスタイル */
+.logoutButton {
+    margin-left: 15px;
+    padding: 5px 15px;
+    background-color: #4a0000;
+    color: #ffffff;
+    border: 1px solid #d4af37;
+    cursor: pointer;
+    font-family: 'MedievalSharp', cursive;
+    transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+    background-color: #8b0000;
+}
+
+
 .mainVisual {
     flex: 1;
     display: flex;
@@ -265,6 +282,29 @@ body {
 
 /* スマホ対応 (768px以下) */
 @media screen and (max-width: 768px) {
+
+    .userHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .logoutButton {
+        margin-left: 0;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .initialNavigation {
+        margin-top: 20px;
+    }
+    
+    .secondaryButton {
+        width: 80%;
+        padding: 12px;
+        font-size: 1.1rem;
+    }
 
     .sealedPack {
         width: 220px;

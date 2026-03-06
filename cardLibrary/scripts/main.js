@@ -11,12 +11,20 @@ async function displayUserInfo() {
         const response = await fetch('scripts/getUserInfo.php');
         const data = await response.json();
 
+        // 未ログインならログイン画面へ飛ばす
+        if (!data.isLoggedIn) {
+            location.href = 'login.html';
+            return;
+        }
+
         const displayEl = document.getElementById('displayUserName');
         if (displayEl) {
             displayEl.textContent = data.userName + " さん";
         }
     } catch(error) {
         console.error('ユーザー情報取得失敗', error);
+        // 通信エラーなどで判定不能な場合も安全のため戻す
+        location.href = 'login.html';
     }
 }
 

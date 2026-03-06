@@ -22,6 +22,22 @@ body {
     height: 50%;
 }
 
+/* PC環境のスタイル */
+.logoutButton {
+    margin-left: 15px;
+    padding: 5px 15px;
+    background-color: #4a0000;
+    color: #ffffff;
+    border: 1px solid #d4af37;
+    cursor: pointer;
+    font-family: 'MedievalSharp', cursive;
+    transition: background-color 0.3s;
+}
+
+.logoutButton:hover {
+    background-color: #8b0000;
+}
+
 .gameTitleLogo {
     max-width: 600px;
     width: 100%;
@@ -216,6 +232,19 @@ body {
 
 
 @media screen and (max-width: 768px) {
+    .userHeader {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    
+    .logoutButton {
+        margin-left: 0;
+        width: 100%;
+        max-width: 200px;
+    }
+
     .libraryGrid {
         grid-template-columns: repeat(2, 1fr); /* スマホ時は2列など */
         gap: 10px;

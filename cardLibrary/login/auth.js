@@ -32,3 +32,28 @@ async function hundleAuth(type) {
         console.error('Auth Error:', error);
     }
 }
+
+/* ログアウト処理を実行し、ログイン画面へ遷移する */
+async function handleLogout() {
+    if (!confirm('ログアウトしますか？')) {
+        return;
+    }
+
+    try {
+        const response = await fetch('login/logout.php', {
+            method: 'POST'
+        });
+        const result = await response.json();
+
+        if (result.success) {
+            // ログイン画面へリダイレクト
+            location.href = 'login.html';
+        } else {
+            alert('ログアウト処理に失敗しました。');
+        }
+    } catch (error) {
+        console.error('Logout Error:', error);
+        alert('通信エラーが発生しました。');
+    }
+}
+
