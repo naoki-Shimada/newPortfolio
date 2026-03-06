@@ -94,11 +94,130 @@ body {
     transform: scale(1.2); /* ぷるんと少し大きくなるエフェクト */
 }
 
+/* トップページ */
+/* --- Hero Section --- */
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.heroText {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(130, 177, 255, 0.8);
+    margin-bottom: 20px;
+}
+
+.heroSubText {
+    font-size: 1.2rem;
+    color: #cfd8dc;
+}
+
+/* --- News Banner Slider --- */
+.newsBannerSection {
+    padding: 40px 0;
+    background-color: #050a14;
+}
+
+.bannerContainer {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.bannerSlider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slideItem {
+    min-width: 100%;
+}
+
+.slideItem img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* スライダーボタン */
+.sliderBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(130, 177, 255, 0.3);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.sliderBtn:hover {
+    background: rgba(130, 177, 255, 0.8);
+}
+
+.prevBtn { left: 20px; }
+.nextBtn { right: 20px; }
+
+/* ドットインジケーター */
+.sliderDots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background-color: #82b1ff;
+    box-shadow: 0 0 8px #82b1ff;
+}
+
 /* メンバーページ */
 /* メンバーセクション全体 */
 .memberSection {
-    padding: 100px 50px;
-    justify-content: center;
+    padding: 100px 20px; /* 左右のパディングを少し調整 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px; /* コンテナ同士の間隔を広く確保 */
 }
 
 .memberContainer {
@@ -110,12 +229,15 @@ body {
     padding: 40px;
     border-radius: 30px;
     backdrop-filter: blur(5px);
+    box-sizing: border-box;
 }
 
 /* 画像・セリフエリア */
 .imageArea {
     position: relative;
     flex: 1;
+    /* セリフ(quoteBox)が左側に飛び出す分、余白を確保して埋もれを防止 */
+    margin-left: 50px;
 }
 
 .imageArea img {
@@ -123,6 +245,7 @@ body {
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     transition: opacity 0.5s ease;
+    display: block;
 }
 
 /* セリフの吹き出し */
@@ -248,3 +371,43 @@ body {
     vertical-align: top;
 }
 
+/* --- スマホ・タブレット対応 (768px以下) --- */
+@media (max-width: 768px) {
+    .heroText {
+        font-size: 2rem;
+    }
+    .heroSection {
+        height: 60vh;
+    }
+    .sliderBtn {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    .bannerContainer {
+        margin: 0 15px;
+    }
+
+    .memberContainer {
+        flex-direction: column; /* 縦並びに変更 */
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .imageArea {
+        margin-left: 30px; /* スマホ時は少し狭める */
+        width: calc(100% - 40px);
+    }
+
+    .quoteBox {
+        left: -30px;
+        font-size: 0.85rem;
+    }
+
+    .profileArea {
+        width: 100%;
+    }
+
+    .memberName {
+        font-size: 1.5rem;
+    }
+}

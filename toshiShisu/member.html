@@ -10,15 +10,15 @@
 <body>
     <header class="mainHeader">
         <div class="headerContainer">
-            <a href="/" class="logoWrapper">
+            <a href="top.html" class="logoWrapper">
                 <img src="img/toshiShisu_Logo_Bg_none.png">
             </a>
 
             <nav class="navMenu">
                 <ul class="navList">
-                    <li><a href="#intoduction">Introduction</a></li>
-                    <li><a href="#member">Member</a></li>
-                    <li><a href="#music">Music</a></li>
+                    <li><a href="introduction.html">Introduction</a></li>
+                    <li><a href="member.html">Member</a></li>
+                    <li><a href="music.html">Music</a></li>
                 </ul>
             </nav>
 
@@ -34,7 +34,7 @@
         <div class="memberContainer">
             <!-- といれのはなこちゃん -->
             <div class="imageArea">
-                <div class="quoteBox" id="charQuote">「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」</div>
+                <div class="quoteBox" id="charQuote" style="background-color: #d32f2f;">「ふひひ...ひさしぶりのにんげんさんだぁ...いっしょにあそぼ♡」</div>
 
                 <img src="img/wc_hanakochan_model.png" class="memberMainImg" id="memberImg" alt="HanakoChan_Before">
 
@@ -69,13 +69,18 @@
             <div class="profileArea">
                 <h2 class="memberName">トイレのはなこちゃん<span class="memberSub">Hanako-Chan</span></h2>
                 <table class="profileTable">
+                    <tr><th>本名</th><td>長谷川花子</td></tr>
                     <tr><th>年齢</th><td>没年10歳</td></tr>
                     <tr><th>誕生日</th><td>4月4日</td></tr>
-                    <tr><th>スリーサイズ</th><td>不明(サイズ表記:150)</td></tr>
+                    <tr><th>スリーサイズ</th><td>可変的であるため不明</td></tr>
                     <tr><th>出身地</th><td>岩手県</td></tr>
                     <tr><th>好きなもの</th><td>お花、学校の生徒</td></tr>
-                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など諸説あり</td></tr>
-                    <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所。</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰、トイレへの落雪で死んでしまった女の子の幽霊など諸説あり</td></tr>
+                    <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所妖怪。はなこちゃんを呼び出す儀式を行ったものに悪戯を仕掛けようとする。
+                        それと同時に学校の守り神のような存在であるため、生徒の危機に駆け付け守ってくれる側面もある。
+                        基本的に小学校のトイレを根城としているが、高校や会社のオフィスのトイレに出現した際にはそれ相応の外見、服装で現れるらしい。
+                        今や妖怪もコンプライアンスを順守するのがマナーの時代らしい。
+                    </td></tr>
                 </table>
             </div>
         </div>
@@ -83,7 +88,7 @@
         <div class="memberContainer">
             <!-- かしまさん -->
             <div class="imageArea">
-                <div class="quoteBox" id="charQuote">「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」</div>
+                <div class="quoteBox" id="charQuote" style="background-color: #283338;">「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」</div>
 
                 <img src="img/kashimasan_model1.png" class="memberMainImg" id="memberImg" alt="KashimaSan_Before">
 
@@ -91,14 +96,14 @@
                     <div id="thumbsOff" class="thumbsOff thumbGroup">
                         <img src="img/kashimasan_model1.png" class="thumbItem active" 
                         data-quote="「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」" 
-                        data-color="#587377" 
+                        data-color="#283338" 
                         onclick="changePhoto('off', this)" alt="Thumbnail Off1">
                     </div>
 
                     <div class="thumbsOn thumbGroup" style="display: none;">
                         <img src="img/kashimasan_onstage.png" class="thumbItem"
-                        data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…声援には応えなきゃなっ！」" 
-                        data-color="#587377"
+                        data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…世の中捨てたもんじゃねぇな！」" 
+                        data-color="#69929C"
                         onclick="changePhoto('on', this)">
                     </div>
                 </div>
@@ -107,29 +112,88 @@
                     <button onclick="changePhoto('off', this)" id="btnOff" class="btnOff active"
                             data-default-img="img/kashimasan_model1.png"
                             data-quote="「アイドルだぁ…！？まぁ、このマスクを外してくれるなら喜んでやってやるよっ！！」" 
-                            data-color="#d32f2f">OffShot!</button>
+                            data-color="#283338">OffShot!</button>
                             
                     <button onclick="changePhoto('on', this)" id="btnOn" class="btnOn"
                             data-default-img="img/kashimasan_onstage.png"
-                            data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…声援には応えなきゃなっ！」" 
-                            data-color="#ff4081">OnStage!</button>
+                            data-quote="「アタシみたいなのを好きになるもの好きもいるもんだな…世の中捨てたもんじゃねぇな！」" 
+                            data-color="#69929C">OnStage!</button>
                 </div>
             </div>
 
             <div class="profileArea">
                 <h2 class="memberName">かしまさん<span class="memberSub">Kashima-San</span></h2>
                 <table class="profileTable">
-                    <tr><th>年齢</th><td>没年10歳</td></tr>
-                    <tr><th>誕生日</th><td>4月4日</td></tr>
-                    <tr><th>スリーサイズ</th><td>不明(サイズ表記:150)</td></tr>
-                    <tr><th>出身地</th><td>岩手県</td></tr>
-                    <tr><th>好きなもの</th><td>お花、学校の生徒</td></tr>
-                    <tr><th>都市伝説発祥のきっかけ</th><td>トイレの神様信仰もしくはトイレへの落雪で死んでしまった女の子の幽霊など諸説あり</td></tr>
-                    <tr><th>人物紹介</th><td>言わずと知れた都市伝説界の大御所。</td></tr>
+                    <tr><th>本名</th><td>カシマレイコ</td></tr>
+                    <tr><th>年齢</th><td>没年18歳</td></tr>
+                    <tr><th>誕生日</th><td>2月2日</td></tr>
+                    <tr><th>スリーサイズ</th><td></td></tr>
+                    <tr><th>出身地</th><td>茨城県</td></tr>
+                    <tr><th>好きなもの</th><td>犬、家族</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>一家で無理心中した傷痍軍人の娘の幽霊、口裂け女の派生など諸説あり</td></tr>
+                    <tr><th>人物紹介</th><td>傷痍軍人の父親の面影が投影された姿の女の子の幽霊。</td></tr>
                 </table>
             </div>
         </div>
         
+        <div class="memberContainer">
+            <!-- メリーさん -->
+            <div class="imageArea">
+                <div class="quoteBox" id="charQuote" style="background-color: #C3A64E;">「わたし、メリーさん…。いま、あなたのうしろにいるの」</div>
+
+                <img src="img/merrySan_up.png" class="memberMainImg" id="memberImg" alt="KashimaSan_Before">
+
+                <div class="thumbnailArea">
+                    <div id="thumbsOff" class="thumbsOff thumbGroup">
+                        <img src="img/merrySan_up.png" class="thumbItem active" 
+                        data-quote="「わたし、メリーさん…。いま、あなたのうしろにいるの」" 
+                        data-color="#C3A64E" 
+                        onclick="changePhoto('off', this)" alt="Thumbnail Off1">
+                    </div>
+
+                    <div id="thumbsOff" class="thumbsOff thumbGroup">
+                        <img src="img/merrySan_overAllview.png" class="thumbItem active" 
+                        data-quote="「わたし、メリーさん…。いま、あなたのうしろにいるの」" 
+                        data-color="#C3A64E" 
+                        onclick="changePhoto('off', this)" alt="Thumbnail Off2">
+                    </div>
+
+                    <div class="thumbsOn thumbGroup" style="display: none;">
+                        <img src="img/kashimasan_onstage.png" class="thumbItem"
+                        data-quote="「」" 
+                        data-color="#c3604e"
+                        onclick="changePhoto('on', this)">
+                    </div>
+                </div>
+
+                <div class="toggleButtons">
+                    <button onclick="changePhoto('off', this)" id="btnOff" class="btnOff active"
+                            data-default-img="img/merrySan_up.png"
+                            data-quote="「わたし、メリーさん…。いま、あなたのうしろにいるの」" 
+                            data-color="#C3A64E">OffShot!</button>
+                            
+                    <button onclick="changePhoto('on', this)" id="btnOn" class="btnOn"
+                            data-default-img="img/kashimasan_onstage.png"
+                            data-quote="「」" 
+                            data-color="#c3604e">OnStage!</button>
+                </div>
+            </div>
+
+            <div class="profileArea">
+                <h2 class="memberName">メリーさん<span class="memberSub">Merry-San</span></h2>
+                <table class="profileTable">
+                    <tr><th>本名</th><td>コールド・ナイトゴーント・メリー</td></tr>
+                    <tr><th>年齢</th><td>不明</td></tr>
+                    <tr><th>誕生日</th><td>12月14日</td></tr>
+                    <tr><th>スリーサイズ</th><td></td></tr>
+                    <tr><th>出身地</th><td>岡山県、神奈川県(横浜)</td></tr>
+                    <tr><th>好きなもの</th><td>シュークリーム</td></tr>
+                    <tr><th>都市伝説発祥のきっかけ</th><td>電話をしながら追跡する呪いの人形、横浜近辺の市街地を生活圏にしていた異様な見た目の娼婦など諸説あり</td></tr>
+                    <tr><th>人物紹介</th><td>様々な都市伝説的な噂、伝承が混ざり合い複合した怪異。</td></tr>
+                </table>
+            </div>
+        </div>
+
     </section>
     <script src="scripts/script.js"></script>
 </body>

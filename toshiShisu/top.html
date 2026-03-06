@@ -10,15 +10,15 @@
 <body>
     <header class="mainHeader">
         <div class="headerContainer">
-            <a href="/" class="logoWrapper">
+            <a href="#" class="logoWrapper">
                 <img src="img/toshiShisu_Logo_Bg_none.png">
             </a>
 
             <nav class="navMenu">
                 <ul class="navList">
-                    <li><a href="#intoduction">Introduction</a></li>
+                    <li><a href="introduction.html">Introduction</a></li>
                     <li><a href="member.html">Member</a></li>
-                    <li><a href="#music">Music</a></li>
+                    <li><a href="music.html">Music</a></li>
                 </ul>
             </nav>
 
@@ -31,11 +31,36 @@
     </header>
 
     <!-- ヒーロー画像もしくはユニットソングMV -->
-    <p class="heroText">04:44:44！！ やつらがやってくるっ！？</p>
-    <img src="">
-
-    <section class="topBnr">
+    <section class="heroSection">
+        <div class="heroContent"> 
+            <h1 class="heroText">04:44:44！！<br> やつらがやってくるっ！？</h1>
+            <p class="heroSubText">都市伝説アイドルユニット「都市シス」始動。</p>
+        </div>
+        <img src="img/" alt="Hero Image" class="heroImage">
     </section>
 
+    <section class="newsBannerSection">
+        <div class="bannerContainer">
+            <div class="bannerSlider" id="bannerSlider">
+                    <div class="sildeItem">
+                        <a href="#"><img src="img/banner01.jpg" alt="New Release"></a>
+                    </div>
+                    <div class="sildeItem">
+                        <a href="#"><img src="img/banner02.jpg" alt=""></a>
+                    </div>
+                    <div class="sildeItem">
+                        <a href="#"><img src="img/banner03.jpg" alt=""></a>
+                    </div>
+                </div>
+            
+
+            <button class="sliderBtn prevBtn" onclick="moveSlide(-1)"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="sliderBtn prevBtn" onclick="moveSlide(1)"><i class="fa-solid fa-chevron-right"></i></button>
+
+            <div class="sliderDots" id="sliderDots"></div>
+        </div>
+    </section>
+
+    <script src="scripts/script.js"></script>
 </body>
 </html>

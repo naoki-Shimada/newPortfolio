@@ -35,7 +35,7 @@ function changePhoto(type, element) {
         btnOff.classList.remove('active');
         thumbsOn.style.display = 'flex';
         thumbsOff.style.display = 'none';
-        updateActiveThumb(thumbsOff, targetSrc);
+        updateActiveThumb(thumbsOn, targetSrc);
     } else {
         btnOff.classList.add('active');
         btnOn.classList.remove('active');
@@ -43,44 +43,6 @@ function changePhoto(type, element) {
         thumbsOn.style.display = 'none';
         updateActiveThumb(thumbsOff, targetSrc);
     }
-
-/*     if (type === 'on') {
-        console.log("Switching to OnStage mode");
-        imgElement.src = 'img/hanakochan_onstage.png';
-        quoteElement.innerText = '「ひぇぇ！！トイレなんかから出てくる不浄な女で、すみませぇーん！！」';
-        quoteElement.style.backgroundColor = '#ff4081'; // イメージカラーのピンクに
-
-        // ボタンのスタイル切り替え
-        btnOn.classList.add('active');
-        btnOff.classList.remove('active');
-
-        // サムネイルグループの切り替え
-        thumbsOn.style.display = 'flex';
-        thumbsOff.style.display = 'none';
-
-        // サムネイルの枠線を更新(onの時)
-        syncActiveThumb(thumbsOn, imgSrc);
-    } else {
-        // オフショットのデフォルト画像
-        const defaultOff = 'img/wc_hanakochan_model.png';
-        imgElement.src = imgSrc || defaultOff; // imgSrcを優先する
-        
-        console.log(`Setting OffShot image to: ${imgElement.src}`);
-
-        quoteElement.innerText = '「ふひひ…ひさしぶりのにんげんさんだぁ…いっしょにあそぼ♡」';
-        quoteElement.style.backgroundColor = '#d32f2f';
-
-        // ボタンのスタイル切り替え
-        btnOff.classList.add('active');
-        btnOn.classList.remove('active');
-
-        // ★サムネイルグループの切り替え
-        thumbsOff.style.display = 'flex';
-        thumbsOn.style.display = 'none';
-
-        // サムネイルの枠線を更新(offの時)
-        syncActiveThumb(thumbsOff, imgSrc); 
-    } */
 
     // 切り替え時のフェード演出
     imgElement.style.opacity = 0;
