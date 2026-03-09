@@ -1,0 +1,438 @@
+body {
+    margin: 0;
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
+    background-color: #050a14;
+    height: 1500px;
+    color: #ffffff;
+}
+
+/* ヘッダー全体：柔らかさを出すために少し浮かせたデザイン */
+.mainHeader {
+    position: fixed;
+    top: 15px;
+    left: 20px;
+    right: 20px;
+    height: 65px;
+    /* 暗めの青のグラデーションで深みと柔らかさを両立 */
+    background: linear-gradient(135deg, rgba(13, 25, 48, 0.9), rgba(28, 45, 80, 0.9));
+    backdrop-filter: blur(8px);
+    border-radius: 40px; /* 強い角丸で柔らかい印象に */
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.headerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 25px;
+}
+
+/* ロゴ：クリックでトップへ */
+.logoWrapper {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+    transition: opacity 0.3s ease;
+    display: flex;         /* 中の画像を中央に配置するため */
+    align-items: center;   /* 上下中央揃え */
+    height: 100%;          /* 親要素の高さに合わせる */
+}
+
+.logoWrapper img {
+    max-height: 120px;      /* ヘッダー(65px)より少し小さくして上下に余白を作る */
+    width: auto;           /* 横幅は比率を維持 */
+    object-fit: contain;   /* 枠内に収める設定 */
+    display: block;
+}
+
+.logoWrapper:hover {
+    opacity: 0.8;
+}
+
+/* ナビゲーションメニュー */
+.navList {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    margin: 0;
+    padding: 0;
+}
+
+.navList a {
+    text-decoration: none;
+    color: #cfd8dc;
+    font-size: 1.5rem;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.navList a:hover {
+    color: #82b1ff; /* 柔らかい青色に発光 */
+    text-shadow: 0 0 10px rgba(130, 177, 255, 0.6);
+}
+
+/* SNSセクション */
+.snsLinks {
+    display: flex;
+    gap: 15px;
+}
+
+.snsIconLink {
+    color: #ffffff;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.snsIconLink:hover {
+    color: #82b1ff;
+    transform: scale(1.2); /* ぷるんと少し大きくなるエフェクト */
+}
+
+/* トップページ */
+/* --- Hero Section --- */
+.heroSection {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heroImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: brightness(0.7);
+}
+
+.heroContent {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.heroText {
+    font-size: 3.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    text-shadow: 0 0 20px rgba(130, 177, 255, 0.8);
+    margin-bottom: 20px;
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(130, 177, 255, 0.5); }
+    to { text-shadow: 0 0 25px rgba(130, 177, 255, 0.9), 0 0 10px #ff4081; }
+}
+
+.heroSubText {
+    font-size: 1.2rem;
+    color: #cfd8dc;
+}
+
+/* --- News Banner Slider --- */
+.newsBannerSection {
+    padding: 40px 0;
+    background-color: #050a14;
+}
+
+.bannerContainer {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.bannerSlider {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slideItem {
+    min-width: 100%;
+}
+
+.slideItem img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* スライダーボタン */
+.sliderBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(130, 177, 255, 0.3);
+    border: none;
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: background 0.3s;
+    z-index: 10;
+}
+
+.sliderBtn:hover {
+    background: rgba(130, 177, 255, 0.8);
+}
+
+.prevBtn { left: 20px; }
+.nextBtn { right: 20px; }
+
+/* ドットインジケーター */
+.sliderDots {
+    text-align: center;
+    margin-top: 15px;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dot.active {
+    background-color: #82b1ff;
+    box-shadow: 0 0 8px #82b1ff;
+}
+
+/* メンバーページ */
+/* メンバーセクション全体 */
+.memberSection {
+    padding: 100px 20px; /* 左右のパディングを少し調整 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px; /* コンテナ同士の間隔を広く確保 */
+}
+
+.memberContainer {
+    display: flex;
+    gap: 60px;
+    max-width: 1100px;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 40px;
+    border-radius: 30px;
+    backdrop-filter: blur(5px);
+    box-sizing: border-box;
+}
+
+/* 画像・セリフエリア */
+.imageArea {
+    position: relative;
+    flex: 1;
+    /* セリフ(quoteBox)が左側に飛び出す分、余白を確保して埋もれを防止 */
+    margin-left: 50px;
+}
+
+.imageArea img {
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
+    display: block;
+}
+
+/* セリフの吹き出し */
+.quoteBox {
+    position: absolute;
+    left: -20px;
+    top: 40px;
+
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
+
+
+    /* 記号を縦書き用に最適化 */
+    font-feature-settings: "vhal";
+
+    background-color: #d32f2f; /* 花子さんのイメージカラー：赤 ピンクがいい！ */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    z-index: 10;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    white-space: nowrap;
+}
+
+.memberMainImg {
+    width: 100%;
+    /* 修正: 画面からはみ出さないよう、最大高さを設定（70vh = 画面の高さの70%） */
+    max-height: 600px; 
+    aspect-ratio: 3 / 4; 
+    object-fit: cover;   
+    /* 追加: 画像の表示位置を「上」に合わせる（足元より顔を優先して表示） */
+    object-position: top; 
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
+    display: block;
+}
+
+/* ボタン */
+.toggleButtons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.toggleButtons button {
+    padding: 10px 25px;
+    border-radius: 25px;
+    border: 2px solid #82b1ff;
+    background: transparent;
+    color: #82b1ff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.toggleButtons button.active {
+    background: #82b1ff;
+    color: #050a14;
+}
+
+/* サムネイルエリア */
+.thumbnailArea {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.thumbGroup {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.thumbItem {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    opacity: 0.6;
+}
+
+.thumbItem:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* 選択されているサムネイルのスタイル */
+.thumbItem.active {
+    opacity: 1;
+    border-color: #82b1ff;
+    box-shadow: 0 0 10px rgba(130, 177, 255, 0.5);
+}
+
+
+/* プロフィールエリア */
+.profileArea {
+    flex: 1;
+    color: white;
+}
+
+.memberName {
+    font-size: 2rem;
+    margin-bottom: 25px;
+    border-bottom: 2px solid #82b1ff;
+    padding-bottom: 10px;
+}
+
+.memberSub {
+    font-size: 1rem;
+    color: #b0c4de;
+    margin-left: 10px;
+}
+
+.profileTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.profileTable th, .profileTable td {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    text-align: left;
+    font-size: 0.95rem;
+}
+
+.profileTable th {
+    width: 140px;
+    color: #82b1ff;
+    vertical-align: top;
+}
+
+/* --- スマホ・タブレット対応 (768px以下) --- */
+@media (max-width: 768px) {
+    .heroText {
+        font-size: 2rem;
+    }
+    .heroSection {
+        height: 60vh;
+    }
+    .sliderBtn {
+        padding: 10px;
+        font-size: 0.8rem;
+    }
+    .bannerContainer {
+        margin: 0 15px;
+    }
+
+    .memberContainer {
+        flex-direction: column; /* 縦並びに変更 */
+        gap: 30px;
+        padding: 20px;
+    }
+
+    .memberMainImg {
+        aspect-ratio: 1 / 1; /* スマホでは正方形にするなど、調整が可能です */
+    }
+
+
+    .imageArea {
+        margin-left: 30px; /* スマホ時は少し狭める */
+        width: calc(100% - 40px);
+    }
+
+    .quoteBox {
+        left: -30px;
+        font-size: 0.85rem;
+    }
+
+    .profileArea {
+        width: 100%;
+    }
+
+    .memberName {
+        font-size: 1.5rem;
+    }
+}
