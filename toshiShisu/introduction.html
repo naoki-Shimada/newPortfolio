@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Introduction | 都市伝説シスターズ(都市シス)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="mainHeader">
+        <div class="headerContainer">
+            <a href="#" class="logoWrapper">
+                <img src="img/toshiShisu_Logo_Bg_none.png">
+            </a>
+
+            <input type="checkbox" id="menuToggle" class="menuToggle">
+            <label for="menuToggle" class="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="navMenu">
+                <ul class="navList">
+                    <li><a href="introduction.html">Introduction</a></li>
+                    <li><a href="member.html">Member</a></li>
+                    <li><a href="music.html">Music</a></li>
+                </ul>
+            </nav>
+
+            <div class="snsLinks">
+                <a href="#" class="snsIconLink" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="snsIconLink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="snsIconLink" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <main class="introMain">
+        <section class="comparisonVisual">
+            <div class="sidePanel leftSide" id="rumorPanel">
+                <div class="contentInner">
+                    <h2 class="sideTitle">The Rumor</h2>
+                    <p class="description">
+                        誰もいないはずのトイレから聞こえる啜り泣き。<br>
+                        深夜、背後に忍び寄る冷たい気配。<br>
+                        語り継がれる恐怖は、ただの噂ではなかった。
+                    </p>
+                    <div class="glitchEffect">WARNING: OBSERVED</div>
+                </div>
+                <div class="bgOverlay"></div>
+            </div>
+
+            <div class="sidePanel rightSide" id="truthPanel">
+                <div class="contentInner">
+                    <h2 class="sideTitle">The Truth</h2>
+                    <p class="description">
+                        絶望の淵で、彼女たちはマイクを取った。<br>
+                        恐怖を希望に変えるため、<br>
+                        今、最恐のステージが幕を開ける。
+                    </p>
+                    <div class="sparkleEffect">ON STAGE NOW</div>
+                </div>
+                <div class="bgOverlay"></div>
+            </div>
+
+            <div class="splitHandle" id="splitHandle">
+                <span class="handleIcon"><i class="fa-solid fa-arrows-left-right"></i></span>
+            </div>
+        </section>
+    </main>
+
+    <script src="scripts/introScript.js"></script>
+</body>
+</html>

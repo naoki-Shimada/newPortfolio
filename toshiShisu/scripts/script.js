@@ -1,4 +1,34 @@
 /**
+ * ハンバーガーメニューの開閉制御
+ */
+document.addEventListener('DOMContentLoaded', ()=> {
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.querySelector('.navMenu'); // HTMLのクラスに合わせる
+
+    if(menuToggle && navMenu) {
+        menuToggle.addEventListener('change', () =>{
+            if(menuToggle.checked) {
+                navMenu.classList.add('active');
+            } else {
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // リンクをクリックした時にメニューを閉じる（ページ内リンク対策）
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(Link => {
+            Link.addEventListener('click', () => {
+                menuToggle.checked = false;
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+});
+
+
+/**
  * キャラクター切り替え汎用関数
  * @param {string} type - 'on' または 'off'
  * @param {HTMLElement} element - クリックされた要素自体

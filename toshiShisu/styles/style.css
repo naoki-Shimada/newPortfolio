@@ -129,6 +129,12 @@ body {
     line-height: 1.2;
     text-shadow: 0 0 20px rgba(130, 177, 255, 0.8);
     margin-bottom: 20px;
+    animation: textGlow 2s infinite alternate;
+}
+
+@keyframes textGlow {
+    from { text-shadow: 0 0 10px rgba(130, 177, 255, 0.5); }
+    to { text-shadow: 0 0 25px rgba(130, 177, 255, 0.9), 0 0 10px #ff4081; }
 }
 
 .heroSubText {
@@ -210,6 +216,92 @@ body {
     box-shadow: 0 0 8px #82b1ff;
 }
 
+/* イントロダクションページ */
+.introMain {
+    width: 100%;
+    height: calc(100vh - 80px); /* ヘッダー分を引く */
+    overflow: hidden;
+    position: relative;
+    background-color: #000;
+}
+
+.comparisonVisual {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.sidePanel {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.1s ease-out;
+}
+
+/* 左側（噂）：ダークで不穏なイメージ */
+.leftSide {
+    left: 0;
+    width: 50%;
+    background: url('../img/The_Rumor_bg.png') center/cover no-repeat;
+    background-color: #1a0000;
+    z-index: 1;
+}
+
+/* 右側（真実）：華やかでサイバーなイメージ */
+.rightSide {
+    right: 0;
+    width: 50%;
+    background: url('../img/The_Truth_bg.png') center/cover no-repeat;
+    background-color: #000b1a;
+    z-index: 1;
+}
+
+.contentInner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    text-align: center;
+    color: #fff;
+    pointer-events: none; /* 下層の要素を触れるように */
+}
+
+.sideTitle {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+
+/* スライダーの仕切り線 */
+.splitHandle {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 100%;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    z-index: 10;
+    cursor: ew-resize;
+    transform: translateX(-50%);
+}
+
+.handleIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    color: #000;
+    padding: 10px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+}
+
 /* メンバーページ */
 /* メンバーセクション全体 */
 .memberSection {
@@ -270,6 +362,20 @@ body {
     z-index: 10;
     box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     white-space: nowrap;
+}
+
+.memberMainImg {
+    width: 100%;
+    /* 修正: 画面からはみ出さないよう、最大高さを設定（70vh = 画面の高さの70%） */
+    max-height: 600px; 
+    aspect-ratio: 3 / 4; 
+    object-fit: cover;   
+    /* 追加: 画像の表示位置を「上」に合わせる（足元より顔を優先して表示） */
+    object-position: top; 
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: opacity 0.5s ease;
+    display: block;
 }
 
 /* ボタン */
@@ -373,6 +479,84 @@ body {
 
 /* --- スマホ・タブレット対応 (768px以下) --- */
 @media (max-width: 768px) {
+    /* --- ハンバーガーアイコンのデザイン --- */
+
+    /* 1. チェックボックス本体は画面から隠す */
+    .menuToggle {
+        display: none;
+    }
+
+    /* 2. 三本線を入れる枠の設定 */
+    .menuIcon {
+        display: block;
+        cursor: pointer;
+        width: 30px;
+        height: 22px;
+        position: relative;
+        z-index: 1001; /* メニューより上に表示 */
+    }
+
+    /* 3. 三本線の共通スタイル */
+    .menuIcon span {
+        display: block;
+        width: 100%;
+        height: 2px;
+        background-color: #ffffff; /* 線の色 */
+        position: absolute;
+        left: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    /* 4. 各線の位置指定 */
+    .menuIcon span:nth-child(1) { top: 0; }
+    .menuIcon span:nth-child(2) { top: 10px; }
+    .menuIcon span:nth-child(3) { top: 20px; }
+
+    /* 5. チェック時（メニュー開閉時）の「×」アニメーション */
+    .menuToggle:checked + .menuIcon span:nth-child(1) {
+        transform: translateY(10px) rotate(45deg);
+    }
+    .menuToggle:checked + .menuIcon span:nth-child(2) {
+        opacity: 0; /* 真ん中の線を消す */
+    }
+    .menuToggle:checked + .menuIcon span:nth-child(3) {
+        transform: translateY(-10px) rotate(-45deg);
+    }
+
+    /* ナビゲーションメニュー本体 */
+    .navMenu {
+        position: fixed;
+        top: 0;
+        right: -100%; /* JSで .active がつくまで隠す */
+        width: 100%;
+        height: 100vh;
+        background: rgba(13, 25, 48, 0.95);
+        backdrop-filter: blur(10px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: right 0.4s ease-in-out;
+        z-index: 999;
+    }
+
+    /* JSで付与される表示用クラス */
+    .navMenu.active {
+        right: 0;
+    }
+
+    .navList {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    /* SNSリンクをメニュー内に移動させたい場合は、HTMLの構造調整が必要です */
+    .snsLinks {
+        display: none; /* スマホヘッダーが窮屈なら一旦隠すか、メニュー内へ移動 */
+    }
+
+    /* トップページ */
     .heroText {
         font-size: 2rem;
     }
@@ -387,11 +571,33 @@ body {
         margin: 0 15px;
     }
 
+    /* イントロダクションページ */
+    .comparisonVisual {
+        flex-direction: column;
+    }
+    .sidePanel {
+        width: 100% !important;
+        height: 50% !important;
+        position: relative;
+    }
+    .splitHandle {
+        display: none; /* スマホではスライダーを廃止し、縦並びで表示 */
+    }
+    .sideTitle {
+        font-size: 2rem;
+    }
+
+    /* メンバーページ */
     .memberContainer {
         flex-direction: column; /* 縦並びに変更 */
         gap: 30px;
         padding: 20px;
     }
+
+    .memberMainImg {
+        aspect-ratio: 1 / 1; /* スマホでは正方形にするなど、調整が可能です */
+    }
+
 
     .imageArea {
         margin-left: 30px; /* スマホ時は少し狭める */
@@ -409,5 +615,13 @@ body {
 
     .memberName {
         font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 769px) {
+    /* PCではアイコンごと隠す */
+    .menuIcon,
+    .menuToggle {
+        display: none;
     }
 }
