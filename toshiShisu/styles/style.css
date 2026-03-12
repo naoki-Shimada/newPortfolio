@@ -1,3 +1,10 @@
+:root {
+    --mainPink: #ff00ff;
+    --mainPurple: #9d00ff;
+    --accentLime: #39ff14;
+    --baseDark: #0a0a12;
+}
+
 body {
     margin: 0;
     font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', sans-serif;
@@ -104,6 +111,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: radial-gradient(circle at center, #1a0b2e 0%, var(--baseDark) 100%);
+    perspective: 1000px;
 }
 
 .heroImage {
@@ -146,6 +155,11 @@ body {
 .newsBannerSection {
     padding: 40px 0;
     background-color: #050a14;
+
+    /* 背景画像の設定 */
+    /* 背景を暗くするために、黒の半透明レイヤー(0.6)を画像の上に重ねています */
+    background: linear-gradient(rgba(5, 10, 20, 0.6), rgba(5, 10, 20, 0.6)),
+    url(../img/Top_Banner_Bg.png) center/cover no-repeat fixed;
 }
 
 .bannerContainer {
@@ -155,65 +169,48 @@ body {
     overflow: hidden;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 2;
 }
 
-.bannerSlider {
+.newsBannerSection {
+    padding: 40px 0;
+    background-color: #050a14;
+}
+
+.bannerContainer {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px; /* 左右の余白を確保 */
+}
+
+.bannerList {
     display: flex;
-    transition: transform 0.5s ease-in-out;
+    flex-wrap: wrap; /* 折り返しを許可 */
+    gap: 30px;       /* バナー間の隙間 */
+    justify-content: center;
 }
 
-.slideItem {
-    min-width: 100%;
+.bannerItem {
+    flex: 1;
+    min-width: 300px; /* バナーの最小幅 */
+    max-width: 100%;
+    /* バナー自体に少し光沢を与えて背景から浮かせる */
+    border: 1px solid rgba(130, 177, 255, 0.3);
+    border-radius: 15px;
+    overflow: hidden;
 }
 
-.slideItem img {
+.bannerItem img {
     width: 100%;
+    height: auto;
     display: block;
-    object-fit: cover;
+    border-radius: 15px; /* 角丸をバナー自体に適用 */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease;
 }
 
-/* スライダーボタン */
-.sliderBtn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(130, 177, 255, 0.3);
-    border: none;
-    color: white;
-    padding: 15px;
-    cursor: pointer;
-    border-radius: 50%;
-    transition: background 0.3s;
-    z-index: 10;
-}
-
-.sliderBtn:hover {
-    background: rgba(130, 177, 255, 0.8);
-}
-
-.prevBtn { left: 20px; }
-.nextBtn { right: 20px; }
-
-/* ドットインジケーター */
-.sliderDots {
-    text-align: center;
-    margin-top: 15px;
-}
-
-.dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin: 0 5px;
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.dot.active {
-    background-color: #82b1ff;
-    box-shadow: 0 0 8px #82b1ff;
+.bannerItem img:hover {
+    transform: translateY(-5px); /* ホバー時に少し浮く演出 */
 }
 
 /* イントロダクションページ */
@@ -329,7 +326,6 @@ body {
     position: relative;
     flex: 1;
     /* セリフ(quoteBox)が左側に飛び出す分、余白を確保して埋もれを防止 */
-    margin-left: 50px;
 }
 
 .imageArea img {
@@ -339,6 +335,37 @@ body {
     transition: opacity 0.5s ease;
     display: block;
 }
+
+/* 動画用サムネイルのスタイル */
+.videoThumb {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: block; /* divとしての高さを確保 */
+}
+
+.videoThumb::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 55%; /* 三角形なので少し右に寄せると中央に見えます */
+    transform: translate(-50%, -50%);
+    
+    /* 三角形の描画 */
+    border-style: solid;
+    border-width: 10px 0 10px 18px; /* サイズ調整 */
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.9);
+    
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5));
+    transition: all 0.3s ease;
+}
+
+.videoThumb:hover::after {
+    border-color: transparent transparent transparent #82b1ff;
+    transform: translate(-50%, -50%) scale(1.2);
+}
+
 
 /* セリフの吹き出し */
 .quoteBox {
@@ -364,17 +391,16 @@ body {
     white-space: nowrap;
 }
 
-.memberMainImg {
+.memberMainImg,
+#memberVideo {
     width: 100%;
-    /* 修正: 画面からはみ出さないよう、最大高さを設定（70vh = 画面の高さの70%） */
-    max-height: 600px; 
+    /* max-height: 600px; を削除、または統一 */
+    height: auto; 
     aspect-ratio: 3 / 4; 
-    object-fit: cover;   
-    /* 追加: 画像の表示位置を「上」に合わせる（足元より顔を優先して表示） */
-    object-position: top; 
+    object-fit: cover;
+    object-position: top;
     border-radius: 20px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    transition: opacity 0.5s ease;
     display: block;
 }
 
@@ -408,6 +434,7 @@ body {
     justify-content: center;
     gap: 15px;
     margin-top: 20px;
+    width: 100%; /* 親要素の幅いっぱいに広げる */
 }
 
 .thumbGroup {
@@ -415,9 +442,34 @@ body {
     justify-content: center;
     gap: 15px;
     width: 100%;
+
+    /* 横スクロールの設定 */
+    overflow-x: auto;         /* 横方向にはみ出したらスクロール */
+    white-space: nowrap;       /* 中身を折り返さない */
+    padding-bottom: 10px;      /* スクロールバーと画像の間の余白 */
+
+    /* スクロールバーのカスタマイズ */
+    scrollbar-width: thin;             /* Firefox用 */
+    scrollbar-color: #82b1ff #050a14;  /* Firefox用 (つまみ 背景) */
+}
+
+/* Chrome, Safari用スクロールバーのデザイン */
+.thumbGroup::-webkit-scrollbar {
+    height: 6px; /* スクロールバーの高さ */
+}
+
+.thumbGroup::-webkit-scrollbar-track {
+    background: #050a14;
+    border-radius: 10px;
+}
+
+.thumbGroup::-webkit-scrollbar-thumb {
+    background: #82b1ff;
+    border-radius: 10px;
 }
 
 .thumbItem {
+    flex: 0 0 60px; /* 縮小させず、60pxを維持する */
     width: 60px;
     height: 60px;
     object-fit: cover;
@@ -425,6 +477,9 @@ body {
     border: 2px solid transparent;
     transition: all 0.3s ease;
     opacity: 0.6;
+    border-radius: 10px;
+    box-sizing: border-box;
+    display: inline-block; /* 横並びを安定させる */
 }
 
 .thumbItem:hover {
@@ -475,6 +530,140 @@ body {
     width: 140px;
     color: #82b1ff;
     vertical-align: top;
+}
+
+/* 楽曲紹介ページ */
+/* ノイズエフェクト（マウスオーバーで反応） */
+.noiseLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://loading.io/asset/605151') repeat; /* ノイズテクスチャ */
+    opacity: 0;
+    z-index: 3;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+}
+
+.mainVisual:hover .noiseLayer {
+    animation: noiseAnim 0.2s infinite;
+    opacity: 0.3;
+}
+
+@keyframes noiseAnim {
+    0% { background-position: 0 0; }
+    100% { background-position: 10% 10%; }
+}
+
+.catchCopy {
+    font-size: 3rem;
+    color: #fff;
+    text-shadow: var(--neonGlow);
+    line-height: 1.4;
+}
+
+/* プレイヤーエリア：ネオン・ゴシック */
+.playerArea {
+    padding: 60px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cassettePlayer {
+    width: 100%;
+    max-width: 500px;
+    background: #121225;
+    border: 3px solid var(--mainPurple);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 0 30px rgba(157, 0, 255, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+/* ネオン波形アニメーション */
+.neonWaveform {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
+    height: 60px;
+    justify-content: center;
+}
+
+.neonWaveform .bar {
+    width: 8px;
+    background: var(--accentLime);
+    box-shadow: 0 0 10px var(--accentLime);
+    border-radius: 4px;
+    height: 20%;
+}
+
+/* 再生中に付与するアニメーションクラス（JSで制御） */
+.playing .bar {
+    animation: wave 0.6s infinite alternate;
+}
+
+.playing .bar:nth-child(2) { animation-delay: 0.1s; }
+.playing .bar:nth-child(3) { animation-delay: 0.2s; }
+.playing .bar:nth-child(4) { animation-delay: 0.15s; }
+
+@keyframes wave {
+    from { height: 20%; }
+    to { height: 100%; }
+}
+
+.playButton {
+    background: linear-gradient(45deg, var(--mainPink), var(--mainPurple));
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: var(--neonGlow);
+    transition: 0.3s;
+}
+
+.playButton:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+/* --- 楽曲紹介ページ：プレイヤー内の調整 --- */
+
+.songInfo {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+/* ジャケット画像のサイズ調整 */
+.songJacket {
+    width: 150px; /* プレイヤーに収まる適切なサイズ */
+    height: 150px;
+    object-fit: cover; /* 縦横比を維持して切り抜き */
+    border-radius: 10px;
+    border: 2px solid var(--mainPurple);
+    box-shadow: 0 0 15px rgba(157, 0, 255, 0.5);
+}
+
+/* タイトルとアーティスト名の微調整 */
+.songTitle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--accentLime);
+    margin: 0;
+}
+
+.artistName {
+    font-size: 0.9rem;
+    color: #cfd8dc;
+    margin: 0;
 }
 
 /* --- スマホ・タブレット対応 (768px以下) --- */
@@ -563,12 +752,13 @@ body {
     .heroSection {
         height: 60vh;
     }
-    .sliderBtn {
-        padding: 10px;
-        font-size: 0.8rem;
-    }
+
     .bannerContainer {
         margin: 0 15px;
+    }
+
+    .bannerItem {
+        min-width: 100%; /* スマホでは1枚ずつ縦に並べる */
     }
 
     /* イントロダクションページ */
@@ -609,12 +799,33 @@ body {
         font-size: 0.85rem;
     }
 
+    .memberMainImg,
+    #memberVideo {       /* ここにも動画IDを追加 */
+        aspect-ratio: 1 / 1; /* スマホでは正方形に統一 */
+    }
+
     .profileArea {
         width: 100%;
     }
 
     .memberName {
         font-size: 1.5rem;
+    }
+
+    /* 楽曲紹介ページ */
+    .catchCopy {
+        font-size: 1.8rem;
+    }
+    .cassettePlayer {
+        padding: 20px;
+    }
+    .songJacket {
+        width: 120px; /* スマホでは少し小さく */
+        height: 120px;
+    }
+    
+    .songTitle {
+        font-size: 1rem;
     }
 }
 

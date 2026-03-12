@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music | 都市伝説シスターズ(都市シス)</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    
+    <header class="mainHeader">
+        <div class="headerContainer">
+            <a href="top.html" class="logoWrapper">
+                <img src="img/toshiShisu_Logo_Bg_none.png">
+            </a>
+
+            <input type="checkbox" id="menuToggle" class="menuToggle">
+            <label for="menuToggle" class="menuIcon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+
+            <nav class="navMenu">
+                <ul class="navList">
+                    <li><a href="introduction.html">Introduction</a></li>
+                    <li><a href="member.html">Member</a></li>
+                    <li><a href="music.html">Music</a></li>
+                </ul>
+            </nav>
+
+            
+            <div class="snsLinks">
+                <a href="#" class="snsIconLink" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" class="snsIconLink" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" class="snsIconLink" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </div>
+    </header>
+
+
+    <section class="heroSection">
+        <div class="heroImageContainer">
+            <div class="mainVisual">
+                <span class="noiseLayer"></span>
+                <p class="visualPlaceholder">Toshidensetsu Sisters<br>Main Visual</p>
+            </div>
+        </div>
+
+        <div class="heroContet">
+            <h1 class="catchCopy">噂を信じる？それとも恋する？</h1>
+        </div>
+    </section>
+
+    <section class="playerArea">
+        <div class="cassettePlayer">
+            <div class="cassetteTop">
+                <div class="tapeWindow">
+                    <div class="neonWaveForm" id="waveform">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="playerControls">
+                <button class="playButton" id="playBtn">PLAY / STOP</button>
+                <div class="songInfo">
+                    <p class="songTitle">トイレのはなこちゃんっ！</p>
+                    <p class="artistName">Wc_HanakoChan</p>
+                    <img src="img/Wc_Hanakochan_single.png" class="songJacket">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -156,8 +156,15 @@
             <div class="imageArea">
                 <div class="quoteBox" id="charQuote" style="background-color: #C3A64E;">「わたし、メリーさん…。いま、あなたのうしろにいるの」</div>
 
-                <img src="img/merrySan_up.png" class="memberMainImg" id="memberImg" alt="KashimaSan_Before">
+                <div id="mediaContainer">
+                    <img src="img/merrySan_up.png" class="memberMainImg" id="memberImg" alt="MerrySan_Before">
+                    <video id="memberVideo" class="memberMainImg" style="display: none;" controls>
+                        <source src="video/MerrySan_imageVideo.mp4" type="video/mp4">
+                        お使いのブラウザは動画再生に対応していません。
+                    </video>
+                </div>
 
+                
                 <div class="thumbnailArea">
                     <div id="thumbsOff" class="thumbsOff thumbGroup">
                         <img src="img/merrySan_up.png" class="thumbItem active" 
@@ -169,6 +176,14 @@
                         data-quote="「わたし、メリーさん…。いま、あなたのうしろにいるの」" 
                         data-color="#C3A64E" 
                         onclick="changePhoto('off', this)" alt="Thumbnail Off2">
+
+                        <div class="thumbItem videoThumb" 
+                        onclick="changePhoto('off', this)" 
+                        data-type="video"
+                        data-quote="「わたし、メリーさん…。いま、あなたのうしろにいるの」" 
+                        data-color="#C3A64E"
+                        style="background-image: url('img/MerrySan_seen1.png');">
+                        </div>
                     </div>
 
                     <div class="thumbsOn thumbGroup" style="display: none;">
