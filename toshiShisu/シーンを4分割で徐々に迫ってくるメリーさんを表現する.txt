@@ -1,0 +1,143 @@
+シーンごとに8秒ごとの短い動画として出力できるように、それぞれのプロンプトをまとめてください。
+
+シーンを4分割で徐々に迫ってくるメリーさんを表現する
+最後のパート以外は特に動きは加えず、暗転の度に距離が近くなっていく描写で迫ってくる様子を表現する
+シーンを経る度に夕暮れ時から夜へ、雑踏から孤独へ
+声は落ち着いた女性の声
+
+「わたし、メリーさん、今あなたの会社にいるの」(ひっきりなしになる電話、会話、革靴で走る音)
+暗転
+「わたし、メリーさん、今駅にいるの」(雑踏、電車の走行音)
+暗転
+「わたし、メリーさん、今信号を渡ったところ」(静寂、信号の通りゃんせのメロディ)
+暗転
+「わたし、メリーさん、今あなたのうしろにいるの」(自分の息の切れる音、携帯のバイブ)
+暗転
+右下に小さくテロップ都市伝説シスターズ-メリーさん編-
+
+最後のパートはメリーさんがこちらに歩いてきて全体像から顔のアップに寄るような構図にする
+
+シーン1：オフィス（夕暮れ）
+
+Video Prompt
+Cinematic long shot of a busy corporate office at sunset. Warm orange sunlight streams through windows, creating long shadows and hitting cluttered desks. In the foreground, a smartphone on a desk vibrates and glows intensely with an incoming call. In the background, blurred silhouettes of office workers move past. High-end cinematography, 4k, realistic textures, static camera.
+
+Audio Prompt
+Immersive soundscape of a hectic office environment. A cacophony of overlapping chatter, multiple telephones ringing simultaneously, and the hum of machines. Sharply contrasted by the distinct, rhythmic sound of rapid leather shoe footsteps running on a hard floor. High-fidelity, ominous ambient noise.
+
+Voice & Lyrics (for Audio/Voice Generation)
+Character Profile: Mature & Authoritative Female (Deep Alto).
+Vocal Style: Cold, dignified, and intellectually intimidating. Perfectly articulated Japanese with a sharp, sophisticated edge. No breathiness, no youthful tones.
+
+Script (Japanese):
+「わたしメリーさん今あなたの会社にいるの」
+
+
+Voice & Performance Description
+Character Profile: Mature & Authoritative Female (Deep Alto).
+Vocal Style: Cold, dignified, and intellectually intimidating.
+Japanese Articulation: Crystal-clear enunciation with a focused, steady breath control (no airiness).
+Tone: Low-pitched, clinical, and devoid of emotional warmth. The delivery should be measured and slow, emphasizing the predatory nature of the character. Avoid any "Anime-style" high-pitched tropes.
+
+音声生成(ボイス部分):
+Script with SSML/Pacing Cues
+ElevenLabsのモデル（特に Multilingual v2）で日本語を読ませる際、以下の記述形式が「落ち着いた威圧感」を出すのに効果的です。
+
+
+言語設定: 日本語ネイティブ。外国語のアクセントは一切排除すること。
+キャラクター: 落ち着いた威厳のある成人女性（低音のアルト）。
+話し方: 冷徹、知的、そして威圧的。感情を排した無機質なトーン。
+滑舌: 非常に明瞭で、一音一音をはっきりと発音すること。吐息成分（ウィスパーボイス）は含めない。
+速度: 意図的にゆっくりと、獲物を追い詰めるような冷ややかなペース。
+制約事項: 入力されたテキストを一切改変せず、表記通りに忠実に読み上げること。
+
+セリフ:
+「わたし、メリーさん。……今、あなたの会社にいるの。」
+
+シーン2：駅（黄昏）
+
+Video Prompt
+
+A train station platform at dusk, deep blue and purple sky. Crowds of commuters moving in a blur (motion blur). A close-up of a person's hand holding a buzzing smartphone. Static shot. Moody atmosphere, urban loneliness.Wide shot.
+
+Audio Prompt
+
+Ambient soundscape of a busy train station at dusk. Loud, bustling crowds with overlapping footsteps and distant murmurs. The heavy, rhythmic mechanical sound of a train passing on the tracks, including the screeching of metal and low-frequency vibrations. High-fidelity field recording, cinematic atmospheric noise.
+
+Voice & Lyrics (for Audio/Voice Generation)
+Character Profile: Mature & Authoritative Female (Deep Alto).
+Vocal Style: Cold, dignified, and intellectually intimidating. Perfectly articulated Japanese with a sharp, sophisticated edge. No breathiness, no youthful tones.
+
+Articulation & Termination:
+
+Zero breathiness: No trailing breath or sighs at the end of sentences.
+
+Staccato finish: Clip the final syllables clearly and abruptly. Avoid any fading out or pitch-bending at the end of words.
+
+Deadpan delivery: A flat, consistent tone that remains cold and mechanical until the very last phoneme.
+
+Script (Japanese)
+「わたしメリーさん。今、駅にいるノ。」
+
+シーン3：信号（夜・孤独）
+
+Video Prompt
+
+A deserted street corner at night under a single flickering streetlight. A pedestrian signal is green. Total silence visually, no cars, no people. A dark, eerie atmosphere with long shadows. Static shot. Dark cinematic style.Medium shot.
+
+Audio Prompt
+Deep, haunting silence of an empty street at night. A low-fidelity, electronic melody of "Toryanse" (Japanese pedestrian signal music) playing from a distance with a slight metallic echo. The sound should feel lonely and eerie, cutting through the heavy, quiet night air. High-fidelity ambient recording with no background wind or traffic noise.
+
+Voice & Lyrics (for Audio/Voice Generation)
+Character Profile: Mature & Authoritative Female (Deep Alto).
+Vocal Style: Cold, dignified, and intellectually intimidating. Perfectly articulated Japanese with a sharp, sophisticated edge. No breathiness, no youthful tones.
+
+Articulation & Termination:
+
+Zero breathiness: No trailing breath or sighs at the end of sentences.
+
+Staccato finish: Clip the final syllables clearly and abruptly. Avoid any fading out or pitch-bending at the end of words.
+
+Deadpan delivery: A flat, consistent tone that remains cold and mechanical until the very last phoneme.
+
+
+Lyrics
+「わたしメリーさん今信号を渡ったの。」
+
+
+シーン4：終焉（暗闇・背後）
+
+Video Prompt
+
+A dark, narrow alleyway at midnight. A creepy doll-like woman (Mary) stands in the distance. The camera zooms in from a full-body shot to a terrifying extreme close-up of her pale face. High tension, horror aesthetic.Face shot.
+
+Audio Prompt
+Intense, heavy breathing of a panicked person close to the microphone. Sharp, ragged inhales and exhales reflecting fear and exhaustion. Intermittent and persistent low-frequency vibration of a smartphone held in a trembling hand. A dark, oppressive silence in the background, making every breath and vibration feel unnaturally loud. Cinematic horror sound design, high-fidelity intimate audio.
+
+Voice & Lyrics (for Audio/Voice Generation)
+Character Profile: Mature & Authoritative Female (Deep Alto).
+Vocal Style: Cold, dignified, and intellectually intimidating. Perfectly articulated Japanese with a sharp, sophisticated edge. No breathiness, no youthful tones.
+
+Articulation & Termination:
+
+Zero breathiness: No trailing breath or sighs at the end of sentences.
+
+Staccato finish: Clip the final syllables clearly and abruptly. Avoid any fading out or pitch-bending at the end of words.
+
+Deadpan delivery: A flat, consistent tone that remains cold and mechanical until the very last phoneme.
+
+
+Lyrics
+「わたし、メリーさん今…あなたのうしろにいるの。」
+
+極至近距離（パーツ強調）: Extreme close-up shot, Focus on eyes/hands
+
+至近距離（表情重視）: Close-up shot, Face shot
+
+中距離（胸から上）: Medium shot, Waist-up shot
+
+全身（背景とのバランス）: Full body shot, Wide shot
+
+遠景（周囲の環境重視）: Long shot, Establishing shot, Aerial view
+
+以下の要素を音声プロンプトとして動画生成AIが読み取りやすいように英語でまとめてください。
